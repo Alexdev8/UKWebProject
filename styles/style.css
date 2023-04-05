@@ -1,9 +1,29 @@
-header{
+body {
     text-align: center;
-
 }
 
-span{
+.icon-btn {
+    border-radius: 1em;
+    border: none;
+    box-shadow: 2px 2px 6px rgb(26, 26, 25);
+    padding: 0.3em;
+    transition: transform .2s;
+}
 
+.icon-btn:hover, button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
 
+.icon-btn:active {
+    transform: scale(0.9);
+}
+
+#settings-btn:active {
+    transform: rotate(45deg)
+}
+
+#menu ul {
+    list-style: none;
+    padding: 0;
 }
