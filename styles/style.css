@@ -8,6 +8,7 @@ header {
     display: flex;
 }
 
+
 .header-side {
     width: 40%;
     vertical-align: center;
@@ -62,33 +63,60 @@ header {
 }
 
 
-
+#menu #menu ul{
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
 
 #menu li{
     display: inline-block;
     position: relative;
+    border-radius: 8px;
 }
 
-#menu h1{
-    border: black solid 1px;
-    border-radius: 5px;
-    padding: 10px 10px;
+#menu ul li{
+    display: inherit;
+    border-radius: 0;
 }
 
-#menu ul {
-    list-style: none;
-    padding: 0;
-}
-#menu a{
-    text-decoration: none;
-    color: black;
+#menu ul li:hover{
+    border-radius: 0;
+    background-color: pink;
 }
 
-#menu ul ul{
+#menu li:hover ul{
+    max-height: 20em;
+}
+
+#menu ul{
     position: absolute;
-    z-index: 1000;
     max-height: 0;
     left: 0;
     right: 0;
     overflow: hidden;
+    -moz-transition: .3s all .0s;
+    -webkit-transition: .3s all .0s;
+    transition: .3s all .0s;
+    opacity: 0.95;
 }
+
+#menu h1{
+    text-decoration: none;
+    display: block;
+    padding: 8px 32px;
+    font-family: Arial;
+}
+
+#menu h2{
+    font-size: 15px;
+}
+
+#menu ul a{
+    text-decoration: none;
+    color: black;
+}
+
+
+
+
