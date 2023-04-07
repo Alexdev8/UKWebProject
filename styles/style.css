@@ -58,19 +58,15 @@ header {
     padding: 0 0 0 1em;
 }
 
-#search-container form:hover{
-    transition: all 1s, height 0.1s ease-in-out;
-    width: 20em;
-    height: 45px;
-    cursor: pointer;
+.searchform-displayed {
+    transition: all 1s, height 0.1s ease-in-out !important;
+    width: 20em !important;
+    height: 45px !important;
+    cursor: pointer !important;
 }
 
-#search-container form:hover input{
-    display: block;
-}
-
-#search-container form:hover #search-btn {
-    /*color: white;*/
+.searchform-displayed input {
+    display: block !important;
 }
 
 #search-input {
@@ -107,6 +103,7 @@ header {
     width: 40px;
     height: 40px;
     transition: transform .2s;
+    user-select: none;
 }
 
 .icon-btn {
@@ -118,6 +115,7 @@ header {
     border: none;
     box-shadow: 2px 2px 6px rgb(26,26,25);
     transition: transform .2s;
+    user-select: none;
 }
 
 .icon-btn:hover, button:hover {
@@ -154,6 +152,7 @@ header {
 }
 
 #menu, #menu ul {
+    cursor: pointer;
     padding: 0;
     margin: 0;
     list-style: none;
