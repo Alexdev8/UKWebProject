@@ -6,6 +6,7 @@ body {
 header {
     padding: 1em;
     display: flex;
+    background: #020288;
 }
 
 
@@ -15,7 +16,15 @@ header {
 }
 
 #right-side {
-    text-align: right;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#right-side > span {
+    margin-left: 0.5em;
 }
 
 .header-logo {
@@ -31,11 +40,83 @@ header {
     height: 6em;
 }
 
-.icon-btn{
-    border-radius: 1em;
+#search-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+
+#search-container form {
+    transform: translate(0%);
+    transition: all 1s, height 1s ease-in-out;
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 2px 2px 6px rgb(26,26,25);
+    box-sizing: border-box;
+    padding: 0 0 0 1em;
+}
+
+#search-container form:hover{
+    transition: all 1s, height 0.1s ease-in-out;
+    width: 20em;
+    height: 45px;
+    cursor: pointer;
+}
+
+#search-container form:hover input{
+    display: block;
+}
+
+#search-container form:hover #search-btn {
+    /*color: white;*/
+}
+
+#search-input {
+    width: 88%;
+    height: 100%;
+    line-height: 30px;
+    outline: 0;
+    border: 0;
+    display: none;
+    font-size: 1em;
+    border-radius: 20px;
+    padding: 2px;
+}
+
+#search-btn {
+    position: absolute;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: auto;
+    top: 1%;
+    bottom: 1%;
+    right: 1%;
+    border-radius: 50%;
+        text-align: center;
+    font-size: 1.4em;
+    transition: all 1s;
+}
+
+#search-btn:hover {
+    background: #6f63ec;
+}
+
+.nested-icon-btn {
+    width: 40px;
+    height: 40px;
+    transition: transform .2s;
+}
+
+.icon-btn {
+    background-color: white;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
     border: none;
     box-shadow: 2px 2px 6px rgb(26,26,25);
-    padding: 0.3em;
     transition: transform .2s;
 }
 
@@ -43,6 +124,7 @@ header {
     transform: scale(1.1);
     cursor: pointer;
 }
+
 .material-symbols-outlined {
     font-weight: normal;
     font-style: normal;
@@ -58,7 +140,7 @@ header {
     -webkit-font-smoothing: antialiased;
 }
 
-.icon-btn:active {
+.icon-btn:active, .nested-icon-btn:active {
     transform: scale(0.9);
 }
 

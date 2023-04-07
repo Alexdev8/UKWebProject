@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
+    <script type="text/javascript" defer src="scripts/index_script.js" charset="utf-8"></script>
 </head>
 <body>
     <header>
@@ -22,7 +23,12 @@
             <div id="logo-site" role="link"></div>
         </div>
         <div id="right-side" class="header-side">
-            <span id="search-btn" class="icon-btn material-symbols-outlined" onclick="" role="button"> search </span>
+            <div id="search-container">
+                <form action=””>
+                    <label><input id="search-input" type="search" role="searchbox" placeholder="Search"></label>
+                    <span id="search-btn" class="nested-icon-btn material-symbols-outlined" role="button"> search </span>
+                </form>
+            </div>
             <span id="dark_mode-btn" class="icon-btn material-symbols-outlined"> dark_mode </span>
             <span id="settings-btn" class="icon-btn material-symbols-outlined" onclick="location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'"> settings </span>
             <span id="account-btn" class="icon-btn material-symbols-outlined"> person </span>
