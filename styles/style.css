@@ -1,14 +1,34 @@
 body {
+    background-image: url("../resources/old_paper.png");
     text-align: center;
     margin: 0;
+}
+
+footer {
+    padding: 1%;
+}
+
+main {
+    perspective: 4px;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: #252525;
 }
 
 header {
     padding: 1em;
     display: flex;
     background: #020288;
+    box-shadow: 2px 2px 6px rgb(26,26,25);
 }
-
 
 .header-side {
     width: 40%;
@@ -40,6 +60,7 @@ header {
     height: 6em;
 }
 
+/*Header buttons*/
 #search-container {
     display: flex;
     justify-content: center;
@@ -146,9 +167,11 @@ header {
     transform: rotate(45deg)
 }
 
+/*Nav bar*/
 #nav-container {
     width: 80%;
     margin: auto;
+    z-index: 1;
 }
 
 #menu, #menu ul {
@@ -157,6 +180,7 @@ header {
     margin: 0;
     list-style: none;
     text-align: center;
+    z-index: 1;
 }
 
 #menu {
@@ -214,4 +238,64 @@ header {
 
 #menu h2 {
     font-size: 15px;
+}
+
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+}
+
+.hover-underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0087ca;
+    transform-origin: bottom center;
+    transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom center;
+}
+
+/*Main page*/
+.main-container {
+    margin-top: 8%;
+    padding: 0 10%;
+    transform: scale3d(1.2, 1.2, 1.2) translateZ(-1px);
+    z-index: 0;
+}
+
+.main-container > section {
+    margin-bottom: 3%;
+}
+#rosecrown-mascot-img {
+    height: 40em;
+    position: absolute;
+    right: -28em;
+    top: 70%;
+    transform: translateZ(-2px);
+    z-index: 1;
+}
+
+#forest-img {
+    width: 100vw;
+    position: absolute;
+    right: 0;
+    bottom: -100%;
+    transform: scale3d(4, 4, 4) translateZ(-3px);
+    z-index: -1;
+}
+
+
+.content-section {
+    background-color: white;
+    padding: 2% 5% 5% 5%;
+    border-radius: 3em;
+    box-shadow: 2px 2px 6px rgb(26,26,25);
 }
