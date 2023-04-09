@@ -430,4 +430,7 @@ html {
   .has-children:hover > a::after {
     content: "▲";
   }
-  
+  /*------------------------------------Attraction-Générale-----------------------------*/
+  .Titre_attraction_gen{
+    font-style:url(../font/viking.otf);
+  }
