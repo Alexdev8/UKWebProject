@@ -8,19 +8,13 @@ footer {
     padding: 1%;
 }
 
-main {
-    perspective: 4px;
-    height: 100vh;
-    overflow-x: hidden;
-}
-
 a {
     text-decoration: none;
     color: black;
 }
 
 a:hover {
-    color: #252525;
+    color: #606060;
 }
 
 header {
@@ -111,9 +105,9 @@ header {
     bottom: 1%;
     right: 1%;
     border-radius: 50%;
-        text-align: center;
+    text-align: center;
     font-size: 1.4em;
-    transition: all 1s;
+    transition: all 1s, background-color 0.4s;
 }
 
 #search-btn:hover {
@@ -262,24 +256,43 @@ header {
     transform-origin: bottom center;
 }
 
+/*Parallax effect*/
+.parallax-main {
+    perspective: 4px;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+.parallax-layer1 {
+    transform: scale3d(1.2, 1.2, 1.2) translateZ(-1px);
+    z-index: 0;
+}
+
+.parallax-layer2 {
+    transform: translateZ(-2px);
+    z-index: 1;
+}
+
+.parallax-layer3 {
+    transform: scale3d(4, 4, 4) translateZ(-3px);
+    z-index: -1;
+}
+
 /*Main page*/
 .main-container {
     margin-top: 8%;
     padding: 0 10%;
-    transform: scale3d(1.2, 1.2, 1.2) translateZ(-1px);
-    z-index: 0;
 }
 
 .main-container > section {
     margin-bottom: 3%;
 }
+
 #rosecrown-mascot-img {
     height: 40em;
     position: absolute;
     right: -28em;
     top: 70%;
-    transform: translateZ(-2px);
-    z-index: 1;
 }
 
 #forest-img {
@@ -287,14 +300,69 @@ header {
     position: absolute;
     right: 0;
     bottom: -100%;
-    transform: scale3d(4, 4, 4) translateZ(-3px);
-    z-index: -1;
 }
-
 
 .content-section {
     background-color: white;
     padding: 2% 5% 5% 5%;
     border-radius: 3em;
     box-shadow: 2px 2px 6px rgb(26,26,25);
+}
+
+/*Order page*/
+.date-input-div {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    background-color: #6f63ec;
+    color: white;
+    box-shadow: 2px 2px 6px rgb(26,26,25);
+    border-radius: 1.5em;
+    border: none;
+}
+
+.date-input-div span {
+    display: inline-block;
+    background-color: white;
+    width: 1px;
+    height: 3em;
+    margin: 0.5em;
+}
+
+.date-input-div input {
+    cursor: pointer;
+    padding: 1.3em;
+    width: fit-content;
+    height: 100%;
+    color: white;
+    background-color: transparent;
+    font-size: large;
+    text-align: center;
+    border: none;
+    border-radius: 1.5em;
+    outline: none;
+}
+
+.date-input-div input:disabled {
+    cursor: auto;
+}
+
+.date-input-div input:hover:not(:disabled) {
+    background-color: #5d50ee;
+}
+
+.date-input-div input:focus {
+    background-color: #5d50ee;
+}
+
+::-webkit-calendar-picker-indicator {
+    background-color: white;
+    border-radius: 50%;
+    padding: 0.5em;
+}
+
+::-webkit-calendar-picker-indicator:hover {
+    cursor: pointer;
 }
