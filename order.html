@@ -38,11 +38,17 @@
     <div class="main-container">
         <section class="content-section">
             <h1>Buy tickets</h1>
-            <form>
+            <form name="ticket-form">
                 <div class="date-input-div">
-                    <label><input id="date-start-input" name="ticket-start-date" type="date"></label>
+                    <div id="start-date-input-div" class="date-input-sub-div">
+                        <label for="date-start-input">Arrival date</label>
+                        <input id="date-start-input" name="ticket-start-date" type="date" onchange="enable_form_input()" required>
+                    </div>
                     <span class="vertical-separator"></span>
-                    <label><input id="date-end-input" name="ticket-end-date" type="date"></label>
+                    <div id="end-date-input-div" class="date-input-sub-div">
+                        <label for="date-end-input">Departure date</label>
+                        <input id="date-end-input" name="ticket-end-date" type="date" disabled>
+                    </div>
                 </div>
             </form>
         </section>

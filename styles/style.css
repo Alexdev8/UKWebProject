@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "VikingFont";
+    src: url("../font/viking.otf");
+}
+
 body {
     background-image: url("../resources/old_paper.png");
     text-align: center;
@@ -305,47 +310,68 @@ header {
     border: none;
 }
 
+.date-input-div * {
+    cursor: pointer;
+}
+
+.date-input-sub-div {
+    transition: all 0.4s;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1.5em;
+    padding: 1em 1.3em 1.3em 1.3em;
+}
+
+.date-input-sub-div:has(input:disabled) {
+    border-radius: 0 1.5em 1.5em 0;
+    color: rgba(211, 211, 211, 0.5) !important;
+    background-color: rgba(172, 71, 204, 0.5);
+}
+
+.date-input-sub-div:not(:has(input:disabled)):hover {
+     background-color: #5d50ee;
+}
+
+.date-input-sub-div:not(:has(input:disabled)):has(input:focus) {
+    background-color: #5d50ee;
+}
+
 .date-input-div span {
     display: inline-block;
     background-color: white;
     width: 1px;
-    height: 3em;
+    height: 4em;
     margin: 0.5em;
 }
 
 .date-input-div input {
-    cursor: pointer;
-    padding: 1.3em;
+    transition: all 0.4s;
     width: fit-content;
     height: 100%;
     color: white;
     background-color: transparent;
     font-size: large;
     text-align: center;
-    border: none;
-    border-radius: 1.5em;
     outline: none;
+    border: none;
+    margin-top: 0.5em;
 }
 
 .date-input-div input:disabled {
-    cursor: auto;
-}
-
-.date-input-div input:hover:not(:disabled) {
-    background-color: #5d50ee;
-}
-
-.date-input-div input:focus {
-    background-color: #5d50ee;
+    color: rgba(211, 211, 211, 0.5) !important;
 }
 
 ::-webkit-calendar-picker-indicator {
     background-color: white;
+    transition: all 0.3s, padding 0.1s, margin 0.1s;
     border-radius: 50%;
     padding: 0.5em;
+    margin: 0.1em;
 }
 
 ::-webkit-calendar-picker-indicator:hover {
+    padding: 0.6em;
+    margin: 0;
     cursor: pointer;
 }
 
@@ -412,7 +438,8 @@ html {
   .has-children:hover > a::after {
     content: "▲";
   }
+
   /*------------------------------------Attraction-Générale-----------------------------*/
   .Titre_attraction_gen{
-    font-style:url(../font/viking.otf);
+      font-family: VikingFont, serif;
   }
