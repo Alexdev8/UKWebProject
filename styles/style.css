@@ -167,58 +167,68 @@ header {
 
 /*Nav bar*/
 #nav-container{
-    width: 70%;
+    width: 80%;
     margin: auto;
-    z-index: 1;
-    border-bottom: 1px black solid;
-
 }
+
 #menu{
-    display: flex;
+    border-radius: 3px;
+    border-bottom: solid 1px black;
+    box-shadow: 2px 2px 8px black;
+    background-image: url("https://media.istockphoto.com/id/621348814/fr/photo/papier-aquarelle-%C3%A0-texture-blanche.jpg?s=612x612&w=0&k=20&c=9qEgdmn_yB6wNRC-Gl2hubjqCBPBl-VKRwdY67p0ih8=");
+
 }
 
 #menu, #menu ul{
-    cursor: pointer;
-    list-style: none;
+    padding: 0;
     text-align: center;
-    z-index: 1;
 }
 
-#menu ul {
-    position: absolute;
-    max-height: 0;
-    left: 0;
-    right: 0;
-    overflow: hidden;
-    opacity: 0.95;
-}
-
-#menu li {
-    flex: 1;
+#menu li{
     display: inline-block;
+    margin: 0 5%;
     position: relative;
-    border-radius: 8px;
+    border-radius: 8px 8px;
 }
 
-#menu ul li {
-    display: inline-block;
+#menu ul li{
+    display: inherit;
     border-radius: 0;
-    padding-top: 5px;
-    margin: 0 7px;
-    text-align: center;
+    width: 100%;
 
 }
 
-#menu li:hover ul {
-    max-height: 60em;
-    position: fixed;
-
-    left: 0;
-    padding: 10px;
-    width: 700px;
+#menu li:hover ul{
+    max-height: 15em;
 }
 
+#menu ul li:hover{ /*Si alexis passe par la et cApte pk ca marche pas je suis preneur*/
+    list-style: square;
+}
 
+#menu ul{
+    position: absolute;
+    z-index: 1000;
+    left: -50% ;
+    width: 200%;
+    max-height: 0;
+    overflow: hidden;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    box-shadow: 2px 2px 8px black;
+    background-image: url("https://media.istockphoto.com/id/621348814/fr/photo/papier-aquarelle-%C3%A0-texture-blanche.jpg?s=612x612&w=0&k=20&c=9qEgdmn_yB6wNRC-Gl2hubjqCBPBl-VKRwdY67p0ih8=");
+    transition: .3s all .0s;
+}
+
+#menu a{
+    text-decoration: none;
+    display: block;
+    padding: 8px 32px;
+}
+
+#menu ul a{
+    padding: 8px 0;
+}
 
 .hover-underline-animation {
     display: inline-block;

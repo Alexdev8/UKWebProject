@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      position: relative;
+    }
+
+    nav ul li {
+      display: inline-block;
+      background-color: #222;
+    }
+
+    nav a {
+      display: block;
+      padding: 0 10px;
+      color: #fff;
+      font-size: 16px;
+      line-height: 60px;
+      text-decoration: none;
+    }
+
+    nav ul ul {
+      display: none;
+      position: absolute;
+      top: 60px;
+    }
+
+    nav ul li:hover > ul {
+      display:inherit;
+    }
+
+    nav ul ul li {
+      width: 200px;
+      float: none;
+      display:list-item;
+      position: relative;
+    }
+
+    nav ul ul ul li {
+      position: relative;
+      top:-60px;
+      left:200px;
+    }
+
+    nav a:hover {
+      background-color:#f00;
+    }
+
+    nav ul li:hover {
+      background-color:#f00;
+    }
+
+    nav ul ul li:hover {
+      background-color:#555;
+    }
+
+    nav ul li:hover > ul li:hover > a {
+      color:#fff;
+    }
+
+  </style>
+</head>
+<body>
+<nav>
+  <ul>
+    <li><a href="#">Accueil</a></li>
+    <li><a href="#">À propos</a>
+      <ul>
+        <li><a href="#">Notre histoire</a></li>
+        <li><a href="#">Notre équipe</a></li>
+        <li><a href="#">Nos clients</a></li>
+      </ul>
+    </li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+
+</body>
+</html>
