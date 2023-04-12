@@ -550,6 +550,80 @@ html {
   .Titre_attraction_gen{
       font-family: VikingFont, serif;
   }
+
+  /*------------------------------------NightShow---------------------------------------*/
+
+.content-section-nightshow {
+    background-image: url("https://media.istockphoto.com/id/621348814/fr/photo/papier-aquarelle-%C3%A0-texture-blanche.jpg?s=612x612&w=0&k=20&c=9qEgdmn_yB6wNRC-Gl2hubjqCBPBl-VKRwdY67p0ih8=");
+    padding: 2% 5% 5% 5%;
+    border-radius: 3em;
+    box-shadow: 2px 2px 6px rgb(26,26,25);
+}
+
+#shadowsofbritannia{
+    font-size: 45px;
+    font-weight: bolt;
+}
+
+#presentation-nighshow{
+    column-count: 2;
+    margin: auto;
+}
+
+.nightshow-button{
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    font-size: 15px;
+    background-image: url("https://media.istockphoto.com/id/621348814/fr/photo/papier-aquarelle-%C3%A0-texture-blanche.jpg?s=612x612&w=0&k=20&c=9qEgdmn_yB6wNRC-Gl2hubjqCBPBl-VKRwdY67p0ih8=");
+    box-shadow: 2px 2px 8px black;
+}
+
+.nav-nightshow{
+    margin: 10%;
+    border: black 1px solid;
+    box-shadow: 2px 2px 8px black;
+    list-style: none;
+}
+
+.navbar-nightshow li{
+    display: inline-block;
+    margin: 2% 5%;
+    font-size: 20px;
+}
+
+.nightshow-summary1{
+    column-count: 2;
+}
+
+.content-section-comments {
+    background-image: url("https://media.istockphoto.com/id/621348814/fr/photo/papier-aquarelle-%C3%A0-texture-blanche.jpg?s=612x612&w=0&k=20&c=9qEgdmn_yB6wNRC-Gl2hubjqCBPBl-VKRwdY67p0ih8=");
+    padding: 2% 5% 5% 5%;
+    border-radius: 3em;
+    box-shadow: 2px 2px 6px rgb(26,26,25);
+}
+
+.prices{
+    display: grid;
+    grid-template-columns: 45% 45%;
+    padding: 5% 5%;
+}
+
+.shadowstickets,.shadowsparktickets{
+    border: 1px solid black;
+    box-shadow: 2px 2px 8px black;
+}
+
+.imgshadowstickets img{
+    height: auto;
+    max-width: 100%;
+}
+
+.imgshadowparktickets img{
+    height: auto;
+    max-width: 100%;
+}
+
   .slideshow-container {
     max-width: 1000px;
     position: relative;
