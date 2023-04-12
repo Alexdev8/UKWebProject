@@ -21,7 +21,7 @@
         <div class="header-side">
         </div>
         <div class="header-logo">
-            <div id="logo-site" role="link"></div>
+            <div id="logo-site" role="link" onclick="location.href = 'index.html'"></div>
         </div>
         <div id="right-side" class="header-side">
             <div id="search-container">
@@ -36,9 +36,9 @@
         </div>
     </header>
     <div class="main-container">
+        <form name="ticket-form">
         <section class="content-section">
             <h1>Buy tickets</h1>
-            <form name="ticket-form">
                 <div class="date-input-div">
                     <div id="start-date-input-div" class="date-input-sub-div">
                         <label for="date-start-input">Arrival date</label>
@@ -50,8 +50,8 @@
                         <input id="date-end-input" name="ticket-end-date" type="date" disabled>
                     </div>
                 </div>
-            </form>
         </section>
+        </form>
     </div>
     <footer>
         <hr>

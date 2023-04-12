@@ -56,6 +56,7 @@ header {
     background-position: center;
     width: 100%;
     height: 6em;
+    cursor: pointer;
 }
 
 /*Header buttons*/
@@ -332,6 +333,24 @@ header {
     padding: 1em 1.3em 1.3em 1.3em;
 }
 
+.date-input-sub-div label {
+    user-select: none;
+    color: #d0d0d0;
+    transition: all 0.2s;
+    transform: translateX(-15%);
+}
+
+.date-input-sub-div:has(input:disabled) label {
+    transform: scale(0.9);
+    color: white;
+    opacity: 40%;
+}
+
+.date-input-sub-div:not(:has(input:disabled)):has(input:focus) label {
+    transform: translateX(0) scale(1.1);
+    color: white;
+}
+
 .date-input-sub-div:has(input:disabled) {
     border-radius: 0 1.5em 1.5em 0;
     color: rgba(211, 211, 211, 0.5) !important;
@@ -356,7 +375,7 @@ header {
 
 .date-input-div input {
     transition: all 0.4s;
-    width: fit-content;
+    width: 10em;
     height: 100%;
     color: white;
     background-color: transparent;
@@ -365,6 +384,7 @@ header {
     outline: none;
     border: none;
     margin-top: 0.5em;
+    user-select: none;
 }
 
 .date-input-div input:disabled {

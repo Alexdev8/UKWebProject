@@ -4,7 +4,6 @@ let search_container = document.getElementById("search-container");
 let search_form = document.querySelector("#search-container form");
 
 search_form.addEventListener("mouseenter", () => {
-    console.log("enter");
     search_form.classList.toggle("searchform-displayed", true);
 });
 
