@@ -163,7 +163,7 @@
                     <li class="hover-underline-animation"><a href="#nightshow-summary1">Presentation</a></li>
                     <li class="hover-underline-animation"><a href="#comments">Your opinion</a></li>
                     <li class="hover-underline-animation">You might also like</li>
-                    <li class="hover-underline-animation"><a href="#prices">Our prices</a></li>
+                    <li class="hover-underline-animation"><a href="#nightshow-ticket">Our prices</a></li>
                 </nav>
             </div>
             <div class="nightshow-summary1" id="nightshow-summary1">
@@ -211,12 +211,14 @@
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
-                <h2>The storyteller began to speak in a voice that was both powerful and soothing, inviting the audience to join her on a journey through time. With each word, the projections on the screen began to shift and change, revealing new scenes of England's rich and complex history.
+                <div class="text-nightshow-summary1">
+                    <h2>The storyteller began to speak in a voice that was both powerful and soothing, inviting the audience to join her on a journey through time. With each word, the projections on the screen began to shift and change, revealing new scenes of England's rich and complex history.
 
-                    The audience watched in awe as they were transported to ancient Britannia, where they witnessed the arrival of the Roman legions and the epic battles that followed. They saw the rise of powerful empires and the struggles of legendary heroes like King Arthur and his knights of the round table.
+                        The audience watched in awe as they were transported to ancient Britannia, where they witnessed the arrival of the Roman legions and the epic battles that followed. They saw the rise of powerful empires and the struggles of legendary heroes like King Arthur and his knights of the round table.
 
-                    As the show continued, the audience was taken on a journey through the centuries, from the time of the Viking invasions to the Norman Conquest, and from the Tudor dynasty to the Industrial Revolution.
-                </h2>
+                        As the show continued, the audience was taken on a journey through the centuries, from the time of the Viking invasions to the Norman Conquest, and from the Tudor dynasty to the Industrial Revolution.
+                    </h2>
+                </div>
             </div>
             <h2>Each scene was brought to life by the skilled performers on stage, who danced and acted with precision and grace.
 
@@ -238,27 +240,22 @@
                 <button class="comments">If you love history, art, and poetry, Shadows of Britannia is a must-see. <br> @ArtsAndPoetryFever </button>
             </div>
 
-
-            <div class="prices" id="prices">
-                <div class="shadowstickets">
-                    <div class="imgshadowstickets"><img src="https://www.lechotouristique.com/wp-content/uploads/2021/10/feux-follets-puy-du-fou.png"></div>
-                    <div class="descriptionshadowstickets">
-                        <h3>Shadows of Britannia</h3>
-                        <h5>Attend the biggest show in England and live an unforgettable experience</h5>
-                        <h5> 30£ </h5>
-                        <h5 class="payment">Add to cart</h5>
-                    </div>
-                </div>
-                <div class="shadowsparktickets">
-                    <div class="imgshadowparktickets"><img src="https://storage.lebonguide.com/crop-1600x700/40/15/4123F95F-337A-472D-8255-60BCA42EA6BD.png"></div>
-                    <div class="descriptionshadowparktickets">
-                        <h3>Shadows of Britannia + Rose Crown</h3>
-                        <h5>Come visit Rose Crown park and enjoy the great night show Shadows of Britannia</h5>
-                        <h5> 65£ </h5>
-                        <h5 class="payment">Add to cart</h5>
-                    </div>
-                </div>
-            </div>
+             <div class="ticket-type-selection" id="nightshow-ticket">
+                 <div id="undated-ticket-div" class="card" onclick="window.location.href='order.html'">
+                     <img src="https://www.lechotouristique.com/wp-content/uploads/2021/10/feux-follets-puy-du-fou.png" class="card-img" alt="...">
+                     <div class="card-body">
+                         <h5 class="card-title">Shadows of Britannia</h5>
+                         <p class="card-text">Attend the biggest show in England and live an unforgettable experience</p>
+                     </div>
+                 </div>
+                 <div id="dated-ticket-div" class="card" onclick="window.location.href='order.html'" >
+                     <img src="https://storage.lebonguide.com/crop-1600x700/40/15/4123F95F-337A-472D-8255-60BCA42EA6BD.png" class="card-img" alt="...">
+                     <div class="card-body">
+                         <h5 class="card-title">Shadows of Britannia + Rose Crown</h5>
+                         <p class="card-text">Come visit Rose Crown park and enjoy the great night show Shadows of Britannia</p>
+                     </div>
+                 </div>
+             </div>
 
         </section>
     </div>

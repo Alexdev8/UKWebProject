@@ -209,10 +209,6 @@ header {
     max-height: 15em;
 }
 
-#menu ul li:hover{ /*Si alexis passe par la et cApte pk ca marche pas je suis preneur*/
-    list-style: square;
-}
-
 #menu ul{
     position: absolute;
     z-index: 1000;
@@ -558,6 +554,8 @@ html {
     padding: 2% 5% 5% 5%;
     border-radius: 3em;
     box-shadow: 2px 2px 6px rgb(26,26,25);
+    margin-top: 20%;
+    margin-bottom: 15%;
 }
 
 #shadowsofbritannia{
@@ -596,32 +594,15 @@ html {
     column-count: 2;
 }
 
+.nightshow-summary1 .text-nightshow-summary1{
+    margin: auto;
+}
+
 .content-section-comments {
     background-image: url("https://media.istockphoto.com/id/621348814/fr/photo/papier-aquarelle-%C3%A0-texture-blanche.jpg?s=612x612&w=0&k=20&c=9qEgdmn_yB6wNRC-Gl2hubjqCBPBl-VKRwdY67p0ih8=");
     padding: 2% 5% 5% 5%;
     border-radius: 3em;
     box-shadow: 2px 2px 6px rgb(26,26,25);
-}
-
-.prices{
-    display: grid;
-    grid-template-columns: 45% 45%;
-    padding: 5% 5%;
-}
-
-.shadowstickets,.shadowsparktickets{
-    border: 1px solid black;
-    box-shadow: 2px 2px 8px black;
-}
-
-.imgshadowstickets img{
-    height: auto;
-    max-width: 100%;
-}
-
-.imgshadowparktickets img{
-    height: auto;
-    max-width: 100%;
 }
 
   .slideshow-container {
