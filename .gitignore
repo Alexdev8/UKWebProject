@@ -1,2 +1,6 @@
 /.idea
 /.vscode
+.env
+/node_modules
+/config
+/build
