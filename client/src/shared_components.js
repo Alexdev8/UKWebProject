@@ -1,33 +1,33 @@
-const React = require('react');
+import React from "react";
+import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
 
-const Logo = function (props){
-    const handleClick = () => {
-        window.location.href = "index.html";
-    }
-
-    return <div id={"header-logo"}>
-        <div className="header-side"></div>
-        <div className="header-logo">
-            <div id="logo-site" role="link" onClick={handleClick}></div>
+const Logo = function() {
+    return (
+        <div id={"header-logo"}>
+            <div className="header-side"></div>
+            <div className="header-logo">
+                <Link to={"/"}>
+                    <div id="logo-site" role="link"></div>
+                </Link>
+            </div>
         </div>
-
-    </div>
+    );
 };
 
-const SearchBar = function (props){
+const SearchBar = function (props) {
     return <div id="search-container">
-            <form action="">
+            <form action="src">
                 <label><input type="search" id="search-input" role="searchbox" name="search_input" placeholder={"Search"}/></label>
                 <span id="search-btn" className="nested-icon-btn material-symbols-outlined" role="button"> search </span>
             </form>
     </div>
 }
 
-const DarkMode = function (props){
+const DarkMode = function (props) {
     return <span id="dark_mode-btn" className="icon-btn material-symbols-outlined"> dark_mode </span>
 }
 
-const Settings = function (props){
+const Settings = function (props) {
     const handleClick = () => {
         window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
     }
@@ -51,7 +51,7 @@ const HeaderSide = function (props){
     )
 }
 
-const Header = function (props){
+const Header = function (){
     return (
         <div id="header">
             <div className="header-side"></div>
@@ -61,3 +61,4 @@ const Header = function (props){
     )
 }
 
+export default {Header};
