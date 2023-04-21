@@ -1,13 +1,13 @@
 @font-face {
     font-family: "VikingFont";
-    src: url("../font/viking.otf");
+    src: url("src/font/viking.otf");
 }
 
 body {
     min-height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
-    background-image: url("../resources/old_paper.png");
+    background-image: url("src/resources/old_paper.png");
     text-align: center;
     margin: 0;
 }

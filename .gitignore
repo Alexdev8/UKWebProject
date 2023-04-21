@@ -4,3 +4,11 @@
 /node_modules
 /config
 /build
+
+# Default ignored files
+/shelf/
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
