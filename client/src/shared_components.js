@@ -14,6 +14,8 @@ const Logo = function() {
     );
 };
 
+export default Logo;
+
 const SearchBar = function (props) {
     return <div id="search-container">
             <form action="src">
@@ -61,6 +63,7 @@ const Header = function (){
     )
 };
 
+
 /* CAROUSEL */
 
 const TitleCarousel = function (){
@@ -101,7 +104,7 @@ function PictureCarousel({ numberOfPictures,URLAttraction, URLPicture, name, Des
         pictures.push(
             <div className="carousel-item">
                 <a href={URLPicture}>
-                    <img src={URLAttraction} className="carousel-img"/>
+                    <img src={URLAttraction} className="carousel-img" alt={"carousel-img"}/>
                     <div className="carousel-caption">
                         <h5>{name}</h5>
                         <p>{Description}</p>
@@ -117,13 +120,7 @@ function PictureCarousel({ numberOfPictures,URLAttraction, URLPicture, name, Des
         )
 }
 
-<PictureCarousel
-    numberOfPictures={3},
-    URLAttraction={"attractions.html"},
-    URLPicture={"https://focus.courrierinternational.com/2022/02/04/0/0/5568/3712/1280/0/60/0/a82f9b4_1644008435467-000-9ba2ne.jpg"},
-    name={"Attraction 1"},
-    Description={"A nice one"}
-/>
+
 
 
 
@@ -156,4 +153,3 @@ const Footer = function (props){
     )
 }
 
-export default {Header};
