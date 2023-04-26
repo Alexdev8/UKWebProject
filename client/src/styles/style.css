@@ -481,69 +481,21 @@ form[name="order-form"] .hidden {
 }
 
 /*------------------------------------VIKING-----------------------------*/
-html {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Styles de base */
-  .viking-header {
-    background-color: #333;
-    height: 3rem;
-  }
-  .viking-nav {
-    height: 100%;
-  }
-  .viking-nav ul {
-    list-style: none;
-    display: flex;
-    height: 100%;
-  }
-  .viking-nav ul li {
-    position: relative;
-    flex: 1;
-  }
-  .viking-nav ul li a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    text-decoration: none;
-    height: 100%;
-    padding: 0 1rem;
-  }
-  /* Styles des sous-menus */
-  .viking-nav ul ul {
-    display: none;
+.perso_viking{
+    height: 10em;
     position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #555;
-    border-radius: 4px;
-    padding: 0.5rem 0;
-    width: 100%;
-  }
-  .viking-nav ul li:hover > ul {
-    display: flex;
-    flex-direction: column;
-  }
-  .viking-nav ul ul li {
-    position: relative;
-  }
-  .viking-nav ul ul li a {
-    padding: 0.5rem 1rem;
-    color: #fff;
-  }
-  /* Styles pour les éléments avec des sous-menus */
-  .has-children > a::after {
-    content: "▼";
-    margin-left: 0.5rem;
-  }
-  .has-children:hover > a::after {
-    content: "▲";
-  }
-
+    right: 8em;
+    top: 80%;
+}
+.visiteur_1{
+    height: 2em;
+    position: absolute;
+    left: 40em;
+    top: 108%;
+}
+ul{
+    list-style-type:none;
+}
   /*------------------------------------Attraction-Générale-----------------------------*/
   .Titre_attraction_gen{
       font-family: VikingFont, serif;

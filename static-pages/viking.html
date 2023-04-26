@@ -6,15 +6,24 @@
     <link rel="stylesheet" href="../client/src/styles/style.css">
   </head>
   <body>
-    <header class="viking-header">
-      <nav class="viking-nav">
-        <a href="#">Accueil</a>
-        <a href="#">Attractions</a>
-        <a href="#">Billetterie</a>
-        <a href="#">Contact</a>
-      </nav>
-      <h1>Attraction Viking</h1>
-    </header>
+    <header>
+      <div class="header-side">
+      </div>
+      <div class="header-logo">
+          <div id="logo-site" role="link" onclick="location.href = 'index.html'"></div>
+      </div>
+      <div id="right-side" class="header-side">
+          <div id="search-container">
+              <form action=””>
+                  <label><input id="search-input" type="search" role="searchbox" name="search_input" placeholder="Search"></label>
+                  <span id="search-btn" class="nested-icon-btn material-symbols-outlined" role="button"> search </span>
+              </form>
+          </div>
+          <span id="dark_mode-btn" class="icon-btn material-symbols-outlined"> dark_mode </span>
+          <span id="settings-btn" class="icon-btn material-symbols-outlined" onclick="location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'"> settings </span>
+          <span id="account-btn" class="icon-btn material-symbols-outlined"> person </span>
+      </div>
+  </header>
     
     <div class="content">
     <section id="introduction">
@@ -42,16 +51,11 @@
     </section>
 
     <section>
-      <div class="image-container">
-        <img src="../client/src/images/persoviking.PNG" alt="Image Viking">
-        <div class="speech-bubble">
-          <p>Texte dans la bulle de parole</p>
-        </div>
-      </div>
+        <img id="persoviking" class="perso_viking" src="../client/src/images/persoviking.PNG" alt="persoviking">
     </section>
 
     <section id="caracteristiques">
-      <div class="container">
+      <div class="viking_container">
         <h2>Caractéristiques uniques</h2>
         <ul>
           <li>Un voyage en bateau authentique sur un fjord norvégien</li>
@@ -67,14 +71,14 @@
       <div class="container">
         <h2>Avis des visiteurs</h2>
         <div class="avis-card">
-          <img src="../client/src/images/john%20doe.jfif" alt="Photo d'un visiteur">
+          <img class="visiteur_1"src="../client/src/images/john%20doe.jfif" alt="Photo d'un visiteur">
           <div class="avis-text">
             <h3>John Doe</h3>
             <p>Une expérience incroyable ! Le voyage en bateau était magnifique et le village viking était vraiment authentique. Les artisans étaient très sympathiques et ils nous ont montré comment ils fabriquaient des bijoux et des armes. Les spectacles de combat étaient aussi très impressionnants. Je recommande cette attraction à tous les amoureux de l'histoire et de l'aventure !</p>
           </div>
         </div>
         <div class="avis-card">
-          <img src="../client/src/images/jane%20doe.jfif" alt="Photo d'un visiteur">
+          <img class="visiteur_2"src="../client/src/images/jane%20doe.jfif" alt="Photo d'un visiteur">
           <div class="avis-text">
             <h3>Jane Doe</h3>
             <p>Cette attraction était vraiment fascinante ! J'ai adoré découvrir la culture viking de manière interactive. Le voyage en bateau était tellement relaxant et la vue sur les fjords était incroyable. J'ai aussi aimé le village viking avec ses bâtiments en bois et ses habitants habillés en tenue traditionnelle. Les spectacles de combat étaient très bien chorégraphiés et j'ai beaucoup appris sur la vie quotidienne des Vikings. Je recommande cette attraction à tous les curieux et les passionnés de culture !</p>
@@ -84,10 +88,15 @@
     </section>
     
     <footer>
-      <div class="container">
-        <p>Attraction Viking &copy; 2023 - Tous droits réservés</p>
+      <hr>
+      <a href="contact-us.html">Contact us</a>
+      <a href="privacy-policy.html">Privacy policy</a>
+      <a href="about.html">About</a>
+      <a href="careers/jobs.html">Job offers</a>
+      <div>
+          © 2023 RoseCrown • All rights reserved.
       </div>
-    </footer>
+  </footer>
     </div>
   </body>
 </html>
