@@ -1,10 +1,14 @@
-import './App.css';
-import {Header, Footer} from './shared_components';
+import './styles/style.css';
+import {Header, Footer, Menu} from './shared_components';
 
 function App() {
   return (
     <div className="App">
-        <Header></Header>
+        <main class="parallax-main">
+            <Header></Header>
+            <Menu></Menu>
+            <Footer></Footer>
+        </main>
     </div>
   );
 }

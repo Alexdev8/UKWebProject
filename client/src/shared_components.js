@@ -9,7 +9,7 @@ import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
 function SearchBar(){
     return(
         <div id="search-container">
-            <form action="src">
+            <form action="">
                 <label><input type="search" id="search-input" role="searchbox" name="search_input" placeholder={"Search"}/></label>
                 <span id="search-btn" className="nested-icon-btn material-symbols-outlined" role="button"> search </span>
             </form>
@@ -21,9 +21,9 @@ function SearchBar(){
 function Button(){
 
     const button = [
-        {name: "dark mode", id: "dark_mode-btn"},
+        {name: "dark_mode", id: "dark_mode-btn"},
         {name: "settings", id: "settings-btn"},
-        {name: "account", id: "account-btn"}
+        {name: "person", id: "account-btn"}
     ]
 
     const RikRoll = () => {
@@ -36,33 +36,29 @@ function Button(){
 
     return(
         <div className="header-side" id="right-side">
+            <SearchBar />
             {button.map((button) => (
-                <div className="icon-btn material-symbols-outlined">
-                    <button
-                        id={button.id}
-                        onClick={button.id === 'dark_mode-btn' ? DarkMode: null}
+                <span className="icon-btn material-symbols-outlined" id={button.id}
+                      onClick={button.id === 'dark_mode-btn' ? DarkMode: null}
 
-                    >
-                        {button.name}
-                    </button>
-                </div>
+                >
+                            {button.name}
+                          </span>
             ))}
         </div>
     )
 }
 
-function Logo(){
+function Header(){
     return(
-        <div id="button">
+        <header>
             <div className="header-side"></div>
             <div className="header-logo">
-                {/*<Link to={"/"}>*/}
-                    <div id="logo-site" role="link"></div>
-                {/*</Link>*/}
-                <SearchBar />
-                <Button />
+                <div id="logo-site" role="link"></div>
             </div>
-        </div>
+            <Button />
+        </header>
+
     )
 }
 
@@ -78,7 +74,7 @@ function Menu(){
         {name: "Shadows of Britannia", href: "nightime-show.html", id: "shadowsOfBritannia"},
         {name: "Vintage villages", href: "", id: "vintagesVillage"},
         {name: "Attractions", href: "attractions.html", id: "attractions"},
-        {name: "Park workshop", href: ""}
+        {name: "Park workshop", href: "", id: "workshop"}
     ];
 
     const Accommodations = [
@@ -110,21 +106,19 @@ function Menu(){
         <nav>
             <div id="nav-container">
                 <ul id="menu">
-                    <li>
-                        {menuData.map((menuData) => (
-                            <li>
-                                <h1 className="hover-underline-animation">{menuData.name}</h1>
-                                <ul className={menuData.id}>
-                                    {menuData.subMenu.map((subMenu) => (
-                                        <li className={subMenu.id}>
-                                            <a href={subMenu.href}>{subMenu.name}</a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </li>
-                        ))}
+                    {menuData.map((menuData) => (
+                        <li>
+                            <h1 className="hover-underline-animation">{menuData.name}</h1>
+                            <ul>
+                                {menuData.subMenu.map((subMenu) => (
+                                    <li>
+                                        <a href={subMenu.href}>{subMenu.name}</a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </li>
+                    ))}
 
-                    </li>
                 </ul>
             </div>
         </nav>
@@ -133,14 +127,9 @@ function Menu(){
     )
 }
 
-function Header(){
-    return(
-        <header>
-            <Logo />
-            <Menu />
-        </header>
-    )
-}
+
+
+
 
 /*---------------------------------- CAROUSEL ---------------------------------*/
 
@@ -158,18 +147,41 @@ function Footer(){
     ]
 
     return(
-        <div>
+        <footer>
+            <hr/>
             {footerItems.map((footerItem) => (
-                <div><hr/>
-                    <a href={footerItem.href}>{footerItem.name}</a>
+                <a href={footerItem.href}>{footerItem.name}</a>
 
-                </div>
             ))}
             <div>
                 © 2023 RoseCrown • All rights reserved.
             </div>
+        </footer>
+
+    )
+}
+
+function Attraction(){
+    const listAttractions = [
+        {name: "", description: "", picture: "", link: "", alt: ""}
+    ]
+
+    return(
+        <div className="attractionList">
+            {listAttractions.map((attraction) => (
+                <a href={attraction.link} id={attraction.name}>
+                    <img src={attraction.picture} alt={attraction.alt}/>
+                    <div className="img-overlay">
+                        {attraction.name}
+                    </div>
+                    <div className="attractionDescription">
+                        {attraction.description}
+                    </div>
+
+                </a>
+            ))}
         </div>
     )
 }
 
-export {Header, Footer};
+export {Header, Menu, Footer, Attraction};
