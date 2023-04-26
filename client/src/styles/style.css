@@ -4,6 +4,8 @@
 }
 
 body {
+    height: 100vh;
+    overflow-x: hidden;
     background-image: url("../resources/old_paper.png");
     text-align: center;
     margin: 0;
@@ -178,7 +180,7 @@ header {
 /*Nav bar*/
 #nav-container{
     width: 80%;
-    margin: 4% 10% 4% 10%;
+    margin: 1% 10% 1% 10%;
 }
 
 #menu{
@@ -186,7 +188,6 @@ header {
     border-bottom: solid 1px black;
     box-shadow: 2px 2px 8px black;
     background-image: url("https://media.istockphoto.com/id/621348814/fr/photo/papier-aquarelle-%C3%A0-texture-blanche.jpg?s=612x612&w=0&k=20&c=9qEgdmn_yB6wNRC-Gl2hubjqCBPBl-VKRwdY67p0ih8=");
-
 }
 
 #menu, #menu ul{
@@ -199,14 +200,12 @@ header {
     margin: 0 5%;
     position: relative;
     border-radius: 8px 8px;
-
 }
 
 #menu ul li{
     display: inherit;
     border-radius: 0;
     width: 100%;
-
 }
 
 #menu li:hover ul{
@@ -267,17 +266,17 @@ header {
 }
 
 .parallax-layer1 {
-    transform: scale3d(1.2, 1.2, 1.2) translateZ(-1px);
+    /*transform: scale3d(1.2, 1.2, 1.2) translateZ(-1px);*/
     z-index: 0;
 }
 
 .parallax-layer2 {
-    transform: translateZ(-2px);
+    /*transform: translateZ(-2px);*/
     z-index: 1;
 }
 
 .parallax-layer3 {
-    transform: scale3d(4, 4, 4) translateZ(-3px);
+    /*transform: scale3d(4, 4, 4) translateZ(-3px);*/
     z-index: -1;
 }
 
@@ -309,7 +308,7 @@ header {
 .content-section {
     background-color: white;
     padding: 2% 5% 5% 5%;
-    margin-bottom: 10%;
+    margin-bottom: 1em;
     margin-top: 4%;
     border-radius: 3em;
     box-shadow: 2px 2px 6px rgb(26,26,25);
