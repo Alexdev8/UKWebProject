@@ -14,6 +14,8 @@ const Logo = function() {
     );
 };
 
+export default Logo;
+
 const SearchBar = function (props) {
     return <div id="search-container">
             <form action="src">
@@ -23,7 +25,7 @@ const SearchBar = function (props) {
     </div>
 }
 
-const DarkMode = function (props) {
+const DarkMode = function (props){
     return <span id="dark_mode-btn" className="icon-btn material-symbols-outlined"> dark_mode </span>
 }
 
@@ -59,6 +61,95 @@ const Header = function (){
             <HeaderSide />
         </div>
     )
+};
+
+
+/* CAROUSEL */
+
+const TitleCarousel = function (){
+    return(
+        <a href="attractions.html"><h1>Our great attractions</h1></a>
+    )
+};
+
+function CarouselIndicators({ buttonCount }){
+    const buttons = [];
+
+    for (let i = 0; i < buttonCount; i++){
+        const isActive = i === 0 ? 'active' : '';
+        buttons.push(
+            <button
+                key={index}
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to={index}
+                aria-label={`Slide ${index + 1}`}
+            ></button>
+        );
+    }
+    return(
+        <div className="carousel-indicators">
+            {buttons}
+        </div>
+    );
 }
 
-export default {Header};
+<ButtonCarousel buttonCount={5} />
+/* It will create 5 buttons */
+
+function PictureCarousel({ numberOfPictures,URLAttraction, URLPicture, name, Description}){
+    const pictures = [];
+
+    for (let i = 0; i < numberOfPictures; i++){
+        pictures.push(
+            <div className="carousel-item">
+                <a href={URLPicture}>
+                    <img src={URLAttraction} className="carousel-img" alt={"carousel-img"}/>
+                    <div className="carousel-caption">
+                        <h5>{name}</h5>
+                        <p>{Description}</p>
+                    </div>
+                </a>
+            </div>
+        );
+    }
+    return(
+        <div className="carousel-inner">
+            {pictures}
+        </div>
+        )
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* FOOTER */
+
+const Footer = function (props){
+    return (
+        <div> <hr/>
+            <a href="contact-us.html">Contact us</a>
+            <a href="privacy-policy.html">Privacy policy</a>
+            <a href="about.html">About</a>
+            <a href="careers/jobs.html">Job offers</a>
+            <div>
+                © 2023 RoseCrown • All rights reserved.
+            </div>
+        </div>
+    )
+}
+
