@@ -2,7 +2,7 @@ import React from "react";
 import './styles/bootstrap.css';
 import './styles/style.css';
 // import './scripts/animation';
-import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 /*--------------------------------- HEADER ------------------------------------*/
 
@@ -54,11 +54,12 @@ function Header(){
         <header>
             <div className="header-side"></div>
             <div className="header-logo">
-                <div id="logo-site" role="link"></div>
+                <Link to="/">
+                    <div id="logo-site" role="link"></div>
+                </Link>
             </div>
             <Button />
         </header>
-
     )
 }
 

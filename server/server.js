@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname, "..", process.env.BUILD_PATH, "stati
 
 // Last route: page not found -> Error 404
 app.use(function (req, res, next) {
-    error404(req, res);
+    res.sendFile(path.join(__dirname, "..", process.env.BUILD_PATH, "index.html"));
 })
 
 function error404(req, res) {
