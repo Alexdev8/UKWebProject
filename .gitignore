@@ -1,9 +1,10 @@
 /.idea
 /.vscode
 .env
-/node_modules
+/client/node_modules/
+/server/node_modules/
 /config
-/build
+/client/build/
 
 # Default ignored files
 /shelf/
