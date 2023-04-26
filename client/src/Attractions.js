@@ -1,7 +1,4 @@
-function Attractions() {
-    const listAttractions = [
-        {name: "azerty", description: "a", picture: "b", link: "d", alt: "s"}
-    ]
+function Attractions(name, description, picture, link, label) {
 
     return (
         <div className="attractionList">
@@ -19,6 +16,9 @@ function Attractions() {
             ))}
         </div>
     )
-
 }
+
+
+
+
 export default Attractions;
