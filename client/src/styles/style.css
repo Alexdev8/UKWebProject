@@ -4,12 +4,15 @@
 }
 
 body {
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
     background-image: url("../resources/old_paper.png");
     text-align: center;
     margin: 0;
+}
+
+#root {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
 }
 
 footer {
@@ -260,7 +263,6 @@ header {
 /*Parallax effect*/
 .parallax-main {
     perspective: 4px;
-    height: 100vh;
     overflow-x: hidden;
 }
 
