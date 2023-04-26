@@ -1,155 +1,170 @@
 import React from "react";
 import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
 
-const Logo = function() {
-    return (
-        <div id={"header-logo"}>
+/*--------------------------------- HEADER ------------------------------------*/
+
+function SearchBar(){
+    return(
+        <div id="search-container">
+            <form action="src">
+                <label><input type="search" id="search-input" role="searchbox" name="search_input" placeholder={"Search"}/></label>
+                <span id="search-btn" className="nested-icon-btn material-symbols-outlined" role="button"> search </span>
+            </form>
+        </div>
+    )
+}
+
+
+function Button(){
+
+    const button = [
+        {name: "dark mode", id: "dark_mode-btn"},
+        {name: "settings", id: "settings-btn"},
+        {name: "account", id: "account-btn"}
+    ]
+
+    const RikRoll = () => {
+        window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+    }
+
+    const DarkMode = () => {
+        alert('Dark mode on')
+    }
+
+    return(
+        <div className="header-side" id="right-side">
+            {button.map((button) => (
+                <div className="icon-btn material-symbols-outlined">
+                    <button
+                        id={button.id}
+                        onClick={button.id === 'dark_mode-btn' ? DarkMode: null}
+
+                    >
+                        {button.name}
+                    </button>
+                </div>
+            ))}
+        </div>
+    )
+}
+
+function Logo(){
+    return(
+        <div id="button">
             <div className="header-side"></div>
             <div className="header-logo">
                 <Link to={"/"}>
                     <div id="logo-site" role="link"></div>
                 </Link>
+                <SearchBar />
+                <Button />
             </div>
         </div>
-    );
-};
-
-export default Logo;
-
-const SearchBar = function (props) {
-    return <div id="search-container">
-            <form action="src">
-                <label><input type="search" id="search-input" role="searchbox" name="search_input" placeholder={"Search"}/></label>
-                <span id="search-btn" className="nested-icon-btn material-symbols-outlined" role="button"> search </span>
-            </form>
-    </div>
+    )
 }
 
-const DarkMode = function (props){
-    return <span id="dark_mode-btn" className="icon-btn material-symbols-outlined"> dark_mode </span>
-}
 
-const Settings = function (props) {
-    const handleClick = () => {
-        window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-    }
-    return <span id="settings-btn" className="icon-btn material-symbols-outlined" onClick={handleClick}> settings </span>
 
-}
 
-const Account = function (props){
-    return <span id="account-btn" className="icon-btn material-symbols-outlined"> person </span>
-}
 
-const HeaderSide = function (props){
+/* --------------------------------- MENU ----------------------------------- */
+
+function Menu(){
+
+    const ParkAndShows = [
+        {name: "Shadows of Britannia", href: "nightime-show.html", id: "shadowsOfBritannia"},
+        {name: "Vintage villages", href: "", id: "vintagesVillage"},
+        {name: "Attractions", href: "attractions.html", id: "attractions"},
+        {name: "Park workshop", href: ""}
+    ];
+
+    const Accommodations = [
+        {name: "The Grand Crown Hotel", href: "", id: "crownHotel"},
+        {name: "Cottages/Bed and breakfasts", href: "", id: "cottage"}
+    ];
+
+    const Restaurants = [
+        {name: "Vintage restaurant", href: "nightime-show.html", id: "vintageRestaurant"},
+        {name: "Hotel restaurant", href: "", id: "hotelRestaurant"},
+        {name: "Fastfood", href: "", id: "fastFood"},
+        {name: "All restaurants", href: "attractions.html", id: "all"}
+    ];
+
+    const Informations = [
+        {name: "Prices", href: "nightime-show.html", id: "prices"},
+        {name: "Calendar", href: "", id: "calendar"},
+        {name: "Interractive map", href: "", id: "map"}
+    ];
+
+    const menuData = [
+        {id: "parkAndShows", name: "Park and shows", subMenu: ParkAndShows},
+        {id: "accommodations", name: "Accomodation", subMenu: Accommodations},
+        {id: "restaurant", name: "Restaurants", subMenu: Restaurants},
+        {id: "information", name: "Informations", subMenu: Informations}
+    ]
+
     return(
-        <div className="header-side" id="right-side">
-            <SearchBar />
-            <DarkMode />
-            <Settings />
-            <Account />
-        </div>
+        <nav>
+            <div id="nav-container">
+                <ul id="menu">
+                    <li>
+                        {menuData.map((menuData) => (
+                            <li>
+                                <h1 className="hover-underline-animation">{menuData.name}</h1>
+                                <ul className={menuData.id}>
+                                    {menuData.subMenu.map((subMenu) => (
+                                        <li className={subMenu.id}>
+                                            <a href={subMenu.href}>{subMenu.name}</a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </li>
+                        ))}
+
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
 
     )
 }
 
-const Header = function (){
-    return (
-        <div id="header">
-            <div className="header-side"></div>
+function Header(){
+    return(
+        <header>
             <Logo />
-            <HeaderSide />
-        </div>
+            <Menu />
+        </header>
     )
-};
-
-
-/* CAROUSEL */
-
-const TitleCarousel = function (){
-    return(
-        <a href="attractions.html"><h1>Our great attractions</h1></a>
-    )
-};
-
-function CarouselIndicators({ buttonCount }){
-    const buttons = [];
-
-    for (let i = 0; i < buttonCount; i++){
-        const isActive = i === 0 ? 'active' : '';
-        buttons.push(
-            <button
-                key={index}
-                type="button"
-                data-bs-target="#carouselExampleIndicators"
-                data-bs-slide-to={index}
-                aria-label={`Slide ${index + 1}`}
-            ></button>
-        );
-    }
-    return(
-        <div className="carousel-indicators">
-            {buttons}
-        </div>
-    );
 }
 
-<ButtonCarousel buttonCount={5} />
-/* It will create 5 buttons */
+/*---------------------------------- CAROUSEL ---------------------------------*/
 
-function PictureCarousel({ numberOfPictures,URLAttraction, URLPicture, name, Description}){
-    const pictures = [];
 
-    for (let i = 0; i < numberOfPictures; i++){
-        pictures.push(
-            <div className="carousel-item">
-                <a href={URLPicture}>
-                    <img src={URLAttraction} className="carousel-img" alt={"carousel-img"}/>
-                    <div className="carousel-caption">
-                        <h5>{name}</h5>
-                        <p>{Description}</p>
-                    </div>
-                </a>
-            </div>
-        );
-    }
+
+/*----------------------------------- FOOTER ----------------------------------*/
+
+function Footer(){
+
+    const footerItems = [
+        {name: "Contact us", href: "contact-us.html"},
+        {name: "Private policy", href: "privacy-policy.html"},
+        {name: "About", href: "about.html"},
+        {name: "Job offers", href: "careers/jobs.html"}
+    ]
+
     return(
-        <div className="carousel-inner">
-            {pictures}
-        </div>
-        )
-}
+        <div>
+            {footerItems.map((footerItem) => (
+                <div><hr/>
+                    <a href={footerItem.href}>{footerItem.name}</a>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* FOOTER */
-
-const Footer = function (props){
-    return (
-        <div> <hr/>
-            <a href="contact-us.html">Contact us</a>
-            <a href="privacy-policy.html">Privacy policy</a>
-            <a href="about.html">About</a>
-            <a href="careers/jobs.html">Job offers</a>
+                </div>
+            ))}
             <div>
                 © 2023 RoseCrown • All rights reserved.
             </div>
         </div>
     )
 }
-

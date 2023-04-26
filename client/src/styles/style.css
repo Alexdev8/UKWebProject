@@ -196,6 +196,7 @@ header {
     margin: 0 5%;
     position: relative;
     border-radius: 8px 8px;
+
 }
 
 #menu ul li{
@@ -668,7 +669,7 @@ html {
 .text{grid-area: textdescription}
 .form{grid-area: form}
 
-img{
+.carousel-workshop-img{
     border: 1px solid black;
     box-shadow: 2px 2px 8px black;
 }
