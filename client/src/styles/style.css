@@ -1,13 +1,13 @@
 @font-face {
     font-family: "VikingFont";
-    src: url("src/font/viking.otf");
+    src: url("../font/viking.otf");
 }
 
 body {
     min-height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
-    background-image: url("src/resources/old_paper.png");
+    background-image: url("../resources/old_paper.png");
     text-align: center;
     margin: 0;
 }
@@ -562,7 +562,7 @@ html {
 
 #shadowsofbritannia{
     font-size: 45px;
-    font-weight: bolt;
+    font-weight: bold;
 }
 
 #presentation-nighshow{

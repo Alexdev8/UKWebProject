@@ -13,6 +13,5 @@ search_box.addEventListener("focusout", hide_searchbar);
 function hide_searchbar() {
     if (search_box !== document.activeElement && search_box.value === "") {
         search_form.classList.toggle("searchform-displayed", false);
-
     }
 }

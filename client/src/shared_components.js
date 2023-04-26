@@ -1,4 +1,7 @@
 import React from "react";
+import './styles/bootstrap.css';
+import './styles/style.css';
+// import './scripts/animation';
 import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
 
 /*--------------------------------- HEADER ------------------------------------*/
