@@ -1,10 +1,10 @@
 import './App.css';
-import Header from './shared_components';
+import {Header, Footer} from './shared_components';
 
 function App() {
   return (
     <div className="App">
-      <p> aezgfaqez</p>
+        <Header></Header>
     </div>
   );
 }

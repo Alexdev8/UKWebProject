@@ -53,9 +53,9 @@ function Logo(){
         <div id="button">
             <div className="header-side"></div>
             <div className="header-logo">
-                <Link to={"/"}>
+                {/*<Link to={"/"}>*/}
                     <div id="logo-site" role="link"></div>
-                </Link>
+                {/*</Link>*/}
                 <SearchBar />
                 <Button />
             </div>
@@ -168,3 +168,5 @@ function Footer(){
         </div>
     )
 }
+
+export {Header, Footer};

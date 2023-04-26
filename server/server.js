@@ -17,11 +17,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 //Where to serve static content
-app.use(express.static(path.dirname(__dirname) + process.env.BUILD_PATH));
+app.use(express.static(path.join(__dirname, "..", process.env.BUILD_PATH)));
+app.use(express.static(path.join(__dirname, "..", process.env.BUILD_PATH, "static/")));
 
 // app.get('/', (req, res) => {
 //         try {
-//             fs.readFile(path.dirname(__dirname) + process.env.STATIC_CONTENT_PATH + "index.html", function(err, data) {
+//             fs.readFile(path.dirname(__dirname) + process.env.BUILD_PATH + "index.html", function(err, data) {
 //                 res.writeHead(200, {'Content-Type': 'text/html'});
 //                 res.write(data);
 //                 res.end();
