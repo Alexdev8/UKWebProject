@@ -1,0 +1,32 @@
+{
+  "name": "ukwebproject-client",
+  "version": "0.1.0",
+  "description": "The RoseCrown amusement park's React environment",
+  "main": "server.js",
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "react-router-dom": "^6.10.0"
+  },
+  "scripts": {
+    "start-client": "react-scripts start",
+    "start": "npm run build && cd .. && cd server && npm start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

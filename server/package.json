@@ -1,0 +1,22 @@
+{
+  "name": "ukwebproject-server",
+  "version": "1.0.0",
+  "description": "The RoseCrown amusement park's Node.js web server",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.22"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
