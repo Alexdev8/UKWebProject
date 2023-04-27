@@ -133,12 +133,48 @@ function Menu(){
 
 
 /*---------------------------------- CAROUSEL ---------------------------------*/
-
-
+function Carousel({images}) {
+    return (
+        <div id="carouselIndicators" className="carousel slide" data-bs-ride="carousel">
+            <div className="carousel-indicators">
+                {images.map((image) => (
+                    <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to={image.key}
+                            className="active" aria-current="true" aria-label={"Slide " + image.key} />
+                ))}
+            </div>
+            <div className="carousel-inner">
+                {images.map((image) => (
+                    <div className={"carousel-item " + ((image.active) ? 'active' : '')}>
+                        <a href={image.href}>
+                            <img
+                                src={image.src}
+                                className="carousel-img"
+                                alt={image.title + " image"}/>
+                            <div className="carousel-caption">
+                                <h5>{image.title}</h5>
+                                <p>{image.caption}</p>
+                            </div>
+                        </a>
+                    </div>
+                ))}
+            </div>
+            <button className="carousel-control-prev" type="button"
+                    data-bs-target="#carouselIndicators" data-bs-slide="prev">
+                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span className="visually-hidden">Previous</span>
+            </button>
+            <button className="carousel-control-next" type="button"
+                    data-bs-target="#carouselIndicators" data-bs-slide="next">
+                <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                <span className="visually-hidden">Next</span>
+            </button>
+        </div>
+    );
+}
 
 /*----------------------------------- FOOTER ----------------------------------*/
 
-function Footer(){
+function Footer() {
 
     const footerItems = [
         {name: "Contact us", href: "contact-us.html"},
@@ -162,4 +198,4 @@ function Footer(){
     )
 }
 
-export {Header, Menu, Footer};
+export {Header, Menu, Footer, Carousel};

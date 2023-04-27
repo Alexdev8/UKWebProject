@@ -1,5 +1,49 @@
 import {useEffect} from "react";
 import {Link} from "react-router-dom";
+import {Carousel} from "./shared_components";
+
+const attractionsData = [
+    {
+        key: 0,
+        active: true,
+        src: "https://focus.courrierinternational.com/2022/02/04/0/0/5568/3712/1280/0/60/0/a82f9b4_1644008435467-000-9ba2ne.jpg",
+        href: "attractions",
+        title: "Attraction 1",
+        caption: "A nice one"
+    },
+    {
+        key: 1,
+        active: false,
+        src: "https://www.parcbagatelle.com/fileadmin/user_upload/bagatelle/Baggy_Pass/Banniere-BaggyPass-Bagatelle.jpg",
+        href: "attractions",
+        title: "Attraction 2",
+        caption: "A cool one"
+    },
+    {
+        key: 2,
+        active: false,
+        src: "https://www.lepal.com/assets/images/background/pages/attractions.jpg?v=1680775020",
+        href: "attractions",
+        title: "Attraction 3",
+        caption: "A funny one"
+    },
+    {
+        key: 3,
+        active: false,
+        src: "https://www.evenement.com/wp-content/uploads/2020/01/an-amusement-park-at-night-2884693.jpg",
+        href: "attractions",
+        title: "Attraction 4",
+        caption: "An exiting one"
+    },
+    {
+        key: 4,
+        active: false,
+        src: "https://www.technord.com/wp-content/uploads/2020/03/Parc-attractions.jpg",
+        href: "attractions",
+        title: "Attraction 5",
+        caption: "A breathtaking one"
+    }
+]
 
 const Main = () => {
     useEffect( () => {
@@ -26,87 +70,7 @@ const Main = () => {
                 </section>
                 <section className="content-section">
                     <h1><Link to="/attractions">Our great attractions</Link></h1>
-                    <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
-                        <div className="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                                    className="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                                    aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                                    aria-label="Slide 3"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
-                                    aria-label="Slide 4"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
-                                    aria-label="Slide 5"></button>
-                        </div>
-                        <div className="carousel-inner">
-                            <div className="carousel-item active">
-                                <a href="attractions.html">
-                                    <img
-                                        src="https://focus.courrierinternational.com/2022/02/04/0/0/5568/3712/1280/0/60/0/a82f9b4_1644008435467-000-9ba2ne.jpg"
-                                        className="carousel-img"/>
-                                        <div className="carousel-caption">
-                                            <h5>Attraction 1</h5>
-                                            <p>A nice one</p>
-                                        </div>
-                                </a>
-                            </div>
-                            <div className="carousel-item">
-                                <a href="attractions.html">
-                                    <img
-                                        src="https://www.parcbagatelle.com/fileadmin/user_upload/bagatelle/Baggy_Pass/Banniere-BaggyPass-Bagatelle.jpg"
-                                        className="carousel-img"/>
-                                        <div className="carousel-caption">
-                                            <h5>Attraction 2</h5>
-                                            <p>A cool one</p>
-                                        </div>
-                                </a>
-                            </div>
-                            <div className="carousel-item">
-                                <a href="attractions.html">
-                                    <img
-                                        src="https://www.lepal.com/assets/images/background/pages/attractions.jpg?v=1680775020"
-                                        className="carousel-img"/>
-                                        <div className="carousel-caption">
-                                            <h5>Attraction 3</h5>
-                                            <p>A funny one</p>
-                                        </div>
-                                </a>
-                            </div>
-                            <div className="carousel-item">
-                                <a href="attractions.html">
-                                    <img
-                                        src="https://www.evenement.com/wp-content/uploads/2020/01/an-amusement-park-at-night-2884693.jpg"
-                                        className="carousel-img"/>
-                                        <div className="carousel-caption">
-                                            <h5>Attraction 4</h5>
-                                            <p>An exiting one</p>
-                                        </div>
-                                </a>
-                            </div>
-                            <div className="carousel-item">
-                                <a href="attractions.html">
-                                    <img
-                                        src="https://www.technord.com/wp-content/uploads/2020/03/Parc-attractions.jpg"
-                                        className="carousel-img"/>
-                                        <div className="carousel-caption">
-                                            <h5>Attraction 5</h5>
-                                            <p>A breathtaking one</p>
-                                        </div>
-                                </a>
-                            </div>
-                        </div>
-                        <button className="carousel-control-prev" type="button"
-                                data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span className="visually-hidden">Previous</span>
-                        </button>
-                        <button className="carousel-control-next" type="button"
-                                data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span className="visually-hidden">Next</span>
-                        </button>
-                    </div>
+                    <Carousel images={attractionsData}/>
                 </section>
             </div>
         </>
