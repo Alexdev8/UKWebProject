@@ -280,7 +280,7 @@ header {
     z-index: -1;
 }
 
-/*Main page*/
+/* ============================== Main page ================================== */
 .main-container {
     z-index: 0;
     padding: 0 10%;
@@ -665,9 +665,6 @@ ul{
     height: auto;
 }
 
-
-
-
 #village{
     display: grid;
     grid-template-areas:
@@ -680,4 +677,9 @@ ul{
     grid-template-columns: repeat(4, 1fr); /* adjust number of columns */
     gap: 10px;
 }
-  
+
+/* ======================================= Not Found ======================================= */
+.not-found-img {
+    height: 30vh;
+    width: auto;
+}
