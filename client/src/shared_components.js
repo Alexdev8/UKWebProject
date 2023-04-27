@@ -38,7 +38,7 @@ function Button(){
             <SearchBar />
             {button.map((button) => (
                 <span className="icon-btn material-symbols-outlined" id={button.id}
-                      onClick={button.id === 'dark_mode-btn' ? DarkMode: null}
+                      onClick={button.id === 'settings-btn' ? RikRoll: null}
 
                 >
                             {button.name}
