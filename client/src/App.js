@@ -18,9 +18,10 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Main/>}/>
                     <Route path="/order" element={<Order/>}/>
-                    <Route path="/attractions" element={<Attractions/>}/>
-                    <Route path="/viking" element={<Viking/>}/>
-                    <Route path="/roman" element={<Roman/>}/>
+                    <Route path="/attractions" element={<Attractions/>}>
+                        <Route path="viking" element={<Viking/>}/>
+                        <Route path="roman" element={<Roman/>}/>
+                    </Route>
                     <Route path="*" element={<NotFound/>}/>
                 </Routes>
             </main>

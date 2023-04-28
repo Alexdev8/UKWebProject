@@ -7,17 +7,17 @@ const attractionsData = [
         key: 0,
         active: true,
         src: "https://focus.courrierinternational.com/2022/02/04/0/0/5568/3712/1280/0/60/0/a82f9b4_1644008435467-000-9ba2ne.jpg",
-        href: "attractions",
-        title: "Attraction 1",
-        caption: "A nice one"
+        href: "attractions/viking",
+        title: "The viking's attack",
+        caption: "Dive into the epic story of the ruthless vikings"
     },
     {
         key: 1,
         active: false,
         src: "https://www.parcbagatelle.com/fileadmin/user_upload/bagatelle/Baggy_Pass/Banniere-BaggyPass-Bagatelle.jpg",
-        href: "attractions",
-        title: "Attraction 2",
-        caption: "A cool one"
+        href: "attractions/roman",
+        title: "The roman empire",
+        caption: "Get back to the roman period and discover the england of that time"
     },
     {
         key: 2,

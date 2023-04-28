@@ -78,33 +78,33 @@ function Header(){
 function Menu(){
 
     const ParkAndShows = [
-        {name: "Shadows of Britannia", href: "nightime-show.html", id: "shadowsOfBritannia"},
-        {name: "Vintage villages", href: "", id: "vintagesVillage"},
-        {name: "Attractions", href: "attractions.html", id: "attractions"},
-        {name: "Park workshop", href: "", id: "workshop"}
+        {name: "Shadows of Britannia", href: "nighttime-show", id: "shadowsOfBritannia"},
+        {name: "Vintage villages", href: "vintage-village", id: "vintagesVillage"},
+        {name: "Attractions", href: "attractions", id: "attractions"},
+        {name: "Park workshop", href: "workshop", id: "workshop"}
     ];
 
     const Accommodations = [
-        {name: "The Grand Crown Hotel", href: "", id: "crownHotel"},
-        {name: "Cottages/Bed and breakfasts", href: "", id: "cottage"}
+        {name: "The Grand Crown Hotel", href: "hotel", id: "crownHotel"},
+        {name: "Cottages/Bed and breakfasts", href: "cottage", id: "cottage"}
     ];
 
     const Restaurants = [
-        {name: "Vintage restaurant", href: "nightime-show.html", id: "vintageRestaurant"},
-        {name: "Hotel restaurant", href: "", id: "hotelRestaurant"},
-        {name: "Fastfood", href: "", id: "fastFood"},
-        {name: "All restaurants", href: "attractions.html", id: "all"}
+        {name: "Vintage restaurant", href: "vintage-restaurant", id: "vintageRestaurant"},
+        {name: "Hotel restaurant", href: "hotel-restaurant", id: "hotelRestaurant"},
+        {name: "Fastfood", href: "fast-food", id: "fastFood"},
+        {name: "All restaurants", href: "restaurants", id: "all"}
     ];
 
     const Informations = [
-        {name: "Prices", href: "nightime-show.html", id: "prices"},
-        {name: "Calendar", href: "", id: "calendar"},
-        {name: "Interractive map", href: "", id: "map"}
+        {name: "Prices", href: "prices", id: "prices"},
+        {name: "Calendar", href: "calendar", id: "calendar"},
+        {name: "Interactive map", href: "map", id: "map"}
     ];
 
     const menuData = [
         {id: "parkAndShows", name: "Park and shows", subMenu: ParkAndShows},
-        {id: "accommodations", name: "Accomodation", subMenu: Accommodations},
+        {id: "accommodations", name: "Accommodation", subMenu: Accommodations},
         {id: "restaurant", name: "Restaurants", subMenu: Restaurants},
         {id: "information", name: "Informations", subMenu: Informations}
     ]
@@ -119,13 +119,12 @@ function Menu(){
                             <ul>
                                 {menuData.subMenu.map((subMenu) => (
                                     <li>
-                                        <a href={subMenu.href}>{subMenu.name}</a>
+                                        <Link to={subMenu.href}>{subMenu.name}</Link>
                                     </li>
                                 ))}
                             </ul>
                         </li>
                     ))}
-
                 </ul>
             </div>
         </nav>

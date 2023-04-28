@@ -2,7 +2,6 @@ import React from "react";
 
 const Viking = () => {
     return (
-
             <div className="viking-content">
                 <section id="viking-introduction">
                     <div className="viking-container">
@@ -14,7 +13,7 @@ const Viking = () => {
 
                 <section id="viking-perso">
                     <div className="perso-viking">
-                        <img src="./resources/persoviking.PNG" alt="persoviking"></img>
+                        <img src={require("./resources/persoviking.PNG")} alt="persoviking"></img>
                     </div>
                 </section>
 

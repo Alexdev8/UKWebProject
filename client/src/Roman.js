@@ -14,7 +14,7 @@ const Roman = () => {
 
             <section id="roman-perso">
                 <div className="roman-viking">
-                    <img src="./resources/persoviking.PNG" alt="persoroman"></img>
+                    <img src={require("./resources/persoviking.PNG")} alt="persoroman"></img>
                 </div>
             </section>
 
