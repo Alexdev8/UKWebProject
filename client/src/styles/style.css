@@ -492,6 +492,17 @@ form[name="order-form"] .hidden {
 .viking-container{
     font-family: VikingFont;
 }
+/*------------------------------------ROMAN------------------------------*/
+.roman-content{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 70em;
+    font-size: large;
+}
+.roman-container{
+    font-family: "Times New Roman";
+}
   /*------------------------------------Attraction-Générale-----------------------------*/
   .Titre_attraction_gen{
       font-family: VikingFont, serif;
