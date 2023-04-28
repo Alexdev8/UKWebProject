@@ -91,7 +91,7 @@ header {
 
 .searchform-displayed {
     transition: all 1s, height 0.1s ease-in-out !important;
-    width: 20em !important;
+    width: 12em !important;
     height: 45px !important;
     cursor: pointer !important;
 }
@@ -184,6 +184,9 @@ header {
 }
 
 #menu{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     border-radius: 3px;
     border-bottom: solid 1px black;
     box-shadow: 2px 2px 8px black;
@@ -196,13 +199,17 @@ header {
 }
 
 #menu li{
+    flex: 1;
     display: inline-block;
-    margin: 0 5%;
+    margin: 0 3%;
     position: relative;
     border-radius: 8px 8px;
+    cursor: pointer;
 }
 
 #menu ul li{
+    text-decoration: none;
+    margin: 0;
     display: inherit;
     border-radius: 0;
     width: 100%;
@@ -214,9 +221,10 @@ header {
 
 #menu ul{
     position: absolute;
+    transform-origin: bottom center;
     z-index: 1000;
-    left: -50% ;
-    width: 200%;
+    left: -25% ;
+    width: 150%;
     max-height: 0;
     overflow: hidden;
     border-bottom-right-radius: 10px;
@@ -227,7 +235,6 @@ header {
 }
 
 #menu a{
-    text-decoration: none;
     display: block;
     padding: 8px 32px;
 }
@@ -254,10 +261,15 @@ header {
     transition: transform 0.25s ease-out;
 }
 
-.hover-underline-animation:hover::after {
-    transform: scaleX(1);
+#menu li:has(.hover-underline-animation):hover > .hover-underline-animation::after {
+    transform: scaleX(1.15);
     transform-origin: bottom center;
 }
+
+/*.hover-underline-animation:hover::after {*/
+/*    transform: scaleX(1);*/
+/*    transform-origin: bottom center;*/
+/*}*/
 
 /*Parallax effect*/
 .parallax-main {
