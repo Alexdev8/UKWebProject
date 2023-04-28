@@ -1,4 +1,4 @@
-const Order = () => {
+function Order() {
   return (
       <p>ORDER</p>
   )

@@ -45,7 +45,7 @@ const attractionsData = [
     }
 ]
 
-const Main = () => {
+function Main() {
     useEffect( () => {
         //Is used to add the parallax-main class when the main-page is used and remove it when it is hidden
         // document.querySelector("#root").classList.add("parallax-main");

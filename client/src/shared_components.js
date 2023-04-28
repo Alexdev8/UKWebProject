@@ -1,21 +1,32 @@
-import React from "react";
-import './styles/bootstrap.css';
-// import './scripts/animation';
+import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
+import './styles/bootstrap.css';
 
 /*--------------------------------- HEADER ------------------------------------*/
 
-function SearchBar(){
-    return(
+function SearchBar() {
+    const [visible, setVisible] = useState(false);
+
+    function showSearchbar() {
+        setVisible(true);
+    }
+
+    function hideSearchbar() {
+        const search_box = document.querySelector("#search-container input");
+        if (search_box !== document.activeElement && search_box.value === "") {
+            setVisible(false);
+        }
+    }
+
+    return (
         <div id="search-container">
-            <form action="">
-                <label><input type="search" id="search-input" role="searchbox" name="search_input" placeholder={"Search"}/></label>
+            <form className={visible ? "searchform-displayed" : ""} onMouseEnter={showSearchbar} onMouseLeave={hideSearchbar}>
+                <label><input type="search" id="search-input" role="searchbox" name="search_input" placeholder={"Search"} autoComplete="false" onBlur={hideSearchbar}/></label>
                 <span id="search-btn" className="nested-icon-btn material-symbols-outlined" role="button"> search </span>
             </form>
         </div>
     )
 }
-
 
 function Button(){
 
@@ -61,10 +72,6 @@ function Header(){
         </header>
     )
 }
-
-
-
-
 
 /* --------------------------------- MENU ----------------------------------- */
 
@@ -122,14 +129,8 @@ function Menu(){
                 </ul>
             </div>
         </nav>
-
-
     )
 }
-
-
-
-
 
 /*---------------------------------- CAROUSEL ---------------------------------*/
 function Carousel({images}) {
