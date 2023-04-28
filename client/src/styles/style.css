@@ -503,6 +503,17 @@ form[name="order-form"] .hidden {
 .roman-container{
     font-family: "Times New Roman";
 }
+/*----------------------------------ROBINHOOD------------------------------*/
+.robinhood-content{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 70em;
+    font-size: large;
+}
+.robinhood-container{
+    font-family: "";
+}
   /*------------------------------------Attraction-Générale-----------------------------*/
   .Titre_attraction_gen{
       font-family: VikingFont, serif;

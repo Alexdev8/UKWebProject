@@ -7,6 +7,7 @@ import Attractions from "./Attractions";
 import NotFound from "./NotFound";
 import Viking from "./Viking";
 import Roman from "./Roman";
+import Robinhood from "./Robinhood";
 
 function App() {
     return (
