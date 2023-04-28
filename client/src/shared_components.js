@@ -31,9 +31,9 @@ function SearchBar() {
 function Button(){
 
     const button = [
-        {name: "dark_mode", id: "dark_mode-btn"},
-        {name: "settings", id: "settings-btn"},
-        {name: "person", id: "account-btn"}
+        {key: 0, name: "dark_mode", id: "dark_mode-btn"},
+        {key: 1, name: "settings", id: "settings-btn"},
+        {key: 2, name: "person", id: "account-btn"}
     ]
 
     const RikRoll = () => {
@@ -48,10 +48,8 @@ function Button(){
         <div className="header-side" id="right-side">
             <SearchBar />
             {button.map((button) => (
-                <span className="icon-btn material-symbols-outlined" id={button.id}
-                      onClick={button.id === 'settings-btn' ? RikRoll: null}
-
-                >
+                <span key={button.key} className="icon-btn material-symbols-outlined" id={button.id}
+                      onClick={button.id === 'settings-btn' ? RikRoll: null} tabIndex="0">
                             {button.name}
                           </span>
             ))}
@@ -78,35 +76,35 @@ function Header(){
 function Menu(){
 
     const ParkAndShows = [
-        {name: "Shadows of Britannia", href: "nighttime-show", id: "shadowsOfBritannia"},
-        {name: "Vintage villages", href: "vintage-village", id: "vintagesVillage"},
-        {name: "Attractions", href: "attractions", id: "attractions"},
-        {name: "Park workshop", href: "workshop", id: "workshop"}
+        {key: 0, name: "Shadows of Britannia", href: "nighttime-show", id: "shadowsOfBritannia"},
+        {key: 1, name: "Vintage villages", href: "vintage-village", id: "vintagesVillage"},
+        {key: 2, name: "Attractions", href: "attractions", id: "attractions"},
+        {key: 3, name: "Park workshop", href: "workshop", id: "workshop"}
     ];
 
     const Accommodations = [
-        {name: "The Grand Crown Hotel", href: "hotel", id: "crownHotel"},
-        {name: "Cottages/Bed and breakfasts", href: "cottage", id: "cottage"}
+        {key: 0, name: "The Grand Crown Hotel", href: "hotel", id: "crownHotel"},
+        {key: 1, name: "Cottages/Bed and breakfasts", href: "cottage", id: "cottage"}
     ];
 
     const Restaurants = [
-        {name: "Vintage restaurant", href: "vintage-restaurant", id: "vintageRestaurant"},
-        {name: "Hotel restaurant", href: "hotel-restaurant", id: "hotelRestaurant"},
-        {name: "Fastfood", href: "fast-food", id: "fastFood"},
-        {name: "All restaurants", href: "restaurants", id: "all"}
+        {key: 0, name: "Vintage restaurant", href: "vintage-restaurant", id: "vintageRestaurant"},
+        {key: 1, name: "Hotel restaurant", href: "hotel-restaurant", id: "hotelRestaurant"},
+        {key: 2, name: "Fastfood", href: "fast-food", id: "fastFood"},
+        {key: 3, name: "All restaurants", href: "restaurants", id: "all"}
     ];
 
     const Informations = [
-        {name: "Prices", href: "prices", id: "prices"},
-        {name: "Calendar", href: "calendar", id: "calendar"},
-        {name: "Interactive map", href: "map", id: "map"}
+        {key: 0, name: "Prices", href: "prices", id: "prices"},
+        {key: 1, name: "Calendar", href: "calendar", id: "calendar"},
+        {key: 2, name: "Interactive map", href: "map", id: "map"}
     ];
 
     const menuData = [
-        {id: "parkAndShows", name: "Park and shows", subMenu: ParkAndShows},
-        {id: "accommodations", name: "Accommodation", subMenu: Accommodations},
-        {id: "restaurant", name: "Restaurants", subMenu: Restaurants},
-        {id: "information", name: "Informations", subMenu: Informations}
+        {key: 0, id: "parkAndShows", name: "Park and shows", subMenu: ParkAndShows},
+        {key: 1, id: "accommodations", name: "Accommodation", subMenu: Accommodations},
+        {key: 2, id: "restaurant", name: "Restaurants", subMenu: Restaurants},
+        {key: 3, id: "information", name: "Informations", subMenu: Informations}
     ]
 
     return(
@@ -114,11 +112,11 @@ function Menu(){
             <div id="nav-container">
                 <ul id="menu">
                     {menuData.map((menuData) => (
-                        <li>
+                        <li key={menuData.key}>
                             <h1 className="hover-underline-animation">{menuData.name}</h1>
                             <ul>
                                 {menuData.subMenu.map((subMenu) => (
-                                    <li>
+                                    <li key={subMenu.key}>
                                         <Link to={subMenu.href}>{subMenu.name}</Link>
                                     </li>
                                 ))}
@@ -133,17 +131,23 @@ function Menu(){
 
 /*---------------------------------- CAROUSEL ---------------------------------*/
 function Carousel({images}) {
+    useEffect(() => {
+            const carousel = bootstrap.Carousel.getOrCreateInstance(document.querySelector("#carouselIndicators"));
+            carousel?.cycle();
+        }, []
+    )
+
     return (
         <div id="carouselIndicators" className="carousel slide" data-bs-ride="carousel">
             <div className="carousel-indicators">
                 {images.map((image) => (
-                    <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to={image.key}
+                    <button key={image.key} type="button" data-bs-target="#carouselIndicators" data-bs-slide-to={image.key}
                             className="active" aria-current="true" aria-label={"Slide " + image.key} />
                 ))}
             </div>
             <div className="carousel-inner">
                 {images.map((image) => (
-                    <div className={"carousel-item " + ((image.active) ? 'active' : '')}>
+                    <div key={image.key} className={"carousel-item " + ((image.active) ? 'active' : '')}>
                         <a href={image.href}>
                             <img
                                 src={image.src}
@@ -174,20 +178,18 @@ function Carousel({images}) {
 /*----------------------------------- FOOTER ----------------------------------*/
 
 function Footer() {
-
     const footerItems = [
-        {name: "Contact us", href: "contact-us.html"},
-        {name: "Private policy", href: "privacy-policy.html"},
-        {name: "About", href: "about.html"},
-        {name: "Job offers", href: "careers/jobs.html"}
+        {key: 0, name: "Contact us", href: "contact-us"},
+        {key: 1, name: "Private policy", href: "privacy-policy"},
+        {key: 2, name: "About", href: "about"},
+        {key: 3, name: "Job offers", href: "careers/jobs"}
     ]
 
     return(
         <footer>
             <hr/>
             {footerItems.map((footerItem) => (
-                <a href={footerItem.href}>{footerItem.name}</a>
-
+                <Link key={footerItem.key} to={footerItem.href}>{footerItem.name}</Link>
             ))}
             <div>
                 © 2023 RoseCrown • All rights reserved.
