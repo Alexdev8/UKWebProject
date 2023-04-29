@@ -165,6 +165,61 @@ function Carousel({images}) {
     );
 }
 
+/*--------------------------------- ACCORDION------------------------------------*/
+
+function Attraction({attraction}) {
+
+    return (
+        <div className="attractionList">
+            <Link to={attraction.link} id={attraction.name}>
+                <img src={attraction.picture} alt={attraction.alt}/>
+                <div className="img-overlay">
+                    {attraction.name}
+                </div>
+                <div className="attractionDescription">
+                    {attraction.description}
+                </div>
+
+            </Link>
+        </div>
+    )
+}
+
+function AccordionBuild({listItems}){
+
+    const [isExtended, setIsExtended] = useState(false);
+
+    return (
+        <div className="accordion" id="accordionExample">
+            {listItems.map((item) => (
+                <div className="accordion-item" key={item.id}>
+                    <h2 className="accordion-header">
+                        <button
+                            className={`accordion-button ${!item.ariaExpanded ? 'collapsed' : ''}`}
+                            type="button"
+                            data-bs-toggle="collapse"
+                            aria-expanded={item.ariaExpanded}
+                            data-bs-target={`#collapse${item.id}`}
+                            aria-controls={`collapse${item.id}`}
+                        >
+                            {item.name}
+                        </button>
+                    </h2>
+                    <div
+                        id={`collapse${item.id}`}
+                        className={`accordion-collapse collapse ${item.ariaExpanded ? 'show' : ''}`}
+                        data-bs-parent="#accordionExample">
+                        <div className="accordion-body">
+                            <Attraction attraction={item} />
+                        </div>
+                    </div>
+
+                </div>
+            ))}
+        </div>
+    )
+}
+
 /*----------------------------------- FOOTER ----------------------------------*/
 
 function Footer() {
@@ -189,4 +244,4 @@ function Footer() {
     )
 }
 
-export {Header, Menu, Footer, Carousel};
+export {Header, Menu, Footer, Carousel, Attraction, AccordionBuild};
