@@ -141,7 +141,7 @@ function Carousel({images}) {
             <div className="carousel-indicators">
                 {images.map((image) => (
                     <button key={image.key} type="button" data-bs-target="#carouselIndicators" data-bs-slide-to={image.key}
-                            className="active" aria-current="true" aria-label={"Slide " + image.key} />
+                        className={(image.key === 0) ? "active" : ""} aria-current={(image.key === 0) ? "true" : "false"} aria-label={"Slide " + image.key} />
                 ))}
             </div>
             <div className="carousel-inner">
