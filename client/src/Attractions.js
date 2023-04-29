@@ -4,6 +4,7 @@ function Attractions(name, description, picture, link, label) {
 
     return (
         <>
+            <p>Attractions</p>
             {/*<div className="attractionList">*/}
             {/*    {listAttractions.map((attraction) => (*/}
             {/*        <a href={attraction.link} id={attraction.name}>*/}
@@ -18,7 +19,6 @@ function Attractions(name, description, picture, link, label) {
             {/*        </a>*/}
             {/*    ))}*/}
             {/*</div>*/}
-            <Outlet/>
         </>
     )
 }

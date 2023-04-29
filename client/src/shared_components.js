@@ -74,7 +74,6 @@ function Header(){
 /* --------------------------------- MENU ----------------------------------- */
 
 function Menu(){
-
     const ParkAndShows = [
         {key: 0, name: "Shadows of Britannia", href: "nighttime-show", id: "shadowsOfBritannia"},
         {key: 1, name: "Vintage villages", href: "vintage-village", id: "vintagesVillage"},

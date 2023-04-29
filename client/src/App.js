@@ -1,30 +1,32 @@
 import './styles/style.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {Header, Footer, Menu} from './shared_components';
-import Order from "./Order";
+import {Header, Footer} from './shared_components';
+
+import DefaultLayout from "./DefaultLayout";
+import NoNavbarLayout from "./NoNavbarLayout";
 import Main from "./Main";
-import Attractions from "./Attractions";
 import NotFound from "./NotFound";
+import Order from "./Order";
+import Attractions from "./Attractions";
 import Viking from "./Viking";
 import Roman from "./Roman";
-import Robinhood from "./Robinhood";
 
 function App() {
     return (
         <BrowserRouter>
             <Header/>
-            <Menu/>
-            <main>
                 <Routes>
-                    <Route path="/" element={<Main/>}/>
-                    <Route path="/order" element={<Order/>}/>
-                    <Route path="/attractions" element={<Attractions/>}>
-                        <Route path="viking" element={<Viking/>}/>
-                        <Route path="roman" element={<Roman/>}/>
+                    <Route path="/" element={<DefaultLayout/>}>
+                        <Route path="/" element={<Main/>}/>
+                        <Route path="attractions" element={<Attractions/>}/>
+                        <Route path="attractions/viking" element={<Viking/>}/>
+                        <Route path="attractions/roman" element={<Roman/>}/>
+                        <Route path="*" element={<NotFound/>}/>
                     </Route>
-                    <Route path="*" element={<NotFound/>}/>
+                    <Route path="/" element={<NoNavbarLayout/>}>
+                        <Route path="order" element={<><div></div><main><Order/></main></>}/>
+                    </Route>
                 </Routes>
-            </main>
             <Footer></Footer>
         </BrowserRouter>
     );
