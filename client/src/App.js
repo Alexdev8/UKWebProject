@@ -1,15 +1,14 @@
 import './styles/style.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {Header, Footer} from './shared_components';
-
-import DefaultLayout from "./DefaultLayout";
-import NoNavbarLayout from "./NoNavbarLayout";
+import {Header, Footer, Menu} from './shared_components';
 import Main from "./Main";
 import NotFound from "./NotFound";
 import Order from "./Order";
-import Attractions from "./Attractions";
 import Viking from "./Viking";
 import Roman from "./Roman";
+import DefaultLayout from "./DefaultLayout";
+import NoNavbarLayout from "./NoNavbarLayout";
+import Accordion from "./Attractions";
 
 function App() {
     return (
@@ -18,7 +17,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<DefaultLayout/>}>
                         <Route path="/" element={<Main/>}/>
-                        <Route path="attractions" element={<Attractions/>}/>
+                        <Route path="attractions" element={<Accordion/>}/>
                         <Route path="attractions/viking" element={<Viking/>}/>
                         <Route path="attractions/roman" element={<Roman/>}/>
                         <Route path="*" element={<NotFound/>}/>
