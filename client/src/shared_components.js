@@ -29,29 +29,20 @@ function SearchBar() {
 }
 
 function Button(){
-
-    const button = [
-        {key: 0, name: "dark_mode", id: "dark_mode-btn"},
-        {key: 1, name: "settings", id: "settings-btn"},
-        {key: 2, name: "person", id: "account-btn"}
+    const buttons = [
+        {key: 0, name: "dark_mode", id: "dark_mode-btn", action: "alert('Dark mode on')"},
+        {key: 1, name: "settings", id: "settings-btn", action: "window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'"},
+        {key: 2, name: "person", id: "account-btn", action: "alert('account')"}
     ]
-
-    const RikRoll = () => {
-        window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-    }
-
-    const DarkMode = () => {
-        alert('Dark mode on')
-    }
 
     return(
         <div className="header-side" id="right-side">
             <SearchBar />
-            {button.map((button) => (
+            {buttons.map((button) => (
                 <span key={button.key} className="icon-btn material-symbols-outlined" id={button.id}
-                      onClick={button.id === 'settings-btn' ? RikRoll: null} tabIndex="0">
+                      onClick={new Function("return " + button.action)} tabIndex="0">
                             {button.name}
-                          </span>
+                </span>
             ))}
         </div>
     )
