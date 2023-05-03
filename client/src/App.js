@@ -26,7 +26,7 @@ function App() {
                         <Route path="*" element={<NotFound/>}/>
                     </Route>
                     <Route path="/" element={<NoNavbarLayout/>}>
-                        <Route path="order" element={<><div></div><main><Order/></main></>}/>
+                        <Route path="order" element={<Order/>}/>
                     </Route>
                 </Routes>
             <Footer></Footer>

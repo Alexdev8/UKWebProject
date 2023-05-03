@@ -448,10 +448,17 @@ form[name="order-form"] .content-section {
     display: block;
 }
 
-form[name="order-form"] .hidden {
+/*form[name="order-form"] .hidden {*/
+/*    transform: translateY(300%);*/
+/*    height: 0;*/
+/*    opacity: 0;*/
+/*}*/
+
+form[name="order-form"] [hidden] {
     transform: translateY(300%);
     height: 0;
     opacity: 0;
+    /*display: block !important;*/
     display: none;
 }
 
@@ -469,8 +476,8 @@ form[name="order-form"] .hidden {
     transform: scale(1.05);
 }
 
-.ticket-type-selection .card:nth-child(2) {
-    margin: 0 5%;
+.ticket-type-selection .card:not(:first-child) {
+    margin: 0 0 0 5%;
 }
 
 .card-img {

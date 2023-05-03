@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import './styles/bootstrap.css';
 
-
 /*--------------------------------- HEADER ------------------------------------*/
 
 function SearchBar() {
@@ -66,7 +65,6 @@ function Header(){
 /* --------------------------------- MENU ----------------------------------- */
 
 function Menu(){
-
     const ParkAndShows = [
         {key: 0, name: "Shadows of Britannia", href: "http://localhost:3000/shadowsofbritannia", id: "shadowsOfBritannia"},
         {key: 1, name: "Vintage villages", href: "vintage-village", id: "vintagesVillage"},
@@ -123,12 +121,22 @@ function Menu(){
                             </ul>
                         </li>
                     ))}
-
                 </ul>
             </div>
         </nav>
+    )
+}
 
-
+/*------------------------------------ CARD -----------------------------------*/
+function Card({card, onClick}) {
+    return (
+        <div id={card.id} className="card" onClick={() => onClick(card.id, card.title)}>
+            <img src={card.image} className="card-img" alt="..."/>
+            <div className="card-body">
+                <h5 className="card-title">{card.title}</h5>
+                <p className="card-text">{card.caption}</p>
+            </div>
+        </div>
     )
 }
 
@@ -257,4 +265,4 @@ function Footer() {
     )
 }
 
-export {Header, Menu, Footer, Carousel, Attraction, AccordionBuild};
+export {Header, Menu, Footer, Carousel, AccordionBuild, Card};
