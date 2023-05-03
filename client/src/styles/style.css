@@ -35,8 +35,7 @@ header {
     position: relative;
     padding: 0.3em 1em;
     display: flex;
-    box-shadow: 2px 2px 6px rgb(26,26,25);
-    background-color: lightblue;
+    background-color: #fff;
 }
 
 .header-side {
@@ -177,70 +176,156 @@ header {
     transform: rotate(45deg)
 }
 
-/*Nav bar*/
-#nav-container{
-    width: 80%;
-    margin: 1% 10% 1% 10%;
+/*------------------------------------- MENU -------------------------------------------------*/
+nav{
+    background-color: #fff;
+    border-bottom: black 1px solid;
 }
 
-#menu{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    border-radius: 3px;
-    border-bottom: solid 1px black;
-    box-shadow: 2px 2px 8px black;
-    background-image: url("https://media.istockphoto.com/id/621348814/fr/photo/papier-aquarelle-%C3%A0-texture-blanche.jpg?s=612x612&w=0&k=20&c=9qEgdmn_yB6wNRC-Gl2hubjqCBPBl-VKRwdY67p0ih8=");
-}
-
-#menu, #menu ul{
-    padding: 0;
-    text-align: center;
-}
-
-#menu li{
-    flex: 1;
-    display: inline-block;
-    margin: 0 3%;
-    position: relative;
-    border-radius: 8px 8px;
+nav h1{
+    font-family: 'Castoro Titling', cursive;
+    font-size: 15px;
     cursor: pointer;
 }
 
-#menu ul li{
-    text-decoration: none;
+nav ul{
+    list-style: none;
+    position: relative;
     margin: 0;
-    display: inherit;
-    border-radius: 0;
-    width: 100%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#menu li:hover ul{
+nav ul li {
+    margin-right: 20px;
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 13px;
+    display: block;
+    transition: font-size .3s .0s;
+    font-family: 'Castoro Titling', cursive;
+
+}
+
+nav ul li a:hover{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.shadowsOfBritannia{
+    grid-area: shadows;
+}
+
+.vintagesVillage{
+    grid-area: village;
+}
+
+.attractions{
+    grid-area: attraction;
+}
+
+.parkWorkshop{
+    grid-area: workshop;
+}
+
+nav ul li:hover > .parkAndShows {
+    display: grid;
+    grid-template-areas:
+    'attraction village shadows workshop';
+    padding-bottom: 5px;
+}
+
+.cottage{
+    grid-area: cottage;
+}
+
+.crownHotel{
+    grid-area: hotel;
+}
+
+nav ul li:hover > .accommodations{
+    display: grid;
+    grid-template-areas:
+    'cottage . hotel';
+    padding-bottom: 5px;
+
+}
+
+.vintageRestaurant{
+    grid-area: vintage;
+}
+
+.hotelRestaurant{
+    grid-area: hotel;
+}
+
+.fastFood{
+    grid-area: fastfood;
+}
+
+.all{
+    grid-area: allRestaurant;
+}
+
+nav ul li:hover > .restaurant{
+    display: grid;
+    grid-template-areas:
+    'fastfood allRestaurant vintage hotel';
+    padding-bottom: 5px;
+}
+
+.prices{
+    grid-area: prices;
+}
+
+.calendar{
+    grid-area: calendar;
+}
+
+.map{
+    grid-area: map;
+}
+
+nav ul li:hover > .information{
+    display: grid;
+    grid-template-areas:
+    'calendar prices map';
+    padding-bottom: 5px;
+}
+
+nav ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+    background-color: #fff;
+    min-width: 200px;
+    width: 625px;
+    box-sizing: border-box;
+
+    border-top: #fff 1px solid;
+    border-bottom: black 1px solid;
+    border-right: black 1px solid;
+    border-left: black 1px solid;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+}
+
+nav ul li:hover ul{
     max-height: 15em;
 }
 
-#menu ul{
-    position: absolute;
-    transform-origin: bottom center;
-    z-index: 1000;
-    left: -25% ;
-    width: 150%;
-    max-height: 0;
-    overflow: hidden;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    box-shadow: 2px 2px 8px black;
-    background-image: url("https://media.istockphoto.com/id/621348814/fr/photo/papier-aquarelle-%C3%A0-texture-blanche.jpg?s=612x612&w=0&k=20&c=9qEgdmn_yB6wNRC-Gl2hubjqCBPBl-VKRwdY67p0ih8=");
-    transition: .3s all .0s;
-}
-
-#menu a{
-    display: block;
-    padding: 8px 32px;
-}
-
-#menu ul a{
-    padding: 8px 0;
+nav span{
+    align-items: center;
 }
 
 .hover-underline-animation {
@@ -256,7 +341,7 @@ header {
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #0087ca;
+    background-color: lightpink;
     transform-origin: bottom center;
     transition: transform 0.25s ease-out;
 }
@@ -266,10 +351,10 @@ header {
     transform-origin: bottom center;
 }
 
-/*.hover-underline-animation:hover::after {*/
-/*    transform: scaleX(1);*/
-/*    transform-origin: bottom center;*/
-/*}*/
+.hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom center;
+}
 
 /*Parallax effect*/
 .parallax-main {

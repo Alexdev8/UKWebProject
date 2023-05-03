@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-//import './styles/bootstrap.css';
+import './styles/bootstrap.css';
 
 
 /*--------------------------------- HEADER ------------------------------------*/
@@ -66,10 +66,11 @@ function Header(){
 /* --------------------------------- MENU ----------------------------------- */
 
 function Menu(){
+
     const ParkAndShows = [
-        {key: 0, name: "Shadows of Britannia", href: "nighttime-show", id: "shadowsOfBritannia"},
+        {key: 0, name: "Shadows of Britannia", href: "http://localhost:3000/shadowsofbritannia", id: "shadowsOfBritannia"},
         {key: 1, name: "Vintage villages", href: "vintage-village", id: "vintagesVillage"},
-        {key: 2, name: "Attractions", href: "attractions", id: "attractions"},
+        {key: 2, name: "Attractions", href: "http://localhost:3000/attractions", id: "attractions"},
         {key: 3, name: "Park workshop", href: "workshop", id: "workshop"}
     ];
 
@@ -85,7 +86,9 @@ function Menu(){
         {key: 3, name: "All restaurants", href: "restaurants", id: "all"}
     ];
 
-    const Informations = [
+
+
+    const Information = [
         {key: 0, name: "Prices", href: "prices", id: "prices"},
         {key: 1, name: "Calendar", href: "calendar", id: "calendar"},
         {key: 2, name: "Interactive map", href: "map", id: "map"}
@@ -95,28 +98,31 @@ function Menu(){
         {key: 0, id: "parkAndShows", name: "Park and shows", subMenu: ParkAndShows},
         {key: 1, id: "accommodations", name: "Accommodation", subMenu: Accommodations},
         {key: 2, id: "restaurant", name: "Restaurants", subMenu: Restaurants},
-        {key: 3, id: "information", name: "Informations", subMenu: Informations}
+        {key: 4, id: "information", name: "Information", subMenu: Information}
     ]
 
     return(
         <nav>
             <div id="nav-container">
-                <ul id="menu">
+                <ul>
                     {menuData.map((menuData) => (
-                        <li key={menuData.key}>
+                        <li>
                             <h1 className="hover-underline-animation">{menuData.name}</h1>
-                            <ul>
+                            <ul className={menuData.id}>
                                 {menuData.subMenu.map((subMenu) => (
-                                    <li key={subMenu.key}>
-                                        <Link to={subMenu.href}>{subMenu.name}</Link>
+                                    <li className={subMenu.id}>
+                                        <a href={subMenu.href}>{subMenu.name}</a>
                                     </li>
                                 ))}
                             </ul>
                         </li>
                     ))}
+
                 </ul>
             </div>
         </nav>
+
+
     )
 }
 
