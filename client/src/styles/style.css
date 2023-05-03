@@ -292,6 +292,25 @@ nav ul li:hover > .restaurant{
     grid-area: map;
 }
 
+.ticketsReservation{
+    grid-area: tickets;
+}
+
+.hotelReservation{
+    grid-area: hotel;
+}
+
+.restaurantsReservation{
+    grid-area: restaurant;
+}
+
+nav ul li:hover .reservation{
+    display: grid;
+    grid-template-areas:
+    'tickets hotel restaurant';
+    padding-bottom: 5px;
+}
+
 nav ul li:hover > .information{
     display: grid;
     grid-template-areas:

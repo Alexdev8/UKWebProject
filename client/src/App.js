@@ -9,6 +9,7 @@ import Roman from "./Roman";import DefaultLayout from "./DefaultLayout";
 import NoNavbarLayout from "./NoNavbarLayout";
 import Accordion from "./Attractions";
 import Shadows from "./Nightshow";
+import WorkShopCarousel from "./parkWorkshop";
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                         <Route path="/" element={<Main/>}/>
                         <Route path="attractions" element={<Accordion/>}/>
                         <Route path="shadowsofbritannia" element={<Shadows/> }/>
+                        <Route path="workshop" element={<WorkShopCarousel/> }/>
                         <Route path="attractions/viking" element={<Viking/>}/>
                         <Route path="attractions/roman" element={<Roman/>}/>
                         <Route path="*" element={<NotFound/>}/>

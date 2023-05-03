@@ -71,7 +71,7 @@ function Menu(){
         {key: 0, name: "Shadows of Britannia", href: "http://localhost:3000/shadowsofbritannia", id: "shadowsOfBritannia"},
         {key: 1, name: "Vintage villages", href: "vintage-village", id: "vintagesVillage"},
         {key: 2, name: "Attractions", href: "http://localhost:3000/attractions", id: "attractions"},
-        {key: 3, name: "Park workshop", href: "workshop", id: "workshop"}
+        {key: 3, name: "Park workshop", href: "http://localhost:3000/workshop", id: "workshop"}
     ];
 
     const Accommodations = [
@@ -86,7 +86,12 @@ function Menu(){
         {key: 3, name: "All restaurants", href: "restaurants", id: "all"}
     ];
 
+    const Reservation = [
+        {key: 0, name: "Tickets", href:"tickets", id:"ticketsReservation"},
+        {key: 1, name: "Hotel", href:"hotel", id:"hotelReservation"},
+        {key: 2, name: "Restaurant", href:"restaurants", id:"restaurantsReservation"}
 
+    ]
 
     const Information = [
         {key: 0, name: "Prices", href: "prices", id: "prices"},
@@ -98,6 +103,7 @@ function Menu(){
         {key: 0, id: "parkAndShows", name: "Park and shows", subMenu: ParkAndShows},
         {key: 1, id: "accommodations", name: "Accommodation", subMenu: Accommodations},
         {key: 2, id: "restaurant", name: "Restaurants", subMenu: Restaurants},
+        {key: 3, id: "reservation", name: "Reservation", subMenu: Reservation },
         {key: 4, id: "information", name: "Information", subMenu: Information}
     ]
 
