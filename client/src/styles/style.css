@@ -430,7 +430,7 @@ nav span{
     box-shadow: 2px 2px 6px rgb(26,26,25);
 }
 
-/*Order page*/
+/*============================= Order page =============================*/
 .ticket-type-selection {
     transition: all 0.4s ease-in;
     display: flex;
@@ -471,10 +471,17 @@ form[name="order-form"] [hidden] {
     cursor: pointer;
     transition: all 0.2s;
     border-radius: 1.5rem;
+    color: white;
 }
 
-.card:hover {
+.card:hover:not {
     transform: scale(1.05);
+}
+
+.card.selected {
+    cursor: auto;
+    transform: scale(1.05);
+    color: lightpink;
 }
 
 .ticket-type-selection .card:not(:first-child) {
@@ -495,7 +502,6 @@ form[name="order-form"] [hidden] {
     bottom: 7%;
     left: 10%;
     right: 10%;
-    color: white;
 }
 
 .card-title {
@@ -603,6 +609,39 @@ form[name="order-form"] [hidden] {
     padding: 0.6em;
     margin: 0;
     cursor: pointer;
+}
+
+/*============================= BASKET =============================*/
+
+.basket {
+    width: fit-content;
+    background-color: white;
+    padding: 2%;
+    margin-bottom: 1em;
+    margin-top: 4%;
+    border-radius: 2em;
+    box-shadow: 2px 2px 6px rgb(26,26,25);
+}
+
+.basket .basket-items {
+    width: fit-content;
+    max-width: 20em;
+    list-style: none;
+    padding: 0;
+    border-collapse: collapse;
+}
+
+.basket .basket-items #basket-total-row {
+    border-top: 2px solid lightgrey;
+}
+
+.basket .basket-items td:first-child {
+    text-align: start;
+}
+
+.basket .basket-items td:last-child {
+    padding-left: 2em;
+    text-align: end;
 }
 
 /*------------------------------------VIKING-----------------------------*/

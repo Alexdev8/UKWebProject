@@ -1,58 +1,8 @@
 import {Card} from "./Shared_components";
 import {cloneElement, useEffect, useRef, useState} from "react";
-import {useBeforeUnload, useNavigate} from "react-router-dom";
-
-const shopData = {
-    tickets: {
-        "undated-ticket": {
-            price: 60,
-            child_price: 45,
-            name: "1 day undated pass",
-            description: "1 day park access whenever you want"
-        },
-        "dated-ticket": {
-            price: 40,
-            child_price: 32,
-            name: "1-7 days dated pass",
-            description: "1-7 days park access on a scheduled date"
-        },
-        "special-ticket": {
-            price: -1,
-            child_price: -1,
-            name: "special pass",
-            description: "customised park access for special events or occasions",
-        }
-    },
-    hotels: {
-        "grand-crown": {
-            price: 249
-        }
-    }
-}
-
-const cardData = [
-    {
-        key: 0,
-        id: "undated-ticket",
-        title: shopData.tickets["undated-ticket"].name,
-        caption: shopData.tickets["undated-ticket"].description,
-        image: "https://www.lepal.com/assets/images/background/pages/attractions.jpg?v=1680775020",
-    },
-    {
-        key: 1,
-        id: "dated-ticket",
-        title: shopData.tickets["dated-ticket"].name,
-        caption: shopData.tickets["dated-ticket"].description,
-        image: "https://www.evenement.com/wp-content/uploads/2020/01/an-amusement-park-at-night-2884693.jpg",
-    },
-    {
-        key: 2,
-        id: "special-ticket",
-        title: shopData.tickets["special-ticket"].name,
-        caption: shopData.tickets["special-ticket"].description,
-        image: "https://handheldcatering.com/wp-content/uploads/2019/10/corporate-event-catering-for-holidays.jpg",
-    }
-]
+import {Outlet, useBeforeUnload, useNavigate} from "react-router-dom";
+import Basket from "./Basket";
+import TicketBooking from "./TicketBooking";
 
 function OrderFormSection(props) {
     const formSection = useRef(null);
@@ -80,85 +30,6 @@ function OrderFormSection(props) {
                 : <></>
             }
         </section>
-    )
-}
-
-function TicketTypeSelection(props) {
-    const [visible, setVisible] = useState(true);
-
-    let style = {};
-
-    let styleHide = {
-        height: "0",
-        opacity: "0",
-        transform: "translateY(-200%)"
-    };
-
-    function select_ticket_type(type) {
-        style = styleHide;
-        // ticket_booking.style.display = "block";
-        setTimeout(function () {
-            style.display = "none";
-            // ticket_booking.classList.toggle("hidden", false);
-        }, 400);
-        props.setFormInput("ticketType", type);
-        props.setFormInput("state", 1);
-        setVisible(false);
-    }
-
-    return (
-        <div className="ticket-type-selection" style={style} hidden={!visible && props.formState.state !== 0}>
-            {cardData.map((card) => (
-                <Card key={card.key} card={card} onClick={select_ticket_type}/>
-            ))}
-        </div>
-    )
-}
-
-/*================================ Ticket booking ==================================*/
-
-function DatedTicket(props) {
-    useEffect(() => {
-        if (props.formState.ticketChildNb > props.formState.ticketNb) {
-            props.setFormInput("ticketChildNb", props.formState.ticketNb);
-        }
-    }, [props.formState.ticketNb])
-
-    return (
-        <>
-            <label>{shopData.tickets[props.formState.ticketType]?.name} ({shopData.tickets[props.formState.ticketType]?.price + "£"})
-                <input type="number" defaultValue={props.formState.ticketNb} min="1" max="10" onChange={(e) => props.setFormInput("ticketNb", e.target.valueAsNumber)}/>
-            </label>
-            <div>
-                <label>Child tickets ({shopData.tickets[props.formState.ticketType]?.child_price + "£"})
-                    <input type="range" value={props.formState.ticketChildNb} min="0" max={props.formState.ticketNb} onChange={(e) => props.setFormInput("ticketChildNb", e.target.valueAsNumber)}/>
-                    {props.formState.ticketChildNb}
-                </label>
-            </div>
-        </>
-    )
-}
-
-function TicketBooking(props) {
-    function ticketCases(ticketID) {
-        switch (ticketID) {
-            case "undated-ticket":
-                // return;
-            case "special-ticket":
-                //TODO 2 cards pour école ou évenement special qui renvoie vers un form pour envoyer un mail
-
-                // return;
-            default:
-                //default including dated tickets
-                return <DatedTicket {...props}/>
-        }
-    }
-
-    return (
-        <div>
-            {/*ticket information*/}
-            {ticketCases(props.formState.ticketType)}
-        </div>
     )
 }
 
@@ -244,12 +115,10 @@ function RestaurantReservation(props) {
     )
 }
 
-function Order() {
-    const navigate = useNavigate();
+function Order({basket, setBasket}) {
     const ORDER_STATE_NB = 3
     const fcts = {next: next, previous: previous, hasNext: hasNext}
     const [formState, setFormState] = useState({
-        state: 0,
         ticketType: "",
         ticketNb: 1,
         ticketChildNb: 0,
@@ -260,7 +129,7 @@ function Order() {
 
     useEffect(() => {
         function onBeforeUnload(e) {
-            if (formState.ticketType !== "") {
+            if (formState.email !== "") {
                 e.preventDefault();
                 confirm("You're about to leave this site");
                 e.returnValue = "";
@@ -298,16 +167,18 @@ function Order() {
         }
     }
 
-    //TODO when sending form if ticketNb = ticketChildNb show a message to say that a children can't enter the park alone
+    //TODO redirection vers /order/tickets
+
     return (
         <div className="main-container">
             <form name="order-form">
-                <TicketTypeSelection formState={formState} setFormInput={setFormInput}/>
-                <OrderFormSection id="ticket-booking" index={1} fct={fcts} formState={formState} setFormInput={setFormInput} title="Tickets information" content={<TicketBooking/>}/>
-                <OrderFormSection id="hotel-reservation" index={2} fct={fcts} formState={formState} setFormInput={setFormInput} title="Book your stay" content={<HotelReservation/>}/>
-                <OrderFormSection id="restaurant-reservation" index={3} fct={fcts} formState={formState} setFormInput={setFormInput} title="Restaurants" content={<RestaurantReservation/>}/>
-                <OrderFormSection id="hotel-reservation" index={4} fct={fcts} formState={formState} setFormInput={setFormInput} title="Restaurants" content={<RestaurantReservation/>}/>
-                {(formState.state !== 0) ? <input type="submit"/> : <></>}
+                <Outlet context={{formState, setFormInput}}/>
+                {/*<OrderFormSection id="ticket-booking" index={1} fct={fcts} formState={formState} setFormInput={setFormInput} title="Choose your tickets" content={<TicketBooking {...props}/>}/>*/}
+                {/*<OrderFormSection id="hotel-reservation" index={2} fct={fcts} formState={formState} setFormInput={setFormInput} title="Book your stay" content={<HotelReservation/>}/>*/}
+                {/*<OrderFormSection id="restaurant-reservation" index={3} fct={fcts} formState={formState} setFormInput={setFormInput} title="Restaurants" content={<RestaurantReservation/>}/>*/}
+                {/*<OrderFormSection id="hotel-reservation" index={4} fct={fcts} formState={formState} setFormInput={setFormInput} title="Restaurants" content={<RestaurantReservation/>}/>*/}
+                <Basket items={basket.items}/>
+                {/*{(formState.state !== 0) ? <input type="submit"/> : <></>}*/}
             </form>
         </div>
     );

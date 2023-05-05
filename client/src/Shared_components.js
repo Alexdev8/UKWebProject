@@ -128,9 +128,9 @@ function Menu(){
 }
 
 /*------------------------------------ CARD -----------------------------------*/
-function Card({card, onClick}) {
+function Card({card, onClick, selected}) {
     return (
-        <div id={card.id} className="card" onClick={() => onClick(card.id, card.title)}>
+        <div id={card.id} className={(selected) ? "selected card" : "card"} onClick={() => onClick(card.key, card.id)}>
             <img src={card.image} className="card-img" alt="..."/>
             <div className="card-body">
                 <h5 className="card-title">{card.title}</h5>
