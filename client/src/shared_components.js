@@ -193,9 +193,11 @@ function Attraction({attraction}) {
     return (
         <div className="attractionList">
             <Link to={attraction.link} id={attraction.name}>
-                <img src={attraction.picture} alt={attraction.alt}/>
-                <div className="img-overlay">
-                    {attraction.name}
+                <img class="attractionIMG" src={attraction.picture} alt={attraction.alt}/>
+                <div className="attractionRestriction">
+                    {attraction.restriction}
+                    <br/>
+                    {attraction.restriction2}
                 </div>
                 <div className="attractionDescription">
                     {attraction.description}

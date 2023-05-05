@@ -645,6 +645,14 @@ form[name="order-form"] [hidden] {
 
   /*----------------------------- Attraction page ----------------------------------------*/
 
+.attractionIMG,.attractionRestriction,.attractionDescription{
+    display: inline-block;
+    width: 33%;
+    vertical-align: top;
+    height: auto;
+
+
+}
 
 
   /*------------------------------------NightShow---------------------------------------*/
