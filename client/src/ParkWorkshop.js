@@ -1,4 +1,4 @@
-import {Carousel} from "./shared_components";
+import {Carousel} from "./Shared_components";
 
 const imgWorkshop = [
     {

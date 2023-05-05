@@ -1,5 +1,5 @@
 import {Link, Outlet} from "react-router-dom";
-import {AccordionBuild} from "./shared_components";
+import {AccordionBuild} from "./Shared_components";
 
 const listItems = [
     {
@@ -46,7 +46,7 @@ const listItems = [
 
 
 
-function Accordion(){
+function Attractions(){
     return(
             <AccordionBuild listItems={listItems} />
     )
@@ -54,4 +54,4 @@ function Accordion(){
 
 
 
-export default Accordion;
+export default Attractions;

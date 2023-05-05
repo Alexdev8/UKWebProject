@@ -1,6 +1,6 @@
 import {useEffect} from "react";
 import {Link} from "react-router-dom";
-import {Carousel} from "./shared_components";
+import {Carousel} from "./Shared_components";
 
 const attractionsData = [
     {

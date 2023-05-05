@@ -1,4 +1,4 @@
-import {Menu} from "./shared_components";
+import {Menu} from "./Shared_components";
 import {Outlet} from "react-router-dom";
 
 function DefaultLayout() {

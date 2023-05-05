@@ -465,6 +465,7 @@ form[name="order-form"] [hidden] {
 .card {
     position: relative;
     width: 25%;
+    min-width: 10em;
     height: 100%;
     border: none;
     cursor: pointer;

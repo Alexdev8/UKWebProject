@@ -1,4 +1,5 @@
-import {Carousel} from "./shared_components";
+import {Carousel} from "./Shared_components";
+import {useNavigate} from "react-router-dom";
 
 const NightShowImage = [
     {
@@ -122,9 +123,11 @@ function Comments(){
 }
 
 function TicketNightShow(){
+    const navigate = useNavigate();
+    //TODO renommer la classe du div de ce composant "ticket-type-selection"
     return(
         <div className="ticket-type-selection" id="nightshow-ticket">
-            <div id="undated-ticket-div" className="card" onClick="window.location.href='order.html'">
+            <div id="undated-ticket-div" className="card" onClick={() => navigate("../order")}>
                 <img src="https://www.lechotouristique.com/wp-content/uploads/2021/10/feux-follets-puy-du-fou.png"
                      className="card-img" alt="..."/>
                     <div className="card-body">
@@ -133,7 +136,7 @@ function TicketNightShow(){
                             experience</p>
                     </div>
             </div>
-            <div id="dated-ticket-div" className="card" onClick="window.location.href='order.html'">
+            <div id="dated-ticket-div" className="card" onClick={() => navigate("../order")}>
                 <img src="https://storage.lebonguide.com/crop-1600x700/40/15/4123F95F-337A-472D-8255-60BCA42EA6BD.png"
                      className="card-img" alt="..."/>
                     <div className="card-body">

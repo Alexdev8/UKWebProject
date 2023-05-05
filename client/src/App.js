@@ -1,35 +1,41 @@
 import './styles/style.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {Header, Footer, Menu, Carousel} from './shared_components';
+import {Header, Footer, Menu, Carousel} from './Shared_components';
+import {useState} from "react";
 import Main from "./Main";
 import NotFound from "./NotFound";
 import Order from "./Order";
 import Viking from "./Viking";
-import Roman from "./Roman";import DefaultLayout from "./DefaultLayout";
+import Roman from "./Roman";
+import DefaultLayout from "./DefaultLayout";
 import NoNavbarLayout from "./NoNavbarLayout";
-import Accordion from "./Attractions";
+import Attractions from "./Attractions";
 import Shadows from "./Nightshow";
-import WorkShopCarousel from "./parkWorkshop";
+import WorkShopCarousel from "./ParkWorkshop";
 
 function App() {
+    const [basket, setBasket] = useState({
+        items: []
+    })
+
     return (
         <BrowserRouter>
             <Header/>
-                <Routes>
-                    <Route path="/" element={<DefaultLayout/>}>
-                        <Route path="/" element={<Main/>}/>
-                        <Route path="attractions" element={<Accordion/>}/>
-                        <Route path="shadowsofbritannia" element={<Shadows/> }/>
-                        <Route path="workshop" element={<WorkShopCarousel/> }/>
-                        <Route path="attractions/viking" element={<Viking/>}/>
-                        <Route path="attractions/roman" element={<Roman/>}/>
-                        <Route path="*" element={<NotFound/>}/>
-                    </Route>
-                    <Route path="/" element={<NoNavbarLayout/>}>
-                        <Route path="order" element={<Order/>}/>
-                    </Route>
-                </Routes>
-            <Footer></Footer>
+            <Routes>
+                <Route path="/" element={<DefaultLayout/>}>
+                    <Route path="/" element={<Main/>}/>
+                    <Route path="attractions" element={<Attractions/>}/>
+                    <Route path="shadows-of-britannia" element={<Shadows/> }/>
+                    <Route path="workshop" element={<WorkShopCarousel/> }/>
+                    <Route path="attractions/viking" element={<Viking/>}/>
+                    <Route path="attractions/roman" element={<Roman/>}/>
+                    <Route path="*" element={<NotFound/>}/>
+                </Route>
+                <Route path="/" element={<NoNavbarLayout/>}>
+                    <Route path="order" element={<Order basket={basket} setBasket={setBasket}/>}/>
+                </Route>
+            </Routes>
+            <Footer/>
         </BrowserRouter>
     );
 }

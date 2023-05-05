@@ -66,10 +66,10 @@ function Header(){
 
 function Menu(){
     const ParkAndShows = [
-        {key: 0, name: "Shadows of Britannia", href: "http://localhost:3000/shadowsofbritannia", id: "shadowsOfBritannia"},
+        {key: 0, name: "Shadows of Britannia", href: "shadows-of-britannia", id: "shadowsOfBritannia"},
         {key: 1, name: "Vintage villages", href: "vintage-village", id: "vintagesVillage"},
-        {key: 2, name: "Attractions", href: "http://localhost:3000/attractions", id: "attractions"},
-        {key: 3, name: "Park workshop", href: "http://localhost:3000/workshop", id: "workshop"}
+        {key: 2, name: "Attractions", href: "attractions", id: "attractions"},
+        {key: 3, name: "Park workshop", href: "workshop", id: "workshop"}
     ];
 
     const Accommodations = [
@@ -110,12 +110,12 @@ function Menu(){
             <div id="nav-container">
                 <ul>
                     {menuData.map((menuData) => (
-                        <li>
+                        <li key={menuData.key}>
                             <h1 className="hover-underline-animation">{menuData.name}</h1>
                             <ul className={menuData.id}>
                                 {menuData.subMenu.map((subMenu) => (
-                                    <li className={subMenu.id}>
-                                        <a href={subMenu.href}>{subMenu.name}</a>
+                                    <li key={subMenu.key} className={subMenu.id}>
+                                        <Link to={subMenu.href}>{subMenu.name}</Link>
                                     </li>
                                 ))}
                             </ul>
