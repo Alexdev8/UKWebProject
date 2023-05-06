@@ -120,7 +120,7 @@ function Order({basket, setBasket}) {
     const fcts = {next: next, previous: previous, hasNext: hasNext}
     const [formState, setFormState] = useState({
         ticketType: "",
-        ticketNb: 1,
+        ticketNb: 0,
         ticketChildNb: 0,
         startDate: "",
         endDate: "",

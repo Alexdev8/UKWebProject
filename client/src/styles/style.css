@@ -462,6 +462,10 @@ form[name="order-form"] [hidden] {
     display: none;
 }
 
+.form-step {
+    border-top: rgba(255, 182, 193, 0.5) 4px dotted;
+}
+
 .card {
     position: relative;
     width: 25%;

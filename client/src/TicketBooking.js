@@ -1,4 +1,4 @@
-import {cloneElement, useEffect, useState} from "react";
+import {cloneElement, useEffect, useRef, useState} from "react";
 import {Card} from "./Shared_components";
 import {useOutletContext} from "react-router-dom";
 
@@ -54,6 +54,40 @@ const cardData = [
     }
 ]
 
+function FormStep(props) {
+    const formStep = useRef(null);
+
+    useEffect(
+        () => {
+            (props.state !== 0) && formStep.current.scrollIntoView({behavior: "smooth"});
+        }, [props.state]
+    )
+
+    return(
+        <div id={props.id} ref={formStep} className={((props.state < props.index) ? "hidden" : "") + (props.className) + " form-step"} hidden={props.state < props.index}>
+            <h3>{(props.index + 1) + ". " + props.title}</h3>
+            {cloneElement(props.content, props)}
+        </div>
+    )
+}
+
+function DateInput() {
+    return(
+        <div className="date-input-div">
+            <div id="start-date-input-div" className="date-input-sub-div">
+                <label htmlFor="date-start-input">Arrival date</label>
+                <input id="date-start-input" name="reservation-start-date" type="date" onChange={() => enable_form_input()}
+                       required/>
+            </div>
+            <span className="vertical-separator"></span>
+            <div id="end-date-input-div" className="date-input-sub-div">
+                <label htmlFor="date-end-input">Departure date</label>
+                <input id="date-end-input" name="reservation-end-date" type="date" disabled/>
+            </div>
+        </div>
+    )
+}
+
 function TicketTypeSelection(props) {
     const [selected, setSelected] = useState(null);
 
@@ -72,40 +106,62 @@ function TicketTypeSelection(props) {
         //     style.display = "none";
         //     // ticket_booking.classList.toggle("hidden", false);
         // }, 400);
-        setSelected(key);
-        props.setFormInput("ticketType", type);
-        props.setState(1);
+        if (selected !== key) {
+            setSelected(key);
+            props.setFormInput("ticketType", type);
+            props.setState(1);
+        }
         // setVisible(false);
     }
 
     return (
-        <div className="ticket-type-selection" style={style} hidden={props.state < 0}>
-            {cardData.map((card) => (
-                <Card key={card.key} card={card} selected={selected === card.key} onClick={select_ticket_type}/>
-            ))}
-        </div>
+        <FormStep {...props} title={"Choose your ticket type"} content={
+            <div className="ticket-type-selection">
+                {
+                    cardData.map((card) => (
+                        <Card key={card.key} card={card} selected={selected === card.key} onClick={select_ticket_type}/>
+                    ))
+                }
+            </div>
+        }/>
     )
 }
 
 function TicketAmountInput(props) {
+    const MAX = 10;
+
     useEffect(() => {
-        if (props.formState.ticketChildNb > props.formState.ticketNb) {
-            props.setFormInput("ticketChildNb", props.formState.ticketNb);
+        if (props.state >= props.index) {
+            if (props.formState.ticketNb + props.formState.ticketChildNb !== 0) {
+                props.setState(props.index + 1);
+            }
+            else {
+                props.setState(props.index);
+            }
         }
-    }, [props.formState.ticketNb])
+    }, [props.formState.ticketNb, props.formState.ticketChildNb, props.formState.ticketType])
 
     return (
-        <>
-            <label>{shopData.tickets[props.formState.ticketType]?.name} ({shopData.tickets[props.formState.ticketType]?.price + "£"})
-                <input type="number" defaultValue={props.formState.ticketNb} min="1" max="10" onChange={(e) => props.setFormInput("ticketNb", e.target.valueAsNumber)}/>
-            </label>
-            <div>
-                <label>Child tickets ({shopData.tickets[props.formState.ticketType]?.child_price + "£"})
-                    <input type="range" value={props.formState.ticketChildNb} min="0" max={props.formState.ticketNb} onChange={(e) => props.setFormInput("ticketChildNb", e.target.valueAsNumber)}/>
-                    {props.formState.ticketChildNb}
+        <FormStep {...props} title={"Select your number of adventurers (" + MAX + " max.)"} content={
+            <>
+                <label>{shopData.tickets[props.formState.ticketType]?.name} ({shopData.tickets[props.formState.ticketType]?.price + "£"})
+                    <input type="number" defaultValue={props.formState.ticketNb} min="0" max={MAX - props.formState.ticketChildNb} onChange={(e) => props.setFormInput("ticketNb", e.target.valueAsNumber)}/>
                 </label>
-            </div>
-        </>
+                <div>
+                    <label>Child tickets ({shopData.tickets[props.formState.ticketType]?.child_price + "£"})
+                        <input type="number" defaultValue={props.formState.ticketChildNb} min="0" max={MAX - props.formState.ticketNb} onChange={(e) => props.setFormInput("ticketChildNb", e.target.valueAsNumber)}/>
+                    </label>
+                </div>
+            </>
+        }/>
+    )
+}
+
+function TicketDateInput(props) {
+    return(
+        <FormStep {...props} title="Select the date of your adventure" content={
+            <DateInput/>
+        }/>
     )
 }
 
@@ -120,22 +176,27 @@ function TicketBooking() {
                 //TODO 2 cards pour école ou évenement special qui renvoie vers un form pour envoyer un mail
                 return;
             case "undated-ticket":
-            // return;
-
+                return <TicketAmountInput {...props} index={1}/>
             default:
                 //default including dated tickets
-                return <TicketAmountInput {...props}/>
+                return (
+                    <>
+                        <TicketDateInput {...props} index={1}/>
+                        <TicketAmountInput {...props} index={2}/>
+                    </>
+                )
         }
     }
 
-    console.log(props);
+    console.log(props); //used for debug
+
     //TODO when sending form if ticketNb = ticketChildNb show a message to say that a children can't enter the park alone
 
     return (
         <section className="content-section">
-            <h3>Ticket booking</h3>
+            <h1>Ticket booking</h1>
             <div>
-                <TicketTypeSelection {...props}/>
+                <TicketTypeSelection {...props} index={0}/>
                 {props.state > 0 && ticketCases(props.formState.ticketType)}
             </div>
         </section>
