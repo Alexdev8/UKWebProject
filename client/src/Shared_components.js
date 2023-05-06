@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import './styles/bootstrap.css';
 
+
 /*--------------------------------- HEADER ------------------------------------*/
 
 function SearchBar() {
@@ -27,6 +28,31 @@ function SearchBar() {
         </div>
     )
 }
+
+function SignIn(){
+    return(
+        <div>
+            <h1>Sign in</h1>
+            <div className="userData">
+                <div className="accountEmail">
+                    <span className="material-symbols-outlined"> person </span>
+                    <input type="email" id="username" placeholder="Username or Email"/>
+                </div>
+                <div className="accountPassword">
+                    <span className="material-symbols-outlined"> lock </span>
+                    <input type="password" id="password" placeholder="Password"/>
+                </div>
+            </div>
+            <button>Connexion</button>
+            <div className="linkaccount">
+                <a>Forgot Password?</a>
+                <a>Create an account</a>
+            </div>
+
+        </div>
+    )
+}
+
 
 function Button(){
     const buttons = [
@@ -74,34 +100,27 @@ function Menu(){
 
     const Accommodations = [
         {key: 0, name: "The Grand Crown Hotel", href: "hotel", id: "crownHotel"},
-        {key: 1, name: "Cottages/Bed and breakfasts", href: "cottage", id: "cottage"}
+        {key: 1, name: "Hotel restaurant", href: "hotel-restaurant", id: "hotelRestaurant"},
+        {key: 2, name: "Cottages/Bed and breakfasts", href: "cottage", id: "cottage"}
     ];
 
     const Restaurants = [
         {key: 0, name: "Vintage restaurant", href: "vintage-restaurant", id: "vintageRestaurant"},
-        {key: 1, name: "Hotel restaurant", href: "hotel-restaurant", id: "hotelRestaurant"},
-        {key: 2, name: "Fastfood", href: "fast-food", id: "fastFood"},
-        {key: 3, name: "All restaurants", href: "restaurants", id: "all"}
+        {key: 1, name: "All restaurants", href: "restaurants", id: "all"}
     ];
 
-    const Reservation = [
-        {key: 0, name: "Tickets", href:"tickets", id:"ticketsReservation"},
-        {key: 1, name: "Hotel", href:"hotel", id:"hotelReservation"},
-        {key: 2, name: "Restaurant", href:"restaurants", id:"restaurantsReservation"}
-
-    ]
 
     const Information = [
         {key: 0, name: "Prices", href: "prices", id: "prices"},
         {key: 1, name: "Calendar", href: "calendar", id: "calendar"},
-        {key: 2, name: "Interactive map", href: "map", id: "map"}
+        {key: 2, name: "Reservation", href:"reservation", id:"reservation"},
+
     ];
 
     const menuData = [
         {key: 0, id: "parkAndShows", name: "Park and shows", subMenu: ParkAndShows},
         {key: 1, id: "accommodations", name: "Accommodation", subMenu: Accommodations},
         {key: 2, id: "restaurant", name: "Restaurants", subMenu: Restaurants},
-        {key: 3, id: "reservation", name: "Reservation", subMenu: Reservation },
         {key: 4, id: "information", name: "Information", subMenu: Information}
     ]
 
@@ -193,7 +212,7 @@ function Attraction({attraction}) {
     return (
         <div className="attractionList">
             <Link to={attraction.link} id={attraction.name}>
-                <img class="attractionIMG" src={attraction.picture} alt={attraction.alt}/>
+                <img className="attractionIMG" src={attraction.picture} alt={attraction.alt}/>
                 <div className="attractionRestriction">
                     {attraction.restriction}
                     <br/>
@@ -243,6 +262,112 @@ function AccordionBuild({listItems}){
     )
 }
 
+/*-------------------------------- CALENDAR -------------------------------------*/
+
+const events = [
+    {
+        id: 0,
+        type: "attraction",
+        name: "100 Years War",
+        date: [
+            {day: "Monday", start: "11h", end: "13h"},
+            {day: "Friday", start: "14h", end: "16h"}
+        ]
+    },
+    {
+        id: 1,
+        type: "workshop",
+        name: "Bakery",
+        date: [
+            {day: "Tuesday", start: "11h", end: "12h"},
+            {date: "Friday", start: "15h", end: "16h"}
+        ]
+    }
+]
+
+function Calendar(){
+
+    const events = [
+        {
+            id: 0,
+            type: "attraction",
+            name: "100 Years War",
+            date: [
+                {day: "Monday", start: 11, end: 13},
+                {day: "Friday", start: 14, end: 16}
+            ]
+        },
+        {
+            id: 1,
+            type: "workshop",
+            name: "Bakery",
+            date: [
+                {day: "Tuesday", start: 11, end: 12},
+                {day: "Friday", start: 15, end: 16}
+            ]
+        }
+    ]
+
+    const WEEK_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    const  tableRows = [];
+
+    for(let i = 0; i < 10; i++){
+        const hour = i + 9;
+        const hourString = hour.toString().padStart(2, '0') + ':00';
+        tableRows.push({hour: hourString, events: []});
+    }
+
+    events.forEach((event) => {
+        event.date.forEach((time) => {
+            const dayIndex = WEEK_DAYS.findIndex((day) => day === time.day);
+            const startHour = time.start - 9;
+            const endHour = time.end - 9;
+            for(let i = startHour; i < endHour; i++){
+                tableRows[i].events.push(event);
+            }
+        });
+    });
+
+    return (
+        <table>
+            <thead>
+            <tr>
+                <th></th>
+                {WEEK_DAYS.map((day) => (
+                    <th key={day} id={day}>{day}</th>
+                ))}
+            </tr>
+            </thead>
+            <tbody>
+            {tableRows.map((row) => (
+                <tr key={row.hour}>
+                    <td>{row.hour}</td>
+                    {WEEK_DAYS.map((day) => (
+                        <td key={day}>
+                            {row.events.filter((event) => (
+                                event.date.some((time) => time.day === day && time.start <= parseInt(row.hour.substr(0, 2)) && time.end > parseInt(row.hour.substr(0, 2)))
+                            )).map((event) => (
+                                <div key={event.id}>{event.name}</div>
+                            ))}
+                        </td>
+                    ))}
+                </tr>
+            ))}
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    );
+}
+
 /*----------------------------------- FOOTER ----------------------------------*/
 
 function Footer() {
@@ -255,7 +380,6 @@ function Footer() {
 
     return(
         <footer>
-            <hr/>
             {footerItems.map((footerItem) => (
                 <Link key={footerItem.key} to={footerItem.href}>{footerItem.name}</Link>
             ))}
@@ -267,4 +391,4 @@ function Footer() {
     )
 }
 
-export {Header, Menu, Footer, Carousel, AccordionBuild, Card};
+export {Header, Menu, Footer, Carousel, AccordionBuild, Card, SignIn, Calendar};

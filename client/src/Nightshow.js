@@ -63,10 +63,9 @@ function MenuNightShow(){
     return(
         <div className="nav-nightshow">
             <nav className="navbar-nightshow">
-                <li className="hover-underline-animation"><a href="#nightshow-summary1">Presentation</a></li>
-                <li className="hover-underline-animation"><a href="#comments">Your opinion</a></li>
-                <li className="hover-underline-animation">You might also like</li>
-                <li className="hover-underline-animation"><a href="#nightshow-ticket">Our prices</a></li>
+                <li className="hover-underline-animation" onClick={(e) => document.querySelector(".nightshow-summary1").scrollIntoView()}>Presentation</li>
+                <li className="hover-underline-animation">Your opinion</li>
+                <li className="hover-underline-animation">Our prices</li>
             </nav>
         </div>
     )

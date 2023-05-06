@@ -11,9 +11,12 @@ import DefaultLayout from "./DefaultLayout";
 import NoNavbarLayout from "./NoNavbarLayout";
 import Attractions from "./Attractions";
 import Shadows from "./Nightshow";
-import WorkShopCarousel from "./ParkWorkshop";
 import TicketBooking from "./TicketBooking";
 import Offers from "./Offers";
+import WorkShopCarousel from "./ParkWorkshop";
+import VintageVillage from "./VintageVillage";
+import {SignIn} from "./Shared_components";
+import CreateAccount from "./register/LogIn";
 
 function App() {
     const [basket, setBasket] = useState({
@@ -42,6 +45,8 @@ function App() {
                     <Route path="workshop" element={<WorkShopCarousel/> }/>
                     <Route path="attractions/viking" element={<Viking/>}/>
                     <Route path="attractions/roman" element={<Roman/>}/>
+                    <Route path="vintage-village" element={<VintageVillage/> }/>
+                    <Route path="create-account" element={<CreateAccount/> }/>
                     <Route path="*" element={<NotFound/>}/>
                 </Route>
                 <Route path="/" element={<NoNavbarLayout/>}>

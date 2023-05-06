@@ -18,7 +18,16 @@ body {
 }
 
 footer {
+    color: white;
     padding: 1%;
+    background-color: black;
+    opacity: 60%;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+
 }
 
 a {
@@ -184,7 +193,7 @@ nav{
 
 nav h1{
     font-family: 'Castoro Titling', cursive;
-    font-size: 15px;
+    font-size: 1.5em;
     cursor: pointer;
 }
 
@@ -206,17 +215,21 @@ nav ul li {
 nav ul li a {
     text-decoration: none;
     color: #000;
-    font-size: 13px;
+    font-size: 1em;
     display: block;
-    transition: font-size .3s .0s;
+    transition: all .3s;
     font-family: 'Castoro Titling', cursive;
+    padding: 0 5px;
 
 }
 
 nav ul li a:hover{
-    font-size: 15px;
-    font-weight: bold;
+    transform: scale(1.2);
 }
+
+
+
+
 
 .shadowsOfBritannia{
     grid-area: shadows;
@@ -248,25 +261,20 @@ nav ul li:hover > .parkAndShows {
 .crownHotel{
     grid-area: hotel;
 }
+.hotelRestaurant{
+    grid-area: hotelRestaurant;
+}
 
 nav ul li:hover > .accommodations{
     display: grid;
     grid-template-areas:
-    'cottage . hotel';
+    'cottage hotelRestaurant hotel';
     padding-bottom: 5px;
 
 }
 
 .vintageRestaurant{
     grid-area: vintage;
-}
-
-.hotelRestaurant{
-    grid-area: hotel;
-}
-
-.fastFood{
-    grid-area: fastfood;
 }
 
 .all{
@@ -276,7 +284,7 @@ nav ul li:hover > .accommodations{
 nav ul li:hover > .restaurant{
     display: grid;
     grid-template-areas:
-    'fastfood allRestaurant vintage hotel';
+    'allRestaurant vintage';
     padding-bottom: 5px;
 }
 
@@ -288,33 +296,14 @@ nav ul li:hover > .restaurant{
     grid-area: calendar;
 }
 
-.map{
-    grid-area: map;
-}
-
-.ticketsReservation{
-    grid-area: tickets;
-}
-
-.hotelReservation{
-    grid-area: hotel;
-}
-
-.restaurantsReservation{
-    grid-area: restaurant;
-}
-
-nav ul li:hover .reservation{
-    display: grid;
-    grid-template-areas:
-    'tickets hotel restaurant';
-    padding-bottom: 5px;
+.reservation{
+    grid-area: reservation;
 }
 
 nav ul li:hover > .information{
     display: grid;
     grid-template-areas:
-    'calendar prices map';
+    'calendar prices reservation';
     padding-bottom: 5px;
 }
 
@@ -326,8 +315,7 @@ nav ul ul {
     transform: translate(-50%, 0);
 
     background-color: #fff;
-    min-width: 200px;
-    width: 625px;
+    width: 50em;
     box-sizing: border-box;
 
     border-top: #fff 1px solid;
@@ -360,7 +348,7 @@ nav span{
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: lightpink;
+    background-color: red;
     transform-origin: bottom center;
     transition: transform 0.25s ease-out;
 }
@@ -686,6 +674,10 @@ form[name="order-form"] [hidden] {
       font-family: VikingFont, serif;
   }
 
+  .accordion{
+      margin: 5% 20%;
+  }
+
 
   /*----------------------------- Attraction page ----------------------------------------*/
 
@@ -734,6 +726,7 @@ form[name="order-form"] [hidden] {
     border: black 1px solid;
     box-shadow: 2px 2px 8px black;
     list-style: none;
+
 }
 
 .navbar-nightshow li{
@@ -762,17 +755,17 @@ form[name="order-form"] [hidden] {
     position: relative;
     margin: auto;
   }
-  
+
   .mySlides {
     display: none;
     text-align: center;
   }
-  
+
   .mySlides img {
     max-width: 100%;
     height: auto;
   }
-  
+
   .prev, .next {
     position: absolute;
     top: 50%;
@@ -784,30 +777,30 @@ form[name="order-form"] [hidden] {
     color: white;
     cursor: pointer;
   }
-  
+
   .next {
     right: 0;
     border-radius: 3px 0 0 3px;
   }
-  
+
   .prev:hover, .next:hover {
     background-color: rgba(0,0,0,0.8);
   }
-  
+
   .fade {
     -webkit-animation-name: fade;
     -webkit-animation-duration: 1s;
     animation-name: fade;
     animation-duration: 1s;
   }
-  
+
   @-webkit-keyframes fade {
-    from {opacity: .4} 
+    from {opacity: .4}
     to {opacity: 1}
   }
-  
+
   @keyframes fade {
-    from {opacity: .4} 
+    from {opacity: .4}
     to {opacity: 1}
   }
 
@@ -875,6 +868,56 @@ form[name="order-form"] [hidden] {
     gap: 10px;
 }
 
+/*=========================== Create Account =================================*/
+
+#root{
+    background-image: url("https://cdn.shopify.com/s/files/1/1987/4943/products/21310-02_480x480@2x.jpg?v=1599226402");
+    background-size: cover;
+    background-position: center;
+}
+
+.accountInformation{
+    display: grid;
+    grid-template-areas:
+    'firstname'
+    'lastname'
+    'email'
+    'email2'
+    'birthdate';
+    gap: 10px;
+
+    border: 1px solid white;
+    border-radius: 7px;
+    background-color: #fff;
+
+    margin: 10% 40%;
+    padding: 2%;
+    opacity: 89%;
+}
+
+.createAccount{
+    padding: 0;
+}
+
+#firstname{
+    grid-area: firstname;
+}
+
+#lastname{
+    grid-area: lastname;
+}
+
+#email{
+    grid-area: email;
+}
+
+#email2{
+    grid-area: email2;
+}
+
+#birthdate{
+    grid-area: birthdate;
+}
 /* ======================================= Not Found ======================================= */
 .not-found-img {
     height: 30vh;

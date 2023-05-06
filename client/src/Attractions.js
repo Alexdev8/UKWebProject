@@ -1,5 +1,5 @@
 import {Link, Outlet} from "react-router-dom";
-import {AccordionBuild} from "./Shared_components";
+import {AccordionBuild, Calendar} from "./Shared_components";
 
 const listItems = [
     {
@@ -48,7 +48,10 @@ const listItems = [
 
 function Attractions(){
     return(
+        <section className="content-section">
             <AccordionBuild listItems={listItems} />
+            <Calendar />
+        </section>
     )
 }
 
