@@ -691,6 +691,29 @@ form[name="order-form"] [hidden] {
 }
 
 
+/*================================= CARD ===============================================*/
+
+.container-card{
+    position: relative;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 20em;
+    color: #212529;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.175);
+    border-radius: 0.375rem;
+
+    margin: 5%;
+}
+
+
   /*------------------------------------NightShow---------------------------------------*/
 
 .content-section-nightshow {
@@ -805,68 +828,11 @@ form[name="order-form"] [hidden] {
   }
 
   /*----------------Vintage Village--------------------*/
-.romanVillage{ grid-area: romanvillage}
-.vikingVillage{ grid-area: vikingVillage}
-.medievalVillage{ grid-area: medievalVillage}
-.XIXCenturiesVillage{ grid-area: XIXCenturiesVillage}
-.text{grid-area: textdescription}
-.form{grid-area: form}
-
-.carousel-workshop-img{
-    border: 1px solid black;
-    box-shadow: 2px 2px 8px black;
-}
-
-.romanVillage, .vikingVillage, .medievalVillage, .XIXCenturiesVillage{
-    position: relative;
-}
-
-.image-overlay{
-    position: absolute;
-    bottom: 0;
-    left: 5%;
-    width: 90%;
-    height: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-    transition: height 0.5s ease;
-}
-
-.romanVillage:hover .image-overlay, .vikingVillage:hover .image-overlay, .medievalVillage:hover .image-overlay, .XIXCenturiesVillage:hover .image-overlay{
-    height: 50%;
-}
-
-.image-overlay p{
-    color: white;
-    padding: 20px;
-    margin: 0;
-    text-align: center;
-    font-size: 24px;
-}
 
 
-.romanVillage img{
-    max-width: 90%;
-    height: auto;
-}
 
-.vikingVillage img, .medievalVillage img, .XIXCenturiesVillage img{
-    max-width: 90%;
-    height: auto;
-}
 
-#village{
-    display: grid;
-    grid-template-areas:
-       '. . . vikingVillage'
-       'romanvillage romanvillage romanvillage .'
-       'romanvillage romanvillage romanvillage XIXCenturiesVillage'
-       'romanvillage romanvillage romanvillage .'
-       'textdescription textdescription textdescription medievalVillage '
-       'textdescription textdescription textdescription form'  ;
-    grid-template-columns: repeat(4, 1fr); /* adjust number of columns */
-    gap: 10px;
-}
+
 
 /*=========================== Create Account =================================*/
 
