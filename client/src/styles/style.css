@@ -436,22 +436,47 @@ form[name="order-form"] .content-section {
     display: block;
 }
 
-/*form[name="order-form"] .hidden {*/
-/*    transform: translateY(300%);*/
-/*    height: 0;*/
-/*    opacity: 0;*/
-/*}*/
-
-form[name="order-form"] [hidden] {
-    transform: translateY(300%);
-    height: 0;
-    opacity: 0;
-    /*display: block !important;*/
-    display: none;
+form[name="order-form"] .form-step {
+    /*display: inline-block;*/
+    position: relative;
+    transition: max-height 1.5s, opacity 1s 0.1s, margin-top 1s;
+    height: fit-content;
+    max-height: 35em;
+    opacity: 1;
+    margin: 1em 1em 0 1em;
 }
 
-.form-step {
+form[name="order-form"] .form-step.hidden {
+    transition: max-height 0.6s, opacity 0.5s, margin-top 0.5s;
+    max-height: 0 !important;
+    opacity: 0 !important;
+    margin: 0;
+}
+
+form[name="order-form"] .form-step::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(1);
+    top: -0.5em;
+    left: 0;
+    right: 0;
     border-top: rgba(255, 182, 193, 0.5) 4px dotted;
+    transform-origin: top center;
+    transition: transform 0.3s 0.2s ease-out;
+}
+
+form[name="order-form"] .form-step.hidden::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    top: -0.5em;
+    left: 0;
+    right: 0;
+    border-top: rgba(255, 182, 193, 0.5) 4px dotted;
+    transform-origin: bottom center;
+    transition: transform 0.25s ease-out;
 }
 
 .card {
@@ -466,13 +491,13 @@ form[name="order-form"] [hidden] {
     color: white;
 }
 
-.card:hover:not {
+.card:hover {
     transform: scale(1.05);
 }
 
 .card.selected {
     cursor: auto;
-    transform: scale(1.05);
+    transform: scale(1.075);
     color: lightpink;
 }
 
@@ -564,6 +589,7 @@ form[name="order-form"] [hidden] {
 }
 
 .date-input-div span {
+    transition: all 0.2s;
     display: inline-block;
     background-color: white;
     width: 1px;

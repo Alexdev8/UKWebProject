@@ -21,6 +21,13 @@ const shopData = {
             child_price: -1,
             name: "special pass",
             description: "customised park access for special events or occasions",
+        },
+        "options": {
+            "fast-track": {
+                price_percentage: 18,
+                name: "fast track option",
+                description: "don't waste time in lines and make the most of your visit skipping the queues",
+            }
         }
     },
     hotels: {
@@ -56,33 +63,99 @@ const cardData = [
 
 function FormStep(props) {
     const formStep = useRef(null);
+    const [prevHidden, setPrevHidden] = useState(props.index !== 0);
 
     useEffect(
         () => {
-            (props.state !== 0) && formStep.current.scrollIntoView({behavior: "smooth"});
+            if (props.state < props.index) {
+                setPrevHidden(true);
+            }
+            else if (prevHidden) {
+                (props.state !== 0) && formStep.current.scrollIntoView({behavior: "smooth"});
+                setPrevHidden(false);
+            }
         }, [props.state]
     )
 
     return(
-        <div id={props.id} ref={formStep} className={((props.state < props.index) ? "hidden" : "") + (props.className) + " form-step"} hidden={props.state < props.index}>
+        <div id={props.id} ref={formStep} className={((props.state < props.index) ? "hidden " : "") + ((props.className) ? props.className + " " : "") + "form-step"}>
             <h3>{(props.index + 1) + ". " + props.title}</h3>
             {cloneElement(props.content, props)}
         </div>
     )
 }
 
-function DateInput() {
+function DateInput(props) {
+    const [endDateDisabled, setEndDateDisabled] = useState(props.formState.ticketStartDate === null);
+    const startDateInput = useRef(null);
+    const endDateInput = useRef(null);
+    const today = new Date();
+    const max_reservation_date = addYears(new Date(), 2);
+
+    function display(date) {
+        return date?.toLocaleDateString('fr-ca');
+    }
+
+    function addYears(date, years) {
+        date.setFullYear(date.getFullYear() + years);
+        return date;
+    }
+
+    function verifyInput(e, input) {
+        if (e.target.valueAsDate !== null && e.target.value < e.target.min) {
+            e.target.value = e.target.min;
+            props.setFormInput(props.for + input, new Date(e.target.min));
+        }
+        else if (e.target.valueAsDate !== null && e.target.value > e.target.max) {
+            e.target.value = e.target.max;
+            props.setFormInput(props.for + input, new Date(e.target.max));
+        }
+        if (props.formState.ticketEndDate === null) {
+            props.setState(props.index);
+        }
+        else {
+            props.setState(props.index + 1);
+        }
+    }
+
+    function focusEndInput(e) {
+        verifyInput(e, "StartDate");
+        if (!endDateDisabled && !endDateInput.current?.value && endDateInput.current !== document.activeElement) {
+            endDateInput.current.focus();
+            endDateInput.current.showPicker();
+        }
+    }
+
+    useEffect(() => {
+        if (props.state >= props.index) {
+            if (props.formState.ticketStartDate !== null) {
+                setEndDateDisabled(false);
+            }
+            else {
+                props.setState(props.index);
+                setEndDateDisabled(true);
+                endDateInput.current.value = null;
+                props.setFormInput(props.for + "EndDate", null);
+            }
+        }
+    }, [props.formState.ticketStartDate, props.formState.ticketEndDate])
+
     return(
         <div className="date-input-div">
-            <div id="start-date-input-div" className="date-input-sub-div">
+            <div className="date-input-sub-div" onClick={() => startDateInput.current.focus()}>
                 <label htmlFor="date-start-input">Arrival date</label>
-                <input id="date-start-input" name="reservation-start-date" type="date" onChange={() => enable_form_input()}
+                <input ref={startDateInput} name={props.for + "-start-date"} type="date" defaultValue={display(props.formState.ticketStartDate)} min={display(today)} max={display(max_reservation_date)}
+                       onChange={(e) => props.setFormInput(props.for + "StartDate", e.target.valueAsDate)}
+                       onBlur={(e) => focusEndInput(e)}
                        required/>
             </div>
-            <span className="vertical-separator"></span>
-            <div id="end-date-input-div" className="date-input-sub-div">
+            <span className="vertical-separator" style={(endDateDisabled) ? {opacity: 0} : {}}></span>
+            <div className="date-input-sub-div" onClick={() => endDateInput.current.focus()}>
                 <label htmlFor="date-end-input">Departure date</label>
-                <input id="date-end-input" name="reservation-end-date" type="date" disabled/>
+                <input ref={endDateInput} name={props.for + "-end-date"} type="date" defaultValue={display(props.formState.ticketEndDate)} min={startDateInput.current?.value} max={display(max_reservation_date)}
+                       onChange={(e) => props.setFormInput(props.for + "EndDate", e.target.valueAsDate)}
+                       onBlur={(e) => verifyInput(e, "EndDate")}
+                       disabled={endDateDisabled}/>
             </div>
         </div>
     )
@@ -91,27 +164,12 @@ function DateInput() {
 function TicketTypeSelection(props) {
     const [selected, setSelected] = useState(null);
 
-    let style = {};
-
-    let styleHide = {
-        height: "0",
-        opacity: "0",
-        transform: "translateY(-200%)"
-    };
-
     function select_ticket_type(key, type) {
-        // style = styleHide;
-        // ticket_booking.style.display = "block";
-        // setTimeout(function () {
-        //     style.display = "none";
-        //     // ticket_booking.classList.toggle("hidden", false);
-        // }, 400);
         if (selected !== key) {
+            props.setState(0);
             setSelected(key);
             props.setFormInput("ticketType", type);
-            props.setState(1);
         }
-        // setVisible(false);
     }
 
     return (
@@ -131,15 +189,24 @@ function TicketAmountInput(props) {
     const MAX = 10;
 
     useEffect(() => {
-        if (props.state >= props.index) {
-            if (props.formState.ticketNb + props.formState.ticketChildNb !== 0) {
-                props.setState(props.index + 1);
+        if (props.formState.ticketNb + props.formState.ticketChildNb !== 0) {
+            if (props.state === props.index) {
+                console.log("skip");
+                props.skip();
             }
-            else {
+        } else {
+            if (props.state > props.index) {
                 props.setState(props.index);
             }
         }
-    }, [props.formState.ticketNb, props.formState.ticketChildNb, props.formState.ticketType])
+    }, [props.formState.ticketNb, props.formState.ticketChildNb, props.formState.state])
+
+    useEffect(() => {
+        if (props.state === props.index) {
+            console.log("skip");
+            props.skip();
+        }
+    }, [props.formState.state])
 
     return (
         <FormStep {...props} title={"Select your number of adventurers (" + MAX + " max.)"} content={
@@ -160,7 +227,22 @@ function TicketAmountInput(props) {
 function TicketDateInput(props) {
     return(
         <FormStep {...props} title="Select the date of your adventure" content={
-            <DateInput/>
+            <DateInput {...props} for="ticket"/>
+        }/>
+    )
+}
+
+function TicketOptionsInput(props) {
+    function changeOption(option, add) {
+        const optionSet = {...props.formState.ticketOptions, [option]: add};
+        props.setFormInput("ticketOptions", optionSet);
+    }
+
+    return(
+        <FormStep {...props} title="Look our available options and packages" content={
+            <label>Fast-track tickets (+{shopData.tickets.options["fast-track"].price_percentage + "%"})
+                <input type="checkbox" onChange={(e) => changeOption("fastTrack", e.target.checked)}/>
+            </label>
         }/>
     )
 }
@@ -168,7 +250,11 @@ function TicketDateInput(props) {
 function TicketBooking() {
     const orderProps = useOutletContext();
     const [state, setState] = useState(0);
-    const props = {...orderProps, state, setState};
+    const props = {...orderProps, state, setState, skip};
+
+    function skip() {
+        setState(state + 1);
+    }
 
     function ticketCases(ticketID) {
         switch (ticketID) {
@@ -176,17 +262,29 @@ function TicketBooking() {
                 //TODO 2 cards pour école ou évenement special qui renvoie vers un form pour envoyer un mail
                 return;
             case "undated-ticket":
-                return <TicketAmountInput {...props} index={1}/>
+                return (
+                    <>
+                        <TicketAmountInput {...props} index={1}/>
+                        <TicketOptionsInput {...props} index={2}/>
+                    </>
+                )
             default:
                 //default including dated tickets
                 return (
                     <>
                         <TicketDateInput {...props} index={1}/>
                         <TicketAmountInput {...props} index={2}/>
+                        <TicketOptionsInput {...props} index={3}/>
                     </>
                 )
         }
     }
+
+    useEffect(() => {
+        if (props.formState.ticketType !== "") {
+            setState(1);
+        }
+    }, [props.formState.ticketType])
 
     console.log(props); //used for debug
 
@@ -197,7 +295,7 @@ function TicketBooking() {
             <h1>Ticket booking</h1>
             <div>
                 <TicketTypeSelection {...props} index={0}/>
-                {props.state > 0 && ticketCases(props.formState.ticketType)}
+                {ticketCases(props.formState.ticketType)}
             </div>
         </section>
     )
