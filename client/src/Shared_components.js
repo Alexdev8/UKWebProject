@@ -159,6 +159,28 @@ function Card({card, onClick, selected}) {
     )
 }
 
+function Card2 ({cards}){
+    return(
+        <div className="container-card">
+            {cards.map((card) => (
+                <div className="card" key={card.id}>
+                    <img src={card.src} alt={card.title}/>
+                    <div className="card-body">
+                        <h5 className="card-title">
+                            {card.title}
+                            <p className="card-text">
+                                {card.description}
+                            </p>
+                        </h5>
+                    </div>
+                </div>
+            ))}
+
+        </div>
+
+    )
+}
+
 /*---------------------------------- CAROUSEL ---------------------------------*/
 function Carousel({images}) {
     useEffect(() => {
@@ -311,7 +333,7 @@ function Calendar(){
     const WEEK_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
     const  tableRows = [];
 
-    for(let i = 0; i < 10; i++){
+    for(let i = 0; i < 15; i++){
         const hour = i + 9;
         const hourString = hour.toString().padStart(2, '0') + ':00';
         tableRows.push({hour: hourString, events: []});
@@ -391,4 +413,4 @@ function Footer() {
     )
 }
 
-export {Header, Menu, Footer, Carousel, AccordionBuild, Card, SignIn, Calendar};
+export {Header, Menu, Footer, Carousel, AccordionBuild, Card, SignIn, Calendar, Card2};
