@@ -718,26 +718,27 @@ form[name="order-form"] .form-step.hidden::before {
 
 
 /*================================= CARD ===============================================*/
+/* ne sert à rien, le css des cards est déjà dans la rebrique order page*/
 
-.container-card{
-    position: relative;
-}
+/*.container-card{*/
+/*    position: relative;*/
+/*}*/
 
-.card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    height: 20em;
-    color: #212529;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.175);
-    border-radius: 0.375rem;
+/*.card {*/
+/*    position: relative;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    min-width: 0;*/
+/*    height: 20em;*/
+/*    color: #212529;*/
+/*    word-wrap: break-word;*/
+/*    background-color: #fff;*/
+/*    background-clip: border-box;*/
+/*    border: 1px solid rgba(0, 0, 0, 0.175);*/
+/*    border-radius: 0.375rem;*/
 
-    margin: 5%;
-}
+/*    margin: 5%;*/
+/*}*/
 
 
   /*------------------------------------NightShow---------------------------------------*/
