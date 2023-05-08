@@ -32,6 +32,12 @@ const Viking = () => {
                         <p>L'Attraction Viking a été créée pour permettre aux visiteurs de découvrir la culture nordique de manière immersive et interactive. Le parc a travaillé avec des historiens pour recréer les navires, les bâtiments et les objets du quotidien avec</p>
                     </div>
                 </section>
+
+                <section id="viking-motif">
+                    <div className="motif-viking">
+                        <img src={require("./resources/motif-viking.PNG")} alt="motif-viking"></img>
+                    </div>
+                </section>
             </div>
     )
     }

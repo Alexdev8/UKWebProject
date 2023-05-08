@@ -7,6 +7,8 @@ import NotFound from "./NotFound";
 import Order from "./Order";
 import Viking from "./Viking";
 import Roman from "./Roman";
+import Robinhood from "./Robinhood";
+import CenturyWar from "./CenturyWar";
 import DefaultLayout from "./DefaultLayout";
 import NoNavbarLayout from "./NoNavbarLayout";
 import Attractions from "./Attractions";
@@ -45,6 +47,8 @@ function App() {
                     <Route path="workshop" element={<WorkShopCarousel/> }/>
                     <Route path="attractions/viking" element={<Viking/>}/>
                     <Route path="attractions/roman" element={<Roman/>}/>
+                    <Route path="attractions/centurywar" element={<CenturyWar/>}/>
+                    <Route path="attractions/robinhood" element={<Robinhood/>}/>
                     <Route path="vintage-village" element={<VintageVillage/> }/>
                     <Route path="create-account" element={<CreateAccount/> }/>
                     <Route path="*" element={<NotFound/>}/>

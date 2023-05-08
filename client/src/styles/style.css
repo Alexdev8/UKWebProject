@@ -673,6 +673,14 @@ form[name="order-form"] .form-step.hidden::before {
 .viking-container{
     font-family: VikingFont;
 }
+.motif-viking {
+    display: block;
+    height: auto;
+}
+.motif-viking img{
+    transform: rotate(90deg);
+    height: auto;
+}
 /*------------------------------------ROMAN------------------------------*/
 .roman-content{
     margin-left: auto;
@@ -692,8 +700,14 @@ form[name="order-form"] .form-step.hidden::before {
     width: 70em;
     font-size: large;
 }
-.robinhood-container{
-    font-family: "";
+
+/*----------------------------------CENTURY-WAR------------------------------*/
+.centurywar-content{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 70em;
+    font-size: large;
 }
   /*------------------------------------Attraction-Générale-----------------------------*/
   .Titre_attraction_gen{
