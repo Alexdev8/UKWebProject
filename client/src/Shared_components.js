@@ -159,27 +159,6 @@ function Card({card, onClick, selected}) {
     )
 }
 
-function Card2 ({cards}){
-    return(
-        <div className="container-card">
-            {cards.map((card) => (
-                <div className="card" key={card.id}>
-                    <img src={card.src} alt={card.title}/>
-                    <div className="card-body">
-                        <h5 className="card-title">
-                            {card.title}
-                            <p className="card-text">
-                                {card.description}
-                            </p>
-                        </h5>
-                    </div>
-                </div>
-            ))}
-
-        </div>
-
-    )
-}
 
 /*---------------------------------- CAROUSEL ---------------------------------*/
 function Carousel({images}) {
@@ -413,4 +392,4 @@ function Footer() {
     )
 }
 
-export {Header, Menu, Footer, Carousel, AccordionBuild, Card, SignIn, Calendar, Card2};
+export {Header, Menu, Footer, Carousel, AccordionBuild, Card, SignIn, Calendar};
