@@ -9,7 +9,7 @@ const listItems = [
         restriction : "",
         description: "parc d'attraction lie a l'univers disney",
         picture: "https://images.lindependant.fr/api/v1/images/view/5d54055fd286c202264fd612/large/image.jpg?v=1",
-        link: "",
+        link: "/offers",
         alt: "Reconstitution photo"
     },
     {
@@ -19,7 +19,7 @@ const listItems = [
         restriction : "",
         description: "",
         picture: "https://leisureopportunities.co.uk/images/971601_409024.jpg",
-        link: "http://localhost:3000/attractions/viking",
+        link: "/attractions/viking",
         alt: "asterix-logo"
     },
     {
@@ -35,7 +35,27 @@ const listItems = [
     {
         id: "Four",
         ariaExpanded: false,
-        name: "Nightime Show",
+        name: "Robinhood",
+        restriction : "",
+        description: "Shadows of Britannia is a mesmerizing nocturnal spectacle that takes audiences on a poetic journey through the history of England. Set against the backdrop of the night sky, the show features stunning visual projections, choreographed performances, and a captivating narrative that brings England's storied past to life.",
+        picture: "https://sonovision.com/wp-content/uploads/sites/2/2017/10/photo1_OK-1024x576.jpg",
+        link: "http://localhost:3000/shadowsofbritannia",
+        alt: "NightShow-IMG"
+    },
+    {
+        id: "Five",
+        ariaExpanded: false,
+        name: "Trafalgar",
+        restriction : "",
+        description: "Shadows of Britannia is a mesmerizing nocturnal spectacle that takes audiences on a poetic journey through the history of England. Set against the backdrop of the night sky, the show features stunning visual projections, choreographed performances, and a captivating narrative that brings England's storied past to life.",
+        picture: "https://sonovision.com/wp-content/uploads/sites/2/2017/10/photo1_OK-1024x576.jpg",
+        link: "http://localhost:3000/shadowsofbritannia",
+        alt: "NightShow-IMG"
+    },
+    {
+        id: "Six",
+        ariaExpanded: false,
+        name: "Shadows of Britannia",
         restriction : "",
         description: "Shadows of Britannia is a mesmerizing nocturnal spectacle that takes audiences on a poetic journey through the history of England. Set against the backdrop of the night sky, the show features stunning visual projections, choreographed performances, and a captivating narrative that brings England's storied past to life.",
         picture: "https://sonovision.com/wp-content/uploads/sites/2/2017/10/photo1_OK-1024x576.jpg",
@@ -48,10 +68,19 @@ const listItems = [
 
 function Attractions(){
     return(
-        <section className="content-section">
-            <AccordionBuild listItems={listItems} />
-            <Calendar />
-        </section>
+        <>
+            <section className="content-section-attraction">
+                <AccordionBuild listItems={listItems} />
+
+            </section>
+            <section className="content-section-attraction">
+                <button className="switch-calendar">
+
+                </button>
+                <Calendar />
+            </section>
+        </>
+
     )
 }
 

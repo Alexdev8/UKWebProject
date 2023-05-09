@@ -262,9 +262,54 @@ function AccordionBuild({listItems}){
     )
 }
 
-/*-------------------------------- CALENDAR -------------------------------------*/
+function AccordionBuildPrivacyPolicy({listItems}){
 
-const events = [
+    const [isExtended, setIsExtended] = useState(false);
+
+    return (
+        <div className="accordion" id="accordionExample">
+            {listItems.map((item) => (
+                <div className="accordion-item" key={item.id}>
+                    <h2 className="accordion-header">
+                        <button
+                            className={`accordion-button ${!item.ariaExpanded ? 'collapsed' : ''}`}
+                            type="button"
+                            data-bs-toggle="collapse"
+                            aria-expanded={item.ariaExpanded}
+                            data-bs-target={`#collapse${item.id}`}
+                            aria-controls={`collapse${item.id}`}
+                        >
+                            {item.name}
+                        </button>
+                    </h2>
+                    <div
+                        id={`collapse${item.id}`}
+                        className={`accordion-collapse collapse ${item.ariaExpanded ? 'show' : ''}`}
+                        data-bs-parent="#accordionExample">
+                        <div className="accordion-body">
+                            <PrivacyPolicy privacy={item} />
+                        </div>
+                    </div>
+
+                </div>
+            ))}
+        </div>
+    )
+}
+function PrivacyPolicy({privacy}) {
+
+    return (
+        <div className="PrivaPolicyList">
+
+                <div className="PrivacyPolicyRule">
+                    {privacy.privacypolicytexte}
+                </div>
+        </div>
+    )
+}
+/*-------------------------------- CALENDAR -------------------------------------*/
+const evetsWinter=[]
+const eventsSummer = [
     {
         id: 0,
         type: "attraction",
@@ -305,13 +350,51 @@ function Calendar(){
                 {day: "Tuesday", start: 11, end: 12},
                 {day: "Friday", start: 15, end: 16}
             ]
+        },
+        {
+            id: 2,
+            type: "nightShow",
+            name: "Shadows of Britannia",
+            date: [
+                {day: "Tuesday", start: 19, end: 23},
+
+            ]
+        },
+        {
+            id: 3,
+            type: "nightShow",
+            name: "Shadows of Britannia",
+            date: [
+                {day: "Thursday", start: 19, end: 23},
+
+
+            ]
+        },
+        {
+            id: 4,
+            type: "nightShow",
+            name: "Shadows of Britannia",
+            date: [
+                {day: "Saturday", start: 19, end: 23},
+
+            ]
+        }
+        ,
+        {
+            id: 5,
+            type: "nightShow",
+            name: "Shadows of Britannia",
+            date: [
+                {day: "Sunday", start: 19, end: 23},
+
+            ]
         }
     ]
 
     const WEEK_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
     const  tableRows = [];
 
-    for(let i = 0; i < 10; i++){
+    for(let i = 0; i < 15; i++){
         const hour = i + 9;
         const hourString = hour.toString().padStart(2, '0') + ':00';
         tableRows.push({hour: hourString, events: []});
@@ -329,7 +412,7 @@ function Calendar(){
     });
 
     return (
-        <table>
+        <table className="calendrier">
             <thead>
             <tr>
                 <th></th>
@@ -340,7 +423,7 @@ function Calendar(){
             </thead>
             <tbody>
             {tableRows.map((row) => (
-                <tr key={row.hour}>
+                <tr key={row.hour} id={row.hour}>
                     <td>{row.hour}</td>
                     {WEEK_DAYS.map((day) => (
                         <td key={day}>
@@ -391,4 +474,4 @@ function Footer() {
     )
 }
 
-export {Header, Menu, Footer, Carousel, AccordionBuild, Card, SignIn, Calendar};
+export {Header, Menu, Footer, Carousel, AccordionBuild,AccordionBuildPrivacyPolicy, Card, SignIn, Calendar};

@@ -17,6 +17,7 @@ import WorkShopCarousel from "./ParkWorkshop";
 import VintageVillage from "./VintageVillage";
 import {SignIn} from "./Shared_components";
 import CreateAccount from "./register/LogIn";
+import PrivacyPolicy from "./PrivacyPolicy";
 
 function App() {
     const [basket, setBasket] = useState({
@@ -47,6 +48,7 @@ function App() {
                     <Route path="attractions/roman" element={<Roman/>}/>
                     <Route path="vintage-village" element={<VintageVillage/> }/>
                     <Route path="create-account" element={<CreateAccount/> }/>
+                    <Route path="privacy-policy" element={<PrivacyPolicy/> }/>
                     <Route path="*" element={<NotFound/>}/>
                 </Route>
                 <Route path="/" element={<NoNavbarLayout/>}>

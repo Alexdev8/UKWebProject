@@ -687,10 +687,42 @@ form[name="order-form"] [hidden] {
     vertical-align: top;
     height: auto;
 
-
+}
+.content-section-attraction {
+    background-color: #ffffff;
+    padding: 2% 5% 5% 5%;
+    border-radius: 3em;
+    box-shadow: 2px 2px 6px rgb(26,26,25);
+    margin:2% 15%;
 }
 
+#Monday,#Tuesday,#Wednesday,#Thursday,#Friday,#Satuday,#Sunday{
+    padding: 20px;
 
+}
+.calendrier td,.calendrier tr {
+    border-collapse: collapse;
+    border:2px solid black ;
+}
+.calendrier{
+    margin: auto;
+}
+/*----------------------------- Privacy Policy page ----------------------------------------*/
+
+
+
+
+.content-section-privacy-policy,.privacy-policy-txt {
+    background-color: #ffffff;
+    padding: 2% 5% 5% 5%;
+    border-radius: 3em;
+    box-shadow: 2px 2px 6px rgb(26,26,25);
+    margin:2% 15%;
+    text-align: justify;
+}
+.PrivacyPolicyRule{
+
+}
   /*------------------------------------NightShow---------------------------------------*/
 
 .content-section-nightshow {
