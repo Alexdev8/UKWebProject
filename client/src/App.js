@@ -5,8 +5,12 @@ import {useState} from "react";
 import Main from "./Main";
 import NotFound from "./NotFound";
 import Order from "./Order";
+import OrderSummary from "./OrderSummary";
 import Viking from "./Viking";
 import Roman from "./Roman";
+import Robinhood from "./Robinhood";
+import CenturyWar from "./CenturyWar";
+import Trafalgar from "./Trafalgar";
 import DefaultLayout from "./DefaultLayout";
 import NoNavbarLayout from "./NoNavbarLayout";
 import Attractions from "./Attractions";
@@ -21,19 +25,25 @@ import PrivacyPolicy from "./PrivacyPolicy";
 
 function App() {
     const [basket, setBasket] = useState({
-        items: [
-            {
-                name: "Ticket",
-                amount: "3",
-                price: 39.99
-            },
-            {
-                name: "Child ticket and other stuff",
-                amount: "2",
-                price: 19.89
-            }
-        ]
+        items: {
+            tickets: [
+            ],
+            hotel: [
+            ],
+            restaurant: [
+            ],
+            options: [
+            ]
+        }
     })
+
+    function addTickets(ticket) {
+        console.log(ticket);
+        const newBasket = basket;
+        newBasket.items.tickets = [...newBasket.items.tickets, ticket]
+        console.log(newBasket);
+        setBasket(newBasket);
+    }
 
     return (
         <BrowserRouter>
@@ -46,6 +56,9 @@ function App() {
                     <Route path="workshop" element={<WorkShopCarousel/> }/>
                     <Route path="attractions/viking" element={<Viking/>}/>
                     <Route path="attractions/roman" element={<Roman/>}/>
+                    <Route path="attractions/centurywar" element={<CenturyWar/>}/>
+                    <Route path="attractions/trafalgar" element={<Trafalgar/>}/>
+                    <Route path="attractions/robinhood" element={<Robinhood/>}/>
                     <Route path="vintage-village" element={<VintageVillage/> }/>
                     <Route path="create-account" element={<CreateAccount/> }/>
                     <Route path="privacy-policy" element={<PrivacyPolicy/> }/>
@@ -53,11 +66,11 @@ function App() {
                 </Route>
                 <Route path="/" element={<NoNavbarLayout/>}>
                     <Route path="offers" element={<Offers/>}/>
-                    <Route path="order" element={<Order basket={basket} setBasket={setBasket}/>}>
+                    <Route path="order" element={<Order basket={basket} setBasket={setBasket} addTickets={addTickets}/>}>
                         <Route path="tickets" element={<TicketBooking/>}></Route>
                         <Route path="hotel" element={<></>}></Route>
                         <Route path="restaurant" element={<></>}></Route>
-                        <Route path="summary" element={<></>}></Route>
+                        <Route path="summary" element={<OrderSummary/>}></Route>
                     </Route>
                 </Route>
             </Routes>

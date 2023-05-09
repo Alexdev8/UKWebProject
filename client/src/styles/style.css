@@ -410,12 +410,13 @@ nav span{
 }
 
 .content-section {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.96);
     padding: 2% 5% 5% 5%;
     margin-bottom: 1em;
     margin-top: 4%;
     border-radius: 3em;
     box-shadow: 2px 2px 6px rgb(26,26,25);
+
 }
 
 /*============================= Order page =============================*/
@@ -436,22 +437,60 @@ form[name="order-form"] .content-section {
     display: block;
 }
 
-/*form[name="order-form"] .hidden {*/
-/*    transform: translateY(300%);*/
-/*    height: 0;*/
-/*    opacity: 0;*/
-/*}*/
-
-form[name="order-form"] [hidden] {
-    transform: translateY(300%);
-    height: 0;
-    opacity: 0;
-    /*display: block !important;*/
-    display: none;
+form[name="order-form"] .form-step {
+    position: relative;
+    transition: max-height 1.5s, opacity 1s 0.1s, margin-top 1s;
+    height: fit-content;
+    max-height: 35em;
+    opacity: 1;
+    margin: 1em 1em 0 1em;
+    padding: 0 1em 1em 1em;
 }
 
-.form-step {
+form[name="order-form"] .form-step.hidden {
+    transition: max-height 0.6s, opacity 0.3s, margin-top 0.5s, transform 0s 0.6s;
+    max-height: 0 !important;
+    opacity: 0 !important;
+    margin: 0;
+    padding: 0;
+    transform: translateX(600%);
+}
+
+form[name="order-form"] .form-step::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(1);
+    top: -0.5em;
+    left: 0;
+    right: 0;
     border-top: rgba(255, 182, 193, 0.5) 4px dotted;
+    transform-origin: top center;
+    transition: transform 0.3s 0.2s ease-out;
+}
+
+form[name="order-form"] .form-step.hidden::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    top: -0.5em;
+    left: 0;
+    right: 0;
+    border-top: rgba(255, 182, 193, 0.5) 4px dotted;
+    transform-origin: bottom center;
+    transition: transform 0.25s ease-out;
+}
+
+form[name="order-form"] .form-step h3 {
+    transition: all 0.5s;
+}
+
+form[name="order-form"] .form-step.hidden h3 {
+    transition: all 0.5s;
+    height: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .card {
@@ -466,13 +505,13 @@ form[name="order-form"] [hidden] {
     color: white;
 }
 
-.card:hover:not {
+.card:hover {
     transform: scale(1.05);
 }
 
 .card.selected {
     cursor: auto;
-    transform: scale(1.05);
+    transform: scale(1.075);
     color: lightpink;
 }
 
@@ -564,6 +603,7 @@ form[name="order-form"] [hidden] {
 }
 
 .date-input-div span {
+    transition: all 0.2s;
     display: inline-block;
     background-color: white;
     width: 1px;
@@ -607,12 +647,10 @@ form[name="order-form"] [hidden] {
 
 .basket {
     width: fit-content;
-    background-color: white;
+    background-color: #dedede;
     padding: 2%;
     margin-bottom: 1em;
-    margin-top: 4%;
     border-radius: 2em;
-    box-shadow: 2px 2px 6px rgb(26,26,25);
 }
 
 .basket .basket-items {
@@ -624,7 +662,7 @@ form[name="order-form"] [hidden] {
 }
 
 .basket .basket-items #basket-total-row {
-    border-top: 2px solid lightgrey;
+    border-top: 2px solid #bebebe;
 }
 
 .basket .basket-items td:first-child {
@@ -636,38 +674,183 @@ form[name="order-form"] [hidden] {
     text-align: end;
 }
 
+/*============================= ORDER SUMMARY =============================*/
+.summary-panel {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
 /*------------------------------------VIKING-----------------------------*/
 .viking-content{
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
-    width: 70em;
     font-size: large;
+    background-color: #F5DEB3;
+    padding: 2% 5% 5% 5%;
+    margin-bottom: 1em;
+    margin-top: 4%;
+    margin-left: 60px;
+    margin-right: 60px;
+    border-radius: 3em;
+    box-shadow: 2px 2px 6px rgb(26,26,25);
 }
-.viking-container{
+.button-viking{
+    background-color: #8B0000;
+    color: #F5DEB3;
+    font-family: VikingFont;
+    font-size: 1.8rem;
+    padding: 20px 40px;
+    border: #222222;
+    border-radius: 20px;
+    cursor: pointer;
+    text-shadow: 2px 2px 2px #000;
+}
+.perso-viking{
+    padding-top: 2%;
+    margin-right: 80%;
+
+}
+.viking-container h2{
+    font-family: VikingFont;
+}
+.viking-container h1{
     font-family: VikingFont;
 }
 /*------------------------------------ROMAN------------------------------*/
 .roman-content{
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
-    width: 70em;
     font-size: large;
+    background-color: #F5DEB3;
+    padding: 2% 5% 5% 5%;
+    margin-bottom: 1em;
+    margin-top: 4%;
+    margin-left: 60px;
+    margin-right: 60px;
+    border-radius: 3em;
+    box-shadow: 2px 2px 6px rgb(26,26,25);
 }
-.roman-container{
+.button-roman{
+    background-color: #B80F0A;
+    color: #F5DEB3;
+    font-family: "Times New RomanT";
+    font-size: 1.8rem;
+    padding: 20px 40px;
+    border: #222222;
+    border-radius: 20px;
+    cursor: pointer;
+    text-shadow: 2px 2px 2px #000;
+}
+.perso-roman{
+    padding-top: 25px;
+    margin-right: 50px;
+}
+.roman-container h1{
+    font-family: "Times New Roman";
+}
+.roman-container h2{
     font-family: "Times New Roman";
 }
 /*----------------------------------ROBINHOOD------------------------------*/
 .robinhood-content{
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
-    width: 70em;
     font-size: large;
+    background-color: #F5DEB3;
+    padding: 2% 5% 5% 5%;
+    margin-bottom: 1em;
+    margin-top: 4%;
+    margin-left: 60px;
+    margin-right: 60px;
+    border-radius: 3em;
+    box-shadow: 2px 2px 6px rgb(26,26,25);
 }
-.robinhood-container{
-    font-family: "";
+.button-robinhood{
+    background-color: #228B22;
+    color: #F5DEB3;
+    font-family: "Old English Text MT";
+    font-size: 1.8rem;
+    padding: 20px 40px;
+    border: #222222;
+    border-radius: 20px;
+    cursor: pointer;
+    text-shadow: 2px 2px 2px #000;
+}
+.perso-robinhood{
+    padding-top: 25px;
+    margin-right: 50px;
+}
+.robinhood-container h2{
+    font-family: "Old English Text MT";
+}
+.robinhood-container h1{
+    font-family: "Old English Text MT";
+}
+/*----------------------------------CENTURY-WAR------------------------------*/
+.centurywar-content{
+    text-align: center;
+    font-size: large;
+    background-color: #F5DEB3;
+    padding: 2% 5% 5% 5%;
+    margin-bottom: 1em;
+    margin-top: 4%;
+    margin-left: 60px;
+    margin-right: 60px;
+    border-radius: 3em;
+    box-shadow: 2px 2px 6px rgb(26,26,25);
+}
+.button-centurywar{
+    background-color: darkblue;
+    color: #ffffff;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 1.8rem;
+    padding: 20px 40px;
+    border: #222222;
+    border-radius: 20px;
+    cursor: pointer;
+    text-shadow: 2px 2px 2px #000;
+}
+.perso-centurywar{
+    padding-top: 20px;
+}
+.centurywar-container h2{
+    font-family:  "Old English Text MT";
+}
+.centurywar-container h1{
+    font-family:  "Old English Text MT";
+}
+/*----------------------------------TRAFALGAR------------------------------*/
+.trafalgar-content{
+    text-align: center;
+    font-size: large;
+    background-color: #F5DEB3;
+    padding: 2% 5% 5% 5%;
+    margin-bottom: 1em;
+    margin-top: 4%;
+    margin-left: 60px;
+    margin-right: 60px;
+    border-radius: 3em;
+    box-shadow: 2px 2px 6px rgb(26,26,25);
+}
+.button-trafalgar{
+    background-color: darkblue;
+    color: #F5DEB3;
+    font-family: "Bodoni MT";
+    font-size: 1.8rem;
+    padding: 20px 40px;
+    border: #222222;
+    border-radius: 20px;
+    cursor: pointer;
+    text-shadow: 2px 2px 2px #000;
+}
+.perso-trafalgar{
+    padding-top: 20px;
+}
+.trafalgar-container h2{
+    font-family:  "Bodoni MT";
+}
+.trafalgar-container h1{
+    font-family:  "Bodoni MT";
 }
   /*------------------------------------Attraction-Générale-----------------------------*/
   .Titre_attraction_gen{
@@ -725,36 +908,37 @@ form[name="order-form"] [hidden] {
 }
   /*------------------------------------NightShow---------------------------------------*/
 
-.content-section-nightshow {
-    background-image: url("https://media.istockphoto.com/id/621348814/fr/photo/papier-aquarelle-%C3%A0-texture-blanche.jpg?s=612x612&w=0&k=20&c=9qEgdmn_yB6wNRC-Gl2hubjqCBPBl-VKRwdY67p0ih8=");
-    padding: 2% 5% 5% 5%;
-    border-radius: 3em;
-    box-shadow: 2px 2px 6px rgb(26,26,25);
-    margin-top: 20%;
-    margin-bottom: 15%;
+.nightshow {
+    margin: 5% 10%;
 }
 
-#shadowsofbritannia{
-    font-size: 45px;
-    font-weight: bold;
+#shadows-of-britannia{
+    margin-bottom: 4%;
 }
 
-#presentation-nighshow{
+.nightshow-description{
+    text-align: justify;
+    margin: 10% 10% 0 0;
+}
+
+.presentation-nightshow{
     column-count: 2;
     margin: auto;
 }
 
-.nightshow-button{
-    width: 150px;
-    height: 150px;
-    margin: 10px;
-    font-size: 15px;
-    background-image: url("https://media.istockphoto.com/id/621348814/fr/photo/papier-aquarelle-%C3%A0-texture-blanche.jpg?s=612x612&w=0&k=20&c=9qEgdmn_yB6wNRC-Gl2hubjqCBPBl-VKRwdY67p0ih8=");
-    box-shadow: 2px 2px 8px black;
+.pictogram{
+    display: flex;
+    width: 100%;
+    margin: 7% 13% 0 7%;
 }
 
+.pictogram-container{
+    margin: 0 3%;
+}
+
+
 .nav-nightshow{
-    margin: 10%;
+    margin: 10% 5%;
     border: black 1px solid;
     box-shadow: 2px 2px 8px black;
     list-style: none;
@@ -767,21 +951,70 @@ form[name="order-form"] [hidden] {
     font-size: 20px;
 }
 
-.nightshow-summary1{
+.presentation{
+    margin: 3% 3% 2% 3%;
     column-count: 2;
 }
 
-.nightshow-summary1 .text-nightshow-summary1{
-    margin: auto;
+.appreciation{
+    margin: 1% 20%;
 }
 
-.content-section-comments {
-    background-image: url("https://media.istockphoto.com/id/621348814/fr/photo/papier-aquarelle-%C3%A0-texture-blanche.jpg?s=612x612&w=0&k=20&c=9qEgdmn_yB6wNRC-Gl2hubjqCBPBl-VKRwdY67p0ih8=");
-    padding: 2% 5% 5% 5%;
-    border-radius: 3em;
-    box-shadow: 2px 2px 6px rgb(26,26,25);
+.comment-section{
+    margin: 3% 20%;
+    column-count: 2;
+    gap: 20%;
 }
 
+.comment{
+    background-color: white;
+    opacity: 96%;
+    border-radius: 20px;
+    padding: 6% 5%;
+    margin: 1%;
+}
+
+.form-comments{
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    width: 20em;
+    height: 2em;
+    margin: 1%;
+}
+
+.button-nightShow{
+    background-color: #fff;
+    padding: 0.5%;
+    border: none;
+    border-radius: 10px;
+}
+
+.card-tickets{
+    position: relative;
+    width: 100%;
+    min-width: 10em;
+    height: 100%;
+    color: white;
+}
+
+.ticket-nightShow{
+    margin: 2% 20%;
+}
+
+/*====================================== WORKSHOP =========================================*/
+
+.work-shop{
+    margin: 5% 15%;
+}
+
+.work-shop-text{
+    margin: 1% 4% 3%;
+    text-align: justify;
+
+}
+
+/*===============================================================================*/
   .slideshow-container {
     max-width: 1000px;
     position: relative;
@@ -837,75 +1070,49 @@ form[name="order-form"] [hidden] {
   }
 
   /*----------------Vintage Village--------------------*/
-.romanVillage{ grid-area: romanvillage}
-.vikingVillage{ grid-area: vikingVillage}
-.medievalVillage{ grid-area: medievalVillage}
-.XIXCenturiesVillage{ grid-area: XIXCenturiesVillage}
-.text{grid-area: textdescription}
-.form{grid-area: form}
 
-.carousel-workshop-img{
-    border: 1px solid black;
-    box-shadow: 2px 2px 8px black;
+.vintage-section{
+    padding: 2% 7% 3% 7%;
+    height: 70em;
 }
 
-.romanVillage, .vikingVillage, .medievalVillage, .XIXCenturiesVillage{
-    position: relative;
+.vintage-section p{
+    font-size: 1.1em;
+    text-align: justify;
 }
 
-.image-overlay{
-    position: absolute;
-    bottom: 0;
-    left: 5%;
-    width: 90%;
-    height: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-    transition: height 0.5s ease;
-}
-
-.romanVillage:hover .image-overlay, .vikingVillage:hover .image-overlay, .medievalVillage:hover .image-overlay, .XIXCenturiesVillage:hover .image-overlay{
-    height: 50%;
-}
-
-.image-overlay p{
-    color: white;
-    padding: 20px;
-    margin: 0;
+.vintage-village-description h1{
     text-align: center;
-    font-size: 24px;
 }
 
 
-.romanVillage img{
-    max-width: 90%;
-    height: auto;
+
+.vintage-village-img{
+    display: flex;
+    margin: 2% 0;
+    height: 15em;
 }
 
-.vikingVillage img, .medievalVillage img, .XIXCenturiesVillage img{
-    max-width: 90%;
-    height: auto;
+.vintage-village-img .card{
+    padding: 1%;
 }
 
-#village{
-    display: grid;
-    grid-template-areas:
-       '. . . vikingVillage'
-       'romanvillage romanvillage romanvillage .'
-       'romanvillage romanvillage romanvillage XIXCenturiesVillage'
-       'romanvillage romanvillage romanvillage .'
-       'textdescription textdescription textdescription medievalVillage '
-       'textdescription textdescription textdescription form'  ;
-    grid-template-columns: repeat(4, 1fr); /* adjust number of columns */
-    gap: 10px;
+.vintage-village-description{
+    margin: 10%;
 }
+
+
+
+
+
 
 /*=========================== Create Account =================================*/
 
 #root{
     background-image: url("https://cdn.shopify.com/s/files/1/1987/4943/products/21310-02_480x480@2x.jpg?v=1599226402");
-    background-size: cover;
+    background-size: contain;
     background-position: center;
+
 }
 
 .accountInformation{

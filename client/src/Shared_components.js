@@ -159,6 +159,20 @@ function Card({card, onClick, selected}) {
     )
 }
 
+function Pictogram({pictograms}){
+    return(
+        <div className="pictogram">
+
+            {pictograms.map((pictogram) => (
+                <div className="pictogram-container">
+                    <span className={pictogram.class}>{pictogram.name}</span>
+                    <p>{pictogram.text}</p>
+                </div>
+            ))}
+        </div>
+    )
+}
+
 /*---------------------------------- CAROUSEL ---------------------------------*/
 function Carousel({images}) {
     useEffect(() => {
@@ -208,7 +222,6 @@ function Carousel({images}) {
 /*--------------------------------- ACCORDION------------------------------------*/
 
 function Attraction({attraction}) {
-
     return (
         <div className="attractionList">
             <Link to={attraction.link} id={attraction.name}>
@@ -221,14 +234,12 @@ function Attraction({attraction}) {
                 <div className="attractionDescription">
                     {attraction.description}
                 </div>
-
             </Link>
         </div>
     )
 }
 
 function AccordionBuild({listItems}){
-
     const [isExtended, setIsExtended] = useState(false);
 
     return (
@@ -308,8 +319,8 @@ function PrivacyPolicy({privacy}) {
     )
 }
 /*-------------------------------- CALENDAR -------------------------------------*/
-const evetsWinter=[]
-const eventsSummer = [
+
+const events = [
     {
         id: 0,
         type: "attraction",
@@ -474,4 +485,4 @@ function Footer() {
     )
 }
 
-export {Header, Menu, Footer, Carousel, AccordionBuild,AccordionBuildPrivacyPolicy, Card, SignIn, Calendar};
+export {Header, Menu, Footer, Carousel, AccordionBuild,AccordionBuildPrivacyPolicy, Card, SignIn, Calendar, Pictogram};

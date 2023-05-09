@@ -43,9 +43,9 @@ const imgWorkshop = [
 
 function WorkShopCarousel(){
     return(
-        <div className="main-container mt-main parallax-layer1">
+        <div className="content-section work-shop">
             <h1>Park Workshop </h1>
-            <h2>When visiting a historical park, there are a variety of workshops and demonstrations that offer visitors a hands-on experience with history. From pottery and weaving to baking and printing, these workshops provide a fascinating look into the skills and techniques of the past. Visitors can learn about the history and cultural significance of these crafts, as well as see the process in action and even try their hand at creating their own work of art. These workshops are a great way to learn about history and gain a deeper appreciation for the craftsmanship of the time.</h2>
+            <p className="work-shop-text">When visiting a historical park, there are a variety of workshops and demonstrations that offer visitors a hands-on experience with history. From pottery and weaving to baking and printing, these workshops provide a fascinating look into the skills and techniques of the past. Visitors can learn about the history and cultural significance of these crafts, as well as see the process in action and even try their hand at creating their own work of art. These workshops are a great way to learn about history and gain a deeper appreciation for the craftsmanship of the time.</p>
             <Carousel images={imgWorkshop} />
         </div>
 
