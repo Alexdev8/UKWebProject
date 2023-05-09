@@ -1,13 +1,14 @@
 import React from "react";
+import {Link, useNavigate} from "react-router-dom";
 
 const Viking = () => {
     return (
-            <div className="viking-content">
+            <div className="viking-content content-section">
                 <section id="viking-introduction">
                     <div className="viking-container">
                         <h1>Bienvenue à l'Attraction Viking !</h1>
                         <p>Découvrez une aventure passionnante dans l'univers des Vikings. Embarquez dans notre navire à la découverte de paysages époustouflants et de créatures légendaires.</p>
-                        <button>Réserver maintenant</button>
+                        <button onClick={() => navigate("/order/tickets")}>Get a ticket now</button>
                     </div>
                 </section>
 
@@ -30,12 +31,6 @@ const Viking = () => {
                     <div className="viking-container">
                         <h2>Histoire</h2>
                         <p>L'Attraction Viking a été créée pour permettre aux visiteurs de découvrir la culture nordique de manière immersive et interactive. Le parc a travaillé avec des historiens pour recréer les navires, les bâtiments et les objets du quotidien avec</p>
-                    </div>
-                </section>
-
-                <section id="viking-motif">
-                    <div className="motif-viking">
-                        <img src={require("./resources/motif-viking.PNG")} alt="motif-viking"></img>
                     </div>
                 </section>
             </div>

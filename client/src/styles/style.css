@@ -664,22 +664,16 @@ form[name="order-form"] .form-step.hidden::before {
 
 /*------------------------------------VIKING-----------------------------*/
 .viking-content{
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 50px;
+    margin-right: 50px;
     text-align: center;
-    width: 70em;
     font-size: large;
 }
-.viking-container{
+.viking-container h2{
     font-family: VikingFont;
 }
-.motif-viking {
-    display: block;
-    height: auto;
-}
-.motif-viking img{
-    transform: rotate(90deg);
-    height: auto;
+.viking-container h1{
+    font-family: VikingFont;
 }
 /*------------------------------------ROMAN------------------------------*/
 .roman-content{
