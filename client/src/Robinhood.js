@@ -2,6 +2,7 @@ import React from "react";
 import {Link, useNavigate} from "react-router-dom";
 
 const Robinhood = () => {
+    const navigate=useNavigate();
     return (
         <div className="robinhood-content">
             <section id="robinhood-introduction">
