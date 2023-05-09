@@ -680,8 +680,8 @@ form[name="order-form"] .form-step.hidden::before {
     background-color: #8B0000;
     color: #F5DEB3;
     font-family: VikingFont;
-    font-size: 1.2rem;
-    padding: 10px 20px;
+    font-size: 1.8rem;
+    padding: 20px 40px;
     border: #222222;
     border-radius: 20px;
     cursor: pointer;
@@ -689,6 +689,7 @@ form[name="order-form"] .form-step.hidden::before {
 }
 .perso-viking{
     padding-top: 25px;
+    margin-right: 50px;
 }
 .viking-container h2{
     font-family: VikingFont;
@@ -698,31 +699,104 @@ form[name="order-form"] .form-step.hidden::before {
 }
 /*------------------------------------ROMAN------------------------------*/
 .roman-content{
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
-    width: 70em;
     font-size: large;
+    background-color: #F5DEB3;
+    padding: 2% 5% 5% 5%;
+    margin-bottom: 1em;
+    margin-top: 4%;
+    margin-left: 60px;
+    margin-right: 60px;
+    border-radius: 3em;
+    box-shadow: 2px 2px 6px rgb(26,26,25);
 }
-.roman-container{
+.button-roman{
+    background-color: #B80F0A;
+    color: #F5DEB3;
+    font-family: "Times New RomanT";
+    font-size: 1.8rem;
+    padding: 20px 40px;
+    border: #222222;
+    border-radius: 20px;
+    cursor: pointer;
+    text-shadow: 2px 2px 2px #000;
+}
+.perso-roman{
+    padding-top: 25px;
+    margin-right: 50px;
+}
+.roman-container h1{
+    font-family: "Times New Roman";
+}
+.roman-container h2{
     font-family: "Times New Roman";
 }
 /*----------------------------------ROBINHOOD------------------------------*/
 .robinhood-content{
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
-    width: 70em;
     font-size: large;
+    background-color: #F5DEB3;
+    padding: 2% 5% 5% 5%;
+    margin-bottom: 1em;
+    margin-top: 4%;
+    margin-left: 60px;
+    margin-right: 60px;
+    border-radius: 3em;
+    box-shadow: 2px 2px 6px rgb(26,26,25);
 }
-
+.button-robinhood{
+    background-color: #228B22;
+    color: #F5DEB3;
+    font-family: "Old English Text MT";
+    font-size: 1.8rem;
+    padding: 20px 40px;
+    border: #222222;
+    border-radius: 20px;
+    cursor: pointer;
+    text-shadow: 2px 2px 2px #000;
+}
+.perso-robinhood{
+    padding-top: 25px;
+    margin-right: 50px;
+}
+.robinhood-container h2{
+    font-family: "Old English Text MT";
+}
+.robinhood-container h1{
+    font-family: "Old English Text MT";
+}
 /*----------------------------------CENTURY-WAR------------------------------*/
 .centurywar-content{
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
-    width: 70em;
     font-size: large;
+    background-color: #F5DEB3;
+    padding: 2% 5% 5% 5%;
+    margin-bottom: 1em;
+    margin-top: 4%;
+    margin-left: 60px;
+    margin-right: 60px;
+    border-radius: 3em;
+    box-shadow: 2px 2px 6px rgb(26,26,25);
+}
+.button-centurywar{
+    background-color: darkblue;
+    color: #ffffff;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 1.8rem;
+    padding: 20px 40px;
+    border: #222222;
+    border-radius: 20px;
+    cursor: pointer;
+    text-shadow: 2px 2px 2px #000;
+}
+.perso-centurywar{
+    padding-top: 20px;
+}
+.centurywar-container h2{
+    font-family:  "Old English Text MT";
+}
+.centurywar-container h1{
+    font-family:  "Old English Text MT";
 }
   /*------------------------------------Attraction-Générale-----------------------------*/
   .Titre_attraction_gen{
