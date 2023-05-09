@@ -1,6 +1,8 @@
 import React from "react";
+import {useNavigate} from "react-router-dom";
 
 const Roman = () => {
+    const navigate=useNavigate();
     return (
 
         <div className="roman-content">

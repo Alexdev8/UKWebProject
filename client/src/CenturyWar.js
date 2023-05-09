@@ -2,6 +2,7 @@ import React from "react";
 import {Link, useNavigate} from "react-router-dom";
 
 const CenturyWar = () => {
+    const navigate=useNavigate();
     return (
         <div className="centurywar-content">
             <section id="centurywar-introduction">

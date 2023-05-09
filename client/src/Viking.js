@@ -2,6 +2,7 @@ import React from "react";
 import {Link, useNavigate} from "react-router-dom";
 
 const Viking = () => {
+    const navigate=useNavigate();
     return (
             <div className="viking-content">
                 <section id="viking-introduction">

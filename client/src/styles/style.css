@@ -708,8 +708,9 @@ form[name="order-form"] .form-step.hidden h3 {
     text-shadow: 2px 2px 2px #000;
 }
 .perso-viking{
-    padding-top: 25px;
-    margin-right: 50px;
+    padding-top: 2%;
+    margin-right: 80%;
+
 }
 .viking-container h2{
     font-family: VikingFont;
