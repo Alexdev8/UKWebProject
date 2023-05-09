@@ -1,41 +1,7 @@
 import {cloneElement, useEffect, useRef, useState} from "react";
 import {Card} from "./Shared_components";
 import {useOutletContext} from "react-router-dom";
-
-const shopData = {
-    tickets: {
-        "undated-ticket": {
-            price: 60,
-            child_price: 45,
-            name: "1 day undated pass",
-            description: "1 day park access whenever you want"
-        },
-        "dated-ticket": {
-            price: 40,
-            child_price: 32,
-            name: "1-7 days dated pass",
-            description: "1-7 days park access on a scheduled date"
-        },
-        "special-ticket": {
-            price: -1,
-            child_price: -1,
-            name: "special pass",
-            description: "customised park access for special events or occasions",
-        },
-        "options": {
-            "fast-track": {
-                price_percentage: 18,
-                name: "fast track option",
-                description: "don't waste time in lines and make the most of your visit skipping the queues",
-            }
-        }
-    },
-    hotels: {
-        "grand-crown": {
-            price: 249
-        }
-    }
-}
+import shopData from "./shop-data.json";
 
 const cardData = [
     {
@@ -67,19 +33,15 @@ function FormStep(props) {
 
     useEffect(
         () => {
-            if (props.state < props.index) {
-                setPrevHidden(true);
-            }
-            else if (prevHidden) {
-                (props.state !== 0) && formStep.current.scrollIntoView({behavior: "smooth"});
-                setPrevHidden(false);
+            if (props.state === props.index) {
+                (props.index !== 0) && formStep.current.scrollIntoView( {block: "start", inline: "nearest", behavior: "smooth"});
             }
         }, [props.state]
     )
 
     return(
         <div id={props.id} ref={formStep} className={((props.state < props.index) ? "hidden " : "") + ((props.className) ? props.className + " " : "") + "form-step"}>
-            <h3>{(props.index + 1) + ". " + props.title}</h3>
+            {props.title !== undefined && <h3>{(props.index + 1) + ". " + props.title}</h3>}
             {cloneElement(props.content, props)}
         </div>
     )
@@ -166,6 +128,7 @@ function TicketTypeSelection(props) {
 
     function select_ticket_type(key, type) {
         if (selected !== key) {
+            props.initForm();
             props.setState(0);
             setSelected(key);
             props.setFormInput("ticketType", type);
@@ -225,24 +188,33 @@ function TicketAmountInput(props) {
 }
 
 function TicketDateInput(props) {
-    return(
+    return (
         <FormStep {...props} title="Select the date of your adventure" content={
             <DateInput {...props} for="ticket"/>
         }/>
     )
 }
 
-function TicketOptionsInput(props) {
+function TicketOptions(props) {
     function changeOption(option, add) {
         const optionSet = {...props.formState.ticketOptions, [option]: add};
         props.setFormInput("ticketOptions", optionSet);
     }
 
-    return(
+    return (
+        <label>Fast-track tickets (+{shopData.tickets.options["fast-track"].price_percentage + "%"})
+            <input type="checkbox" onChange={(e) => changeOption("fastTrack", e.target.checked)}/>
+        </label>
+    )
+}
+
+function TicketEndStep(props) {
+    return (
         <FormStep {...props} title="Look our available options and packages" content={
-            <label>Fast-track tickets (+{shopData.tickets.options["fast-track"].price_percentage + "%"})
-                <input type="checkbox" onChange={(e) => changeOption("fastTrack", e.target.checked)}/>
-            </label>
+            <div>
+                <TicketOptions {...props}/>
+                <input onSubmit={() => props.sendForm()} type={"submit"} value="Add to cart"/>
+            </div>
         }/>
     )
 }
@@ -265,7 +237,7 @@ function TicketBooking() {
                 return (
                     <>
                         <TicketAmountInput {...props} index={1}/>
-                        <TicketOptionsInput {...props} index={2}/>
+                        <TicketEndStep  {...props} index={2}/>
                     </>
                 )
             default:
@@ -274,7 +246,7 @@ function TicketBooking() {
                     <>
                         <TicketDateInput {...props} index={1}/>
                         <TicketAmountInput {...props} index={2}/>
-                        <TicketOptionsInput {...props} index={3}/>
+                        <TicketEndStep  {...props} index={3}/>
                     </>
                 )
         }
@@ -286,17 +258,13 @@ function TicketBooking() {
         }
     }, [props.formState.ticketType])
 
-    console.log(props); //used for debug
-
     //TODO when sending form if ticketNb = ticketChildNb show a message to say that a children can't enter the park alone
 
     return (
         <section className="content-section">
             <h1>Ticket booking</h1>
-            <div>
-                <TicketTypeSelection {...props} index={0}/>
-                {ticketCases(props.formState.ticketType)}
-            </div>
+            <TicketTypeSelection {...props} index={0}/>
+            {ticketCases(props.formState.ticketType)}
         </section>
     )
 }

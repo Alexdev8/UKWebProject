@@ -1,0 +1,34 @@
+{
+    "tickets": {
+        "undated-ticket": {
+            "price": 60,
+            "child_price": 45,
+            "name": "1 day undated pass",
+            "description": "1 day park access whenever you want"
+        },
+        "dated-ticket": {
+            "price": 40,
+            "child_price": 32,
+            "name": "1-7 days dated pass",
+            "description": "1-7 days park access on a scheduled date"
+        },
+        "special-ticket": {
+            "price": -1,
+            "child_price": -1,
+            "name": "special pass",
+            "description": "customised park access for special events or occasions"
+        },
+        "options": {
+            "fast-track": {
+                "price_percentage": 18,
+                "name": "fast track option",
+                "description": "don't waste time in lines and make the most of your visit skipping the queues"
+            }
+        }
+    },
+    "hotels": {
+        "grand-crown": {
+            "price": 249
+        }
+    }
+}

@@ -1,6 +1,6 @@
 import {Card} from "./Shared_components";
 import {cloneElement, useEffect, useRef, useState} from "react";
-import {Outlet, useBeforeUnload, useNavigate} from "react-router-dom";
+import {Navigate, Outlet, redirect, useBeforeUnload, useNavigate} from "react-router-dom";
 import Basket from "./Basket";
 import TicketBooking from "./TicketBooking";
 
@@ -59,9 +59,10 @@ function RestaurantReservation(props) {
     )
 }
 
-function Order({basket, setBasket}) {
-    const ORDER_STATE_NB = 3
-    const [formState, setFormState] = useState({
+function Order({basket, setBasket, addTickets}) {
+    const navigate = useNavigate();
+    const emptyForm = {
+        id: 0,
         ticketType: "",
         ticketNb: 0,
         ticketChildNb: 0,
@@ -70,8 +71,21 @@ function Order({basket, setBasket}) {
         ticketOptions: {
             fastTrack: false
         },
+        price: 15,
         email: ""
-    });
+    }
+    const [formState, setFormState] = useState(emptyForm);
+
+    function initForm() {
+        setFormState(emptyForm);
+    }
+
+    const sendForm = async (e) => {
+        e.preventDefault();
+        addTickets(formState);
+        alert("Form sent (no you lost everything)");
+        navigate("/order/summary", {state: {cart: 5}});
+    }
 
     useEffect(() => {
         function onBeforeUnload(e) {
@@ -101,11 +115,10 @@ function Order({basket, setBasket}) {
 
     return (
         <div className="main-container">
-            <form name="order-form">
-                <Outlet context={{formState, setFormInput}}/>
+            <form name="order-form" onSubmit={(e) => sendForm(e)}>
+                <Outlet context={{formState, basket, setFormInput, setBasket, initForm}}/>
                 {/*<OrderFormSection id="hotel-reservation" index={2} fct={fcts} formState={formState} setFormInput={setFormInput} title="Book your stay" content={<HotelReservation/>}/>*/}
                 {/*<OrderFormSection id="restaurant-reservation" index={3} fct={fcts} formState={formState} setFormInput={setFormInput} title="Restaurants" content={<RestaurantReservation/>}/>*/}
-                <Basket items={basket.items}/>
             </form>
         </div>
     );

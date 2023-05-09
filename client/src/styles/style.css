@@ -438,20 +438,22 @@ form[name="order-form"] .content-section {
 }
 
 form[name="order-form"] .form-step {
-    /*display: inline-block;*/
     position: relative;
     transition: max-height 1.5s, opacity 1s 0.1s, margin-top 1s;
     height: fit-content;
     max-height: 35em;
     opacity: 1;
     margin: 1em 1em 0 1em;
+    padding: 0 1em 1em 1em;
 }
 
 form[name="order-form"] .form-step.hidden {
-    transition: max-height 0.6s, opacity 0.5s, margin-top 0.5s;
+    transition: max-height 0.6s, opacity 0.3s, margin-top 0.5s, transform 0s 0.6s;
     max-height: 0 !important;
     opacity: 0 !important;
     margin: 0;
+    padding: 0;
+    transform: translateX(600%);
 }
 
 form[name="order-form"] .form-step::before {
@@ -478,6 +480,17 @@ form[name="order-form"] .form-step.hidden::before {
     border-top: rgba(255, 182, 193, 0.5) 4px dotted;
     transform-origin: bottom center;
     transition: transform 0.25s ease-out;
+}
+
+form[name="order-form"] .form-step h3 {
+    transition: all 0.5s;
+}
+
+form[name="order-form"] .form-step.hidden h3 {
+    transition: all 0.5s;
+    height: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .card {
@@ -634,12 +647,10 @@ form[name="order-form"] .form-step.hidden::before {
 
 .basket {
     width: fit-content;
-    background-color: white;
+    background-color: #dedede;
     padding: 2%;
     margin-bottom: 1em;
-    margin-top: 4%;
     border-radius: 2em;
-    box-shadow: 2px 2px 6px rgb(26,26,25);
 }
 
 .basket .basket-items {
@@ -651,7 +662,7 @@ form[name="order-form"] .form-step.hidden::before {
 }
 
 .basket .basket-items #basket-total-row {
-    border-top: 2px solid lightgrey;
+    border-top: 2px solid #bebebe;
 }
 
 .basket .basket-items td:first-child {
@@ -663,52 +674,183 @@ form[name="order-form"] .form-step.hidden::before {
     text-align: end;
 }
 
+/*============================= ORDER SUMMARY =============================*/
+.summary-panel {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
 /*------------------------------------VIKING-----------------------------*/
 .viking-content{
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
-    width: 70em;
     font-size: large;
+    background-color: #F5DEB3;
+    padding: 2% 5% 5% 5%;
+    margin-bottom: 1em;
+    margin-top: 4%;
+    margin-left: 60px;
+    margin-right: 60px;
+    border-radius: 3em;
+    box-shadow: 2px 2px 6px rgb(26,26,25);
 }
-.viking-container{
+.button-viking{
+    background-color: #8B0000;
+    color: #F5DEB3;
+    font-family: VikingFont;
+    font-size: 1.8rem;
+    padding: 20px 40px;
+    border: #222222;
+    border-radius: 20px;
+    cursor: pointer;
+    text-shadow: 2px 2px 2px #000;
+}
+.perso-viking{
+    padding-top: 2%;
+    margin-right: 80%;
+
+}
+.viking-container h2{
     font-family: VikingFont;
 }
-.motif-viking {
-    display: block;
-    height: auto;
-}
-.motif-viking img{
-    transform: rotate(90deg);
-    height: auto;
+.viking-container h1{
+    font-family: VikingFont;
 }
 /*------------------------------------ROMAN------------------------------*/
 .roman-content{
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
-    width: 70em;
     font-size: large;
+    background-color: #F5DEB3;
+    padding: 2% 5% 5% 5%;
+    margin-bottom: 1em;
+    margin-top: 4%;
+    margin-left: 60px;
+    margin-right: 60px;
+    border-radius: 3em;
+    box-shadow: 2px 2px 6px rgb(26,26,25);
 }
-.roman-container{
+.button-roman{
+    background-color: #B80F0A;
+    color: #F5DEB3;
+    font-family: "Times New RomanT";
+    font-size: 1.8rem;
+    padding: 20px 40px;
+    border: #222222;
+    border-radius: 20px;
+    cursor: pointer;
+    text-shadow: 2px 2px 2px #000;
+}
+.perso-roman{
+    padding-top: 25px;
+    margin-right: 50px;
+}
+.roman-container h1{
+    font-family: "Times New Roman";
+}
+.roman-container h2{
     font-family: "Times New Roman";
 }
 /*----------------------------------ROBINHOOD------------------------------*/
 .robinhood-content{
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
-    width: 70em;
     font-size: large;
+    background-color: #F5DEB3;
+    padding: 2% 5% 5% 5%;
+    margin-bottom: 1em;
+    margin-top: 4%;
+    margin-left: 60px;
+    margin-right: 60px;
+    border-radius: 3em;
+    box-shadow: 2px 2px 6px rgb(26,26,25);
 }
-
+.button-robinhood{
+    background-color: #228B22;
+    color: #F5DEB3;
+    font-family: "Old English Text MT";
+    font-size: 1.8rem;
+    padding: 20px 40px;
+    border: #222222;
+    border-radius: 20px;
+    cursor: pointer;
+    text-shadow: 2px 2px 2px #000;
+}
+.perso-robinhood{
+    padding-top: 25px;
+    margin-right: 50px;
+}
+.robinhood-container h2{
+    font-family: "Old English Text MT";
+}
+.robinhood-container h1{
+    font-family: "Old English Text MT";
+}
 /*----------------------------------CENTURY-WAR------------------------------*/
 .centurywar-content{
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
-    width: 70em;
     font-size: large;
+    background-color: #F5DEB3;
+    padding: 2% 5% 5% 5%;
+    margin-bottom: 1em;
+    margin-top: 4%;
+    margin-left: 60px;
+    margin-right: 60px;
+    border-radius: 3em;
+    box-shadow: 2px 2px 6px rgb(26,26,25);
+}
+.button-centurywar{
+    background-color: darkblue;
+    color: #ffffff;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 1.8rem;
+    padding: 20px 40px;
+    border: #222222;
+    border-radius: 20px;
+    cursor: pointer;
+    text-shadow: 2px 2px 2px #000;
+}
+.perso-centurywar{
+    padding-top: 20px;
+}
+.centurywar-container h2{
+    font-family:  "Old English Text MT";
+}
+.centurywar-container h1{
+    font-family:  "Old English Text MT";
+}
+/*----------------------------------TRAFALGAR------------------------------*/
+.trafalgar-content{
+    text-align: center;
+    font-size: large;
+    background-color: #F5DEB3;
+    padding: 2% 5% 5% 5%;
+    margin-bottom: 1em;
+    margin-top: 4%;
+    margin-left: 60px;
+    margin-right: 60px;
+    border-radius: 3em;
+    box-shadow: 2px 2px 6px rgb(26,26,25);
+}
+.button-trafalgar{
+    background-color: darkblue;
+    color: #F5DEB3;
+    font-family: "Bodoni MT";
+    font-size: 1.8rem;
+    padding: 20px 40px;
+    border: #222222;
+    border-radius: 20px;
+    cursor: pointer;
+    text-shadow: 2px 2px 2px #000;
+}
+.perso-trafalgar{
+    padding-top: 20px;
+}
+.trafalgar-container h2{
+    font-family:  "Bodoni MT";
+}
+.trafalgar-container h1{
+    font-family:  "Bodoni MT";
 }
   /*------------------------------------Attraction-Générale-----------------------------*/
   .Titre_attraction_gen{
