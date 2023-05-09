@@ -732,36 +732,37 @@ form[name="order-form"] .form-step.hidden::before {
 }
   /*------------------------------------NightShow---------------------------------------*/
 
-.content-section-nightshow {
-    background-image: url("https://media.istockphoto.com/id/621348814/fr/photo/papier-aquarelle-%C3%A0-texture-blanche.jpg?s=612x612&w=0&k=20&c=9qEgdmn_yB6wNRC-Gl2hubjqCBPBl-VKRwdY67p0ih8=");
-    padding: 2% 5% 5% 5%;
-    border-radius: 3em;
-    box-shadow: 2px 2px 6px rgb(26,26,25);
-    margin-top: 20%;
-    margin-bottom: 15%;
+.nightshow {
+    margin: 5% 10%;
 }
 
-#shadowsofbritannia{
-    font-size: 45px;
-    font-weight: bold;
+#shadows-of-britannia{
+    margin-bottom: 4%;
 }
 
-#presentation-nighshow{
+.nightshow-description{
+    text-align: justify;
+    margin: 10% 10% 0 0;
+}
+
+.presentation-nightshow{
     column-count: 2;
     margin: auto;
 }
 
-.nightshow-button{
-    width: 150px;
-    height: 150px;
-    margin: 10px;
-    font-size: 15px;
-    background-image: url("https://media.istockphoto.com/id/621348814/fr/photo/papier-aquarelle-%C3%A0-texture-blanche.jpg?s=612x612&w=0&k=20&c=9qEgdmn_yB6wNRC-Gl2hubjqCBPBl-VKRwdY67p0ih8=");
-    box-shadow: 2px 2px 8px black;
+.pictogram{
+    display: flex;
+    width: 100%;
+    margin: 7% 13% 0 7%;
 }
 
+.pictogram-container{
+    margin: 0 3%;
+}
+
+
 .nav-nightshow{
-    margin: 10%;
+    margin: 10% 5%;
     border: black 1px solid;
     box-shadow: 2px 2px 8px black;
     list-style: none;
@@ -774,21 +775,70 @@ form[name="order-form"] .form-step.hidden::before {
     font-size: 20px;
 }
 
-.nightshow-summary1{
+.presentation{
+    margin: 3% 3% 2% 3%;
     column-count: 2;
 }
 
-.nightshow-summary1 .text-nightshow-summary1{
-    margin: auto;
+.appreciation{
+    margin: 1% 20%;
 }
 
-.content-section-comments {
-    background-image: url("https://media.istockphoto.com/id/621348814/fr/photo/papier-aquarelle-%C3%A0-texture-blanche.jpg?s=612x612&w=0&k=20&c=9qEgdmn_yB6wNRC-Gl2hubjqCBPBl-VKRwdY67p0ih8=");
-    padding: 2% 5% 5% 5%;
-    border-radius: 3em;
-    box-shadow: 2px 2px 6px rgb(26,26,25);
+.comment-section{
+    margin: 3% 20%;
+    column-count: 2;
+    gap: 20%;
 }
 
+.comment{
+    background-color: white;
+    opacity: 96%;
+    border-radius: 20px;
+    padding: 6% 5%;
+    margin: 1%;
+}
+
+.form-comments{
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    width: 20em;
+    height: 2em;
+    margin: 1%;
+}
+
+.button-nightShow{
+    background-color: #fff;
+    padding: 0.5%;
+    border: none;
+    border-radius: 10px;
+}
+
+.card-tickets{
+    position: relative;
+    width: 100%;
+    min-width: 10em;
+    height: 100%;
+    color: white;
+}
+
+.ticket-nightShow{
+    margin: 2% 20%;
+}
+
+/*====================================== WORKSHOP =========================================*/
+
+.work-shop{
+    margin: 5% 15%;
+}
+
+.work-shop-text{
+    margin: 1% 4% 3%;
+    text-align: justify;
+
+}
+
+/*===============================================================================*/
   .slideshow-container {
     max-width: 1000px;
     position: relative;
@@ -847,12 +897,19 @@ form[name="order-form"] .form-step.hidden::before {
 
 .vintage-section{
     padding: 2% 7% 3% 7%;
+    height: 70em;
 }
 
 .vintage-section p{
     font-size: 1.1em;
     text-align: justify;
 }
+
+.vintage-village-description h1{
+    text-align: center;
+}
+
+
 
 .vintage-village-img{
     display: flex;

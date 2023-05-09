@@ -159,6 +159,19 @@ function Card({card, onClick, selected}) {
     )
 }
 
+function Pictogram({pictograms}){
+    return(
+        <div className="pictogram">
+
+            {pictograms.map((pictogram) => (
+                <div className="pictogram-container">
+                    <span className={pictogram.class}>{pictogram.name}</span>
+                    <p>{pictogram.text}</p>
+                </div>
+            ))}
+        </div>
+    )
+}
 
 /*---------------------------------- CAROUSEL ---------------------------------*/
 function Carousel({images}) {
@@ -392,4 +405,4 @@ function Footer() {
     )
 }
 
-export {Header, Menu, Footer, Carousel, AccordionBuild, Card, SignIn, Calendar};
+export {Header, Menu, Footer, Carousel, AccordionBuild, Card, SignIn, Calendar, Pictogram};
