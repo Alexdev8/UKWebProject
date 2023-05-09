@@ -798,6 +798,39 @@ form[name="order-form"] .form-step.hidden::before {
 .centurywar-container h1{
     font-family:  "Old English Text MT";
 }
+/*----------------------------------TRAFALGAR------------------------------*/
+.trafalgar-content{
+    text-align: center;
+    font-size: large;
+    background-color: #F5DEB3;
+    padding: 2% 5% 5% 5%;
+    margin-bottom: 1em;
+    margin-top: 4%;
+    margin-left: 60px;
+    margin-right: 60px;
+    border-radius: 3em;
+    box-shadow: 2px 2px 6px rgb(26,26,25);
+}
+.button-trafalgar{
+    background-color: darkblue;
+    color: #F5DEB3;
+    font-family: "Bodoni MT";
+    font-size: 1.8rem;
+    padding: 20px 40px;
+    border: #222222;
+    border-radius: 20px;
+    cursor: pointer;
+    text-shadow: 2px 2px 2px #000;
+}
+.perso-trafalgar{
+    padding-top: 20px;
+}
+.trafalgar-container h2{
+    font-family:  "Bodoni MT";
+}
+.trafalgar-container h1{
+    font-family:  "Bodoni MT";
+}
   /*------------------------------------Attraction-Générale-----------------------------*/
   .Titre_attraction_gen{
       font-family: VikingFont, serif;

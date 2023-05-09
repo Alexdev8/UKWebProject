@@ -9,6 +9,7 @@ import Viking from "./Viking";
 import Roman from "./Roman";
 import Robinhood from "./Robinhood";
 import CenturyWar from "./CenturyWar";
+import Trafalgar from "./Trafalgar";
 import DefaultLayout from "./DefaultLayout";
 import NoNavbarLayout from "./NoNavbarLayout";
 import Attractions from "./Attractions";
@@ -48,6 +49,7 @@ function App() {
                     <Route path="attractions/viking" element={<Viking/>}/>
                     <Route path="attractions/roman" element={<Roman/>}/>
                     <Route path="attractions/centurywar" element={<CenturyWar/>}/>
+                    <Route path="attractions/trafalgar" element={<Trafalgar/>}/>
                     <Route path="attractions/robinhood" element={<Robinhood/>}/>
                     <Route path="vintage-village" element={<VintageVillage/> }/>
                     <Route path="create-account" element={<CreateAccount/> }/>
