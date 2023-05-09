@@ -209,7 +209,6 @@ function Carousel({images}) {
 /*--------------------------------- ACCORDION------------------------------------*/
 
 function Attraction({attraction}) {
-
     return (
         <div className="attractionList">
             <Link to={attraction.link} id={attraction.name}>
@@ -222,14 +221,12 @@ function Attraction({attraction}) {
                 <div className="attractionDescription">
                     {attraction.description}
                 </div>
-
             </Link>
         </div>
     )
 }
 
 function AccordionBuild({listItems}){
-
     const [isExtended, setIsExtended] = useState(false);
 
     return (
