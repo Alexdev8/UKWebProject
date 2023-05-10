@@ -718,6 +718,12 @@ form[name="order-form"] .form-step.hidden h3 {
 .viking-container h1{
     font-family: VikingFont;
 }
+.button-attraction{
+    background-color: #fff;
+    padding: 0.5%;
+    border: none;
+    border-radius: 10px;
+}
 /*------------------------------------ROMAN------------------------------*/
 .roman-content{
     text-align: center;
@@ -743,8 +749,8 @@ form[name="order-form"] .form-step.hidden h3 {
     text-shadow: 2px 2px 2px #000;
 }
 .perso-roman{
-    padding-top: 25px;
-    margin-right: 50px;
+    padding-top: 2%;
+    margin-right: 80%;
 }
 .roman-container h1{
     font-family: "Times New Roman";
@@ -777,8 +783,8 @@ form[name="order-form"] .form-step.hidden h3 {
     text-shadow: 2px 2px 2px #000;
 }
 .perso-robinhood{
-    padding-top: 25px;
-    margin-right: 50px;
+    padding-top: 2%;
+    margin-right: 80%;
 }
 .robinhood-container h2{
     font-family: "Old English Text MT";
@@ -811,7 +817,8 @@ form[name="order-form"] .form-step.hidden h3 {
     text-shadow: 2px 2px 2px #000;
 }
 .perso-centurywar{
-    padding-top: 20px;
+    padding-top: 2%;
+    margin-right: 80%;
 }
 .centurywar-container h2{
     font-family:  "Old English Text MT";
@@ -844,7 +851,8 @@ form[name="order-form"] .form-step.hidden h3 {
     text-shadow: 2px 2px 2px #000;
 }
 .perso-trafalgar{
-    padding-top: 20px;
+    padding-top: 2%;
+    margin-right: 80%;
 }
 .trafalgar-container h2{
     font-family:  "Bodoni MT";

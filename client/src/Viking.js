@@ -16,6 +16,7 @@ const Viking = () => {
                 <section id="viking-perso">
                     <div className="perso-viking">
                         <img src={require("./resources/persoviking.png")} alt="persoviking"></img>
+                        <p>Halfdan Ragnarsson </p>
                     </div>
                 </section>
 
@@ -34,7 +35,54 @@ const Viking = () => {
                         <p>L'Attraction Viking a été créée pour permettre aux visiteurs de découvrir la culture nordique de manière immersive et interactive. Le parc a travaillé avec des historiens pour recréer les navires, les bâtiments et les objets du quotidien avec</p>
                     </div>
                 </section>
+                <section>
+                    <div className="comment-section" id="comment-section">
+                        <div className="comment">
+                            <p className="comment-text">
+                                "If you love history, art, and poetry, Shadows of Britannia is a must-see.";
+                            </p>
+                            "@ArtsAndPoetryFever";
+                        </div>
+                        <div className="comment">
+                            <p className="comment-text">
+                                "If you love history, art, and poetry, Shadows of Britannia is a must-see.";
+                            </p>
+                            "@ArtsAndPoetryFever";
+                        </div>
+                        <div className="comment">
+                            <p className="comment-text">
+                                "If you love history, art, and poetry, Shadows of Britannia is a must-see.";
+                            </p>
+                            "@ArtsAndPoetryFever";
+                        </div>
+                        <div className="comment">
+                            <p className="comment-text">
+                                "If you love history, art, and poetry, Shadows of Britannia is a must-see.";
+                            </p>
+                            "@ArtsAndPoetryFever";
+                        </div>
+                        <div className="comment">
+                            <p className="comment-text">
+                                "If you love history, art, and poetry, Shadows of Britannia is a must-see.";
+                            </p>
+                            "@ArtsAndPoetryFever";
+                        </div>
+                        <div className="comment">
+                            <p className="comment-text">
+                                "If you love history, art, and poetry, Shadows of Britannia is a must-see.";
+                            </p>
+                            "@ArtsAndPoetryFever";
+                        </div>
+                    </div>
+                    <div className="comment-input">
+                        <form action="submit">
+                            <input className="form-comments" type="text" placeholder="Your feedback"/>
+                            <button className="button-attraction">Submit</button>
+                        </form>
+                    </div>
+                </section>
             </div>
-    )
+
+            )
     }
 export default Viking;
