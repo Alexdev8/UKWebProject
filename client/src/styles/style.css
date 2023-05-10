@@ -938,7 +938,7 @@ form[name="order-form"] .form-step.hidden h3 {
 
 
 .nav-nightshow{
-    margin: 10% 5%;
+    margin: 5%;
     border: black 1px solid;
     box-shadow: 2px 2px 8px black;
     list-style: none;
@@ -1073,7 +1073,7 @@ form[name="order-form"] .form-step.hidden h3 {
 
 .vintage-section{
     padding: 2% 7% 3% 7%;
-    height: 70em;
+    height: 62em;
 }
 
 .vintage-section p{
@@ -1085,7 +1085,13 @@ form[name="order-form"] .form-step.hidden h3 {
     text-align: center;
 }
 
+.room-img .card{
+    padding: 1%;
+}
 
+.room-description{
+    margin: 10%;
+}
 
 .vintage-village-img{
     display: flex;
@@ -1101,9 +1107,68 @@ form[name="order-form"] .form-step.hidden h3 {
     margin: 10%;
 }
 
+/*================================== CROWN HOTEL ==========================================*/
+
+.crown-hotel{
+    padding: 2% 7% 3% 7%;
+    height: 85em;
+}
+
+.crown-hotel p{
+    font-size: 1.1em;
+    text-align: justify;
+}
+
+.crown-hotel h1{
+    text-align: center;
+}
+
+.room-img{
+    display: flex;
+    margin: 2% 0;
+    height: 15em;
+}
 
 
 
+.container-crown-hotel-description{
+    display: grid;
+    grid-template-areas: 'text1 hotel';
+}
+
+.container-crown-hotel-text1{
+    grid-area: text1;
+    width: 80%;
+    margin: 7% 0;
+}
+
+.hotel-img{
+    width: 90%;
+    height: auto;
+    grid-area: hotel;
+}
+
+.container-crown-hotel-text2{
+    width: 100%;
+    margin: 5% 0;
+}
+
+.container-hotel-pictogram{
+    text-align: center;
+}
+
+.hotel-pictogram{
+    display: flex;
+    justify-content: center;
+}
+
+.hotel-pictogram-container{
+    margin: 2%;
+}
+
+.grand-hotel-prices{
+    padding: 0 43%;
+}
 
 
 /*=========================== Create Account =================================*/

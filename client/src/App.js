@@ -20,7 +20,8 @@ import Offers from "./Offers";
 import WorkShopCarousel from "./ParkWorkshop";
 import VintageVillage from "./VintageVillage";
 import {SignIn} from "./Shared_components";
-import CreateAccount from "./register/LogIn";
+import CreateAccount from "./Signin";
+import CrownHotel from "./CrownHotel";
 import PrivacyPolicy from "./PrivacyPolicy";
 
 function App() {
@@ -60,8 +61,10 @@ function App() {
                     <Route path="attractions/trafalgar" element={<Trafalgar/>}/>
                     <Route path="attractions/robinhood" element={<Robinhood/>}/>
                     <Route path="vintage-village" element={<VintageVillage/> }/>
+                    <Route path="the-grand-crown-hotel" element={<CrownHotel/>} />
                     <Route path="create-account" element={<CreateAccount/> }/>
                     <Route path="privacy-policy" element={<PrivacyPolicy/> }/>
+                    <Route path="sign-in" element={<SignIn />} />
                     <Route path="*" element={<NotFound/>}/>
                 </Route>
                 <Route path="/" element={<NoNavbarLayout/>}>
