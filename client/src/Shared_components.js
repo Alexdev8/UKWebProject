@@ -105,7 +105,7 @@ function Menu(){
     ];
 
     const Restaurants = [
-        {key: 0, name: "Vintage restaurant", href: "vintage-restaurant", id: "vintageRestaurant"},
+        {key: 0, name: "Vintage restaurant", href: "vintage-restaurants", id: "vintageRestaurant"},
         {key: 1, name: "All restaurants", href: "restaurants", id: "all"}
     ];
 
