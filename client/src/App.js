@@ -50,7 +50,7 @@ function App() {
             <Header/>
             <Routes>
                 <Route path="/" element={<DefaultLayout/>}>
-                    <Route path="/" element={<Main/>}/>
+                    <Route index element={<Main/>}/>
                     <Route path="attractions" element={<Attractions/>}/>
                     <Route path="shadows-of-britannia" element={<Shadows/> }/>
                     <Route path="workshop" element={<WorkShopCarousel/> }/>

@@ -1,6 +1,6 @@
 import {Card} from "./Shared_components";
 import {cloneElement, useEffect, useRef, useState} from "react";
-import {Navigate, Outlet, redirect, useBeforeUnload, useNavigate} from "react-router-dom";
+import {Navigate, Outlet, redirect, useBeforeUnload, useNavigate, useOutlet} from "react-router-dom";
 import Basket from "./Basket";
 import TicketBooking from "./TicketBooking";
 
@@ -60,6 +60,7 @@ function RestaurantReservation(props) {
 }
 
 function Order({basket, setBasket, addTickets}) {
+    const outlet = useOutlet();
     const navigate = useNavigate();
     const emptyForm = {
         id: 0,
@@ -116,7 +117,11 @@ function Order({basket, setBasket, addTickets}) {
     return (
         <div className="main-container">
             <form name="order-form" onSubmit={(e) => sendForm(e)}>
-                <Outlet context={{formState, basket, setFormInput, setBasket, initForm}}/>
+                {
+                    (outlet !== null) ?
+                        <Outlet context={{formState, basket, setFormInput, setBasket, initForm}}/>
+                        : <Navigate to={"./tickets"}/>
+                }
                 {/*<OrderFormSection id="hotel-reservation" index={2} fct={fcts} formState={formState} setFormInput={setFormInput} title="Book your stay" content={<HotelReservation/>}/>*/}
                 {/*<OrderFormSection id="restaurant-reservation" index={3} fct={fcts} formState={formState} setFormInput={setFormInput} title="Restaurants" content={<RestaurantReservation/>}/>*/}
             </form>
