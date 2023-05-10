@@ -1,45 +1,45 @@
 import {Card} from "./Shared_components"
 import {useState} from "react";
 import {Link} from "react-router-dom";
-const vintageRestaurantsIMG = [
+const RestaurantsIMG = [
     {
         key: 0,
-        id: "romanRestaurant",
-        image: "https://media.tacdn.com/media/attractions-splice-spp-674x446/06/6f/4a/8d.jpg",
-        title: "Veni Vidi Gustavi",
+        id: "snacks",
+        image: "https://www.materiel-restauration-pro.com/wp-content/uploads/2020/11/Remorques-pour-snack-scaled.jpeg",
+        title: "Snacks",
         caption: ""
     },
     {
         key: 1,
-        id: "vikingRestaurant",
-        image: "https://visitorsguide.is/wp-content/uploads/2017/10/The-viking-village-restaurant-Iceland-1024x683.jpg",
-        title: "Valhalla's Feast",
+        id: "pubs",
+        image: "https://ichef.bbci.co.uk/news/976/cpsprodpb/2C19/production/_125398211_blackhorse.jpg",
+        title: "Pubs",
         caption: ""
     },
     {
         key: 2,
-        id: "medievalRestaurant",
-        image: "https://apps.tourisme-alsace.info/photos/ribeau/photos/229001097_1.jpeg",
-        title: "The King's Table",
+        id: "iceCream",
+        image: "https://allofoodtruck.fr/wp-content/uploads/2020/05/food-truck-marketing-lancement-produit.jpg",
+        title: "Ice Cream",
         caption: ""
     },
     {
         key: 3,
-        id: "XIXCenturiesRestaurant",
+        id: "vintageRestaurants",
         image: "https://auberge-auris.fr/wp-content/uploads/2020/02/auberge-de-la-foret-accueil01.jpg",
-        title: "Sherwood Hideaway",
+        title: "Restaurants",
         caption: ""
     }
 
 ];
 
-function VintageRestaurantsImg({img}){
+function RestaurantsImg({img}){
 
-    const [selectedCard, setSelectedCard] = useState("romanRestaurant");
+    const [selectedCard, setSelectedCard] = useState("snacks");
 
     return(
         <section className="content-section vintage-section">
-            <h1>The Vintages Restaurants </h1>
+            <h1>The Differents Restaurants </h1>
             <p>All around our historical park you can experience life in different eras of history. Explore our Roman village, where you can find the wonderfull Veni Vidi Gustavi. Take a stroll through our Viking village, where you can see skilled craftsmen at work and have a meal at the Valhalla's Feast. Step back in time to the Hundred Years War and experience life in a medieval village, where you can eat at the king's table. Finally, you can visit our village around the Sherwood forest and have a good time at the Sherwood's Hideaway.</p>
             <div id="restaurants">
                 <div className="vintage-restaurants-img">
@@ -48,9 +48,9 @@ function VintageRestaurantsImg({img}){
                     ))}
                 </div>
                 <div className="vintage-restaurants-description">
-                    {selectedCard === "romanRestaurant" && <p className="card-vintage-restaurant">
+                    {selectedCard === "snacks" && <p className="card-vintage-restaurant">
 
-                        <h1> Veni Vidi Gustavi </h1> A unique dining experience that transports you back to the grandeur of ancient Rome. Nestled in the heart of the city, our restaurant captures the essence of Roman culture, offering a gastronomic journey through time.
+                        <h1> Snacks </h1> A unique dining experience that transports you back to the grandeur of ancient Rome. Nestled in the heart of the city, our restaurant captures the essence of Roman culture, offering a gastronomic journey through time.
 
                         As you step inside, you'll be greeted by opulent marble columns, intricate mosaics, and tasteful frescoes depicting scenes from Roman mythology.
 
@@ -67,9 +67,9 @@ function VintageRestaurantsImg({img}){
                         At "Veni Vidi Gustavi," we not only aim to provide an exceptional dining experience but also to transport you to the grandeur and decadence of ancient Rome. Whether you're celebrating a special occasion or simply seeking a unique culinary adventure, our restaurant offers a timeless journey through Roman gastronomy. Join us and let your taste buds travel back in time to the glory of the Roman Empire.
                     </p>
                     }
-                    {selectedCard === "vikingRestaurant" && <p className="card-vintage-restaurant">
+                    {selectedCard === "pubs" && <p className="card-vintage-restaurant">
 
-                        <h1>Valhalla's Feast</h1> Welcome to "Valhalla's Feast," a dining experience that takes you on a thrilling journey to the heart of Viking culture. Nestled amidst rugged landscapes, our restaurant brings the essence of the ancient Norse world to life, offering a feast fit for a warrior.
+                        <h1> Pubs </h1> Welcome to "Valhalla's Feast," a dining experience that takes you on a thrilling journey to the heart of Viking culture. Nestled amidst rugged landscapes, our restaurant brings the essence of the ancient Norse world to life, offering a feast fit for a warrior.
 
                         As you step through our doors, you'll be transported to a Viking longhouse adorned with intricately carved wooden beams and shields proudly displayed on the walls. The flickering light of torches creates an atmosphere that evokes the adventurous spirit of the Viking era.
 
@@ -86,9 +86,9 @@ function VintageRestaurantsImg({img}){
                         Whether you're a history enthusiast, a lover of bold flavors, or simply seeking an unforgettable dining experience, "Valhalla's Feast" welcomes you to embark on a culinary voyage to the age of the Vikings. Join us and let the spirit of the Norse warriors guide your senses through a night of feasting, revelry, and tales of yore.
                     </p>
                     }
-                    {selectedCard === "medievalRestaurant" && <p className="card-vintage-restaurant">
+                    {selectedCard === "iceCream" && <p className="card-vintage-restaurant">
 
-                        <h1> The King's Table </h1>Welcome to "The King's Table," a culinary journey that transports you to the enchanting world of medieval England. Located in the heart of the kingdom, our restaurant captures the essence of the Middle Ages, offering a regal dining experience that would befit royalty.
+                        <h1> Ice Cream </h1>Welcome to "The King's Table," a culinary journey that transports you to the enchanting world of medieval England. Located in the heart of the kingdom, our restaurant captures the essence of the Middle Ages, offering a regal dining experience that would befit royalty.
 
                         Step into our establishment and be greeted by the ambiance of a grand medieval hall. Massive stone walls adorned with tapestries and suits of armor create an atmosphere of noble splendor. The flickering light of candlelit chandeliers casts a warm glow, setting the stage for an unforgettable dining experience.
 
@@ -105,9 +105,9 @@ function VintageRestaurantsImg({img}){
                         Whether you seek a historical adventure, a romantic evening, or simply a unique dining experience, "The King's Table" welcomes you to indulge in the splendor and flavors of medieval England. Join us and dine like royalty as you relish the traditions and tastes of a bygone era.
                     </p>
                     }
-                    {selectedCard === "XIXCenturiesRestaurant" && <p className="card-vintage-restaurant">
+                    {selectedCard === "vintageRestaurants" && <p className="card-vintage-restaurant">
 
-                        <h1> Sherwood's Hideaway </h1> A charming and rustic dining experience that takes you deep into the enchanting world of Robin Hood and his Merry Men. Tucked away amidst the lush greenery of Sherwood Forest, our restaurant captures the spirit of adventure, camaraderie, and noble cause.
+                        <h1> Vintage Restaurants </h1> A charming and rustic dining experience that takes you deep into the enchanting world of Robin Hood and his Merry Men. Tucked away amidst the lush greenery of Sherwood Forest, our restaurant captures the spirit of adventure, camaraderie, and noble cause.
 
                         Step into our establishment and feel instantly transported to the heart of Sherwood. The interior exudes the charm of an old English tavern, with rough-hewn wooden beams, flickering candlelight, and a warm hearth that crackles with a comforting fire. The walls are adorned with bows, arrows, and artifacts reminiscent of Robin Hood's legendary feats.
 
@@ -129,12 +129,12 @@ function VintageRestaurantsImg({img}){
     )
 }
 
-function VintageRestaurants(){
+function Restaurants(){
     return(
         <div className="main-container mt-main parallax-layer1">
-            <VintageRestaurantsImg img={vintageRestaurantsIMG}/>
+            <RestaurantsImg img={RestaurantsIMG}/>
         </div>
     )
 }
 
-export default VintageRestaurants;
+export default Restaurants;
