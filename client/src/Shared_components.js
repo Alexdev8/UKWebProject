@@ -99,7 +99,7 @@ function Menu(){
     ];
 
     const Accommodations = [
-        {key: 0, name: "The Grand Crown Hotel", href: "hotel", id: "crownHotel"},
+        {key: 0, name: "The Grand Crown Hotel", href: "the-grand-crown-hotel", id: "crownHotel"},
         {key: 1, name: "Hotel restaurant", href: "hotel-restaurant", id: "hotelRestaurant"},
         {key: 2, name: "Cottages/Bed and breakfasts", href: "cottage", id: "cottage"}
     ];
@@ -167,6 +167,20 @@ function Pictogram({pictograms}){
                 <div className="pictogram-container">
                     <span className={pictogram.class}>{pictogram.name}</span>
                     <p>{pictogram.text}</p>
+                </div>
+            ))}
+        </div>
+    )
+}
+
+function Functionalities({items}){
+    return(
+        <div className="hotel-pictogram">
+            {items.map((item) => (
+                <div className="hotel-pictogram-container">
+                    <span className="material-symbols-outlined">{item.id}</span>
+                    <br/>
+                    {item.name}
                 </div>
             ))}
         </div>
@@ -485,4 +499,4 @@ function Footer() {
     )
 }
 
-export {Header, Menu, Footer, Carousel, AccordionBuild,AccordionBuildPrivacyPolicy, Card, SignIn, Calendar, Pictogram};
+export {Header, Menu, Footer, Carousel, AccordionBuild,AccordionBuildPrivacyPolicy, Card, SignIn, Calendar, Pictogram, Functionalities};

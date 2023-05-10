@@ -8,7 +8,6 @@ const vintageVillageIMG = [
         image: "https://congres.puydufou.com/sites/default/files/styles/max_width_1200/public/2020-09/carrousel_3_recadre_5.jpg?itok=kesu_QIK",
         title: "The Roman Village",
         caption: ""
-        //In the Roman village, you'll see the impressive architecture and engineering feats that defined this civilization. Marvel at the grandeur of the aqueduct, imagine yourself as a gladiator in the arena, and explore the marketplace where merchants sell exotic goods from all corners of the empire.
     },
     {
         key: 1,
@@ -34,7 +33,7 @@ const vintageVillageIMG = [
 
 ];
 
-function VintageVillageImg(){
+function VintageVillageImg({img}){
 
     const [selectedCard, setSelectedCard] = useState("romanVillage");
 
@@ -44,7 +43,7 @@ function VintageVillageImg(){
             <p>Welcome to our historical park where you can experience life in different eras of history. Explore our Roman village, where you can wander through streets lined with ancient buildings and witness daily life in a bustling Roman town. Take a stroll through our Viking village, where you can see skilled craftsmen at work and witness battles between fierce warriors. Step back in time to the Hundred Years War and experience life in a medieval village, where you can see knights in shining armor and watch as archers defend their castle walls. Finally, visit our village from the XIXe centuries and witness the daily life of sailors and the intense naval battles that shaped the course of history. With so much to discover and explore, our historical park is a must-visit for anyone interested in history and the fascinating cultures and events that have shaped our world.</p>
             <div id="village">
                 <div className="vintage-village-img">
-                    {vintageVillageIMG.map((card) => (
+                    {img.map((card) => (
                         <Card key={card.key} selected={selectedCard === card.id} card={card} onClick={(k,i) => setSelectedCard(i)}/>
                     ))}
                 </div>
@@ -109,7 +108,7 @@ function VintageVillageImg(){
 function VintageVillage(){
     return(
         <div className="main-container mt-main parallax-layer1">
-            <VintageVillageImg/>
+            <VintageVillageImg img={vintageVillageIMG}/>
         </div>
     )
 }
