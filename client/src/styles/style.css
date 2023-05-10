@@ -1177,7 +1177,25 @@ form[name="order-form"] .form-step.hidden h3 {
 .grand-hotel-prices{
     padding: 0 43%;
 }
+/*----------------Vintage Restaurant--------------------*/
 
+.vintage-restaurants-description h1{
+    text-align: center;
+}
+
+.vintage-restaurants-img{
+    display: flex;
+    margin: 2% 0;
+    height: 15em;
+}
+
+.vintage-restaurants-img .card{
+    padding: 1%;
+}
+
+.vintage-restaurants-description{
+    margin: 10%;
+}
 
 /*=========================== Create Account =================================*/
 
