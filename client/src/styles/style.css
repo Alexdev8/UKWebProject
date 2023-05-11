@@ -157,7 +157,7 @@ header {
     user-select: none;
 }
 
-.icon-btn:hover, button:hover {
+.icon-btn:hover {
     transform: scale(1.1);
     cursor: pointer;
 }
@@ -1227,7 +1227,17 @@ form[name="order-form"] .form-step.hidden h3 {
 
 .data-selector{
     width: 10em;
+    height: 3em;
+    border-radius: 20px;
+    outline: none;
+    border: 2px solid lightpink;
+    opacity: 96%;
+    transition: border ease-in-out .3s;
+    text-align: center;
+
 }
+
+
 
 .name-container{
     display: flex;
@@ -1265,12 +1275,24 @@ form[name="order-form"] .form-step.hidden h3 {
     margin: 2%;
 }
 
-.button{
-    padding: 2%;
+.button-create-account {
+    padding: 1em;
     border: none;
-    border-radius: 10px;
-    box-shadow: 2px 2px 8px black;
+    border-radius: 20px;
+    background-color: rgb(252, 212, 219);
+    transition: all ease-in-out .3s;
 }
+
+.button-create-account:hover{
+    transition: all ease-in-out .2s;
+    background-color: lightpink;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+
+
+
 
 /* ======================================= Not Found ======================================= */
 .not-found-img {

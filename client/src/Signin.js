@@ -98,19 +98,28 @@ const password = [
     {
         id: "password2",
         type: "password",
-        title: "Verify Password"
+        title: "Password Confirmation"
     }
 ]
 
 
 function AccountInformation({months, name, email}){
 
-    const checkPassword = () => {
+    const checkData = () => {
+        const email = document.getElementById("email").value;
+        const emailConfirmation = document.getElementById("email2").value;
+
         const password = document.getElementById("password").value;
         const passwordConfirmation = document.getElementById("password2").value;
 
+
+        if (email != emailConfirmation){
+            const emailError = document.getElementsByClassName("email-error");
+            emailError.innerText = "The email addresses do not match. Please check and try again.";
+        }
         if (password != passwordConfirmation){
-            alert("The passwords do not match. Please check and try again.")
+            const passwordError = document.getElementsByClassName("password-error");
+            passwordError.innerText = "The passwords do not match. Please check and try again.";
         }
     }
 
@@ -177,9 +186,10 @@ function AccountInformation({months, name, email}){
                             <div key={email.id} className="email-container-input">
                                 <label htmlFor={email.id}>{email.title}</label>
                                 <br/>
-                                <input type="email" className="data-selector email-input" placeholder={email.example} name={email.id} />
+                                <input type="email" id={email.id} className="data-selector email-input" placeholder={email.example} name={email.id} />
                             </div>
                         ))}
+                        <div className="email-error"></div>
                     </div>
                 </div>
                 <div className="password-data-container">
@@ -187,19 +197,19 @@ function AccountInformation({months, name, email}){
                             <div className="password-container-input">
                                 <label htmlFor={password.id}>{password.title}</label>
                                 <br/>
-                                <input type="password" className="data-selector password-input" placeholder={password.example} name={password.id}/>
+                                <input type="password" id={password.id} className="data-selector password-input" placeholder={password.example} name={password.id}/>
 
                             </div>
                         ))}
+                    <div className="password-error"></div>
                 </div>
             </div>
-            <hr/>
-            <h4 className="title-section">Newsletter</h4>
             <div className="newsletter-container">
                 <input type="checkbox" name="checkbox-input" className="checkbox-input"/>
                 <label htmlFor="checkbox-input">Subscribe to our newsletter</label>
             </div>
-            <button className="button">Create account</button>
+            <hr/>
+            <button className="button-create-account">Create account</button>
         </form>
     )
 }
