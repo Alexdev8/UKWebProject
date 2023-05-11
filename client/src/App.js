@@ -25,6 +25,7 @@ import Restaurant from "./Restaurant";
 import CreateAccount from "./Signin";
 import CrownHotel from "./CrownHotel";
 import PrivacyPolicy from "./PrivacyPolicy";
+import Account from "./Account";
 
 function App() {
     const [basket, setBasket] = useState({
@@ -54,9 +55,9 @@ function App() {
             <Routes>
                 <Route path="/" element={<DefaultLayout/>}>
                     <Route index element={<Main/>}/>
-                    <Route path="attractions" element={<Attractions/>}/>
                     <Route path="shadows-of-britannia" element={<Shadows/> }/>
                     <Route path="workshop" element={<WorkShopCarousel/> }/>
+                    <Route path="attractions" element={<Attractions/>}/>
                     <Route path="attractions/viking" element={<Viking/>}/>
                     <Route path="attractions/roman" element={<Roman/>}/>
                     <Route path="attractions/centurywar" element={<CenturyWar/>}/>
@@ -66,9 +67,10 @@ function App() {
                     <Route path="vintage-restaurants" element={<VintageRestaurants/> }/>
                     <Route path="restaurants" element={<Restaurant/> }/>
                     <Route path="the-grand-crown-hotel" element={<CrownHotel/>} />
-                    <Route path="create-account" element={<CreateAccount/> }/>
+                    <Route path="account" element={<Account/>}/>
+                    <Route path="account/register" element={<CreateAccount/>}/>
+                    <Route path="account/login" element={<SignIn/>}/>
                     <Route path="privacy-policy" element={<PrivacyPolicy/> }/>
-                    <Route path="sign-in" element={<SignIn />} />
                     <Route path="*" element={<NotFound/>}/>
                 </Route>
                 <Route path="/" element={<NoNavbarLayout/>}>

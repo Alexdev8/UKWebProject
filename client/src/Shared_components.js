@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
+import React, {useEffect, useRef, useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
 import './styles/bootstrap.css';
 
 
@@ -53,23 +53,61 @@ function SignIn(){
     )
 }
 
+function AccountBtn() {
+    const [hidden, setHidden] = useState(true);
+    const popup = useRef(null);
+    const navigate = useNavigate();
+
+    function handleClickOutside(event) {
+        if (popup.current && !popup.current.contains(event.target)) {
+            setHidden(true);
+        }
+    }
+
+    useEffect(() => {
+        // Bind the event listener
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            // Unbind the event listener on clean up
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
+    return (
+        <div className="account-btn" ref={popup}>
+            <span className="icon-btn material-symbols-outlined" onClick={() => (hidden) ? setHidden(false) : setHidden(true)} tabIndex="0">
+            person
+            </span>
+            <div className={(hidden) ? "hidden" : ""} id="account-btn-popup">
+                <div>
+                    <button className="button" onClick={() => navigate("account/login")}>Log in</button>
+                    <button className="button" onClick={() => navigate("account/register")}>Create an account</button>
+                </div>
+                {/*<div>*/}
+                {/*    <button className="button">Profile</button>*/}
+                {/*    <button className="button">Log out</button>*/}
+                {/*</div>*/}
+            </div>
+        </div>
+    )
+}
 
 function Button(){
     const buttons = [
         {key: 0, name: "dark_mode", id: "dark_mode-btn", action: "alert('Dark mode on')"},
         {key: 1, name: "settings", id: "settings-btn", action: "window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'"},
-        {key: 2, name: "person", id: "account-btn", action: "alert('account')"}
     ]
 
     return(
         <div className="header-side" id="right-side">
-            <SearchBar />
+            <SearchBar/>
             {buttons.map((button) => (
                 <span key={button.key} className="icon-btn material-symbols-outlined" id={button.id}
                       onClick={new Function("return " + button.action)} tabIndex="0">
-                            {button.name}
+                    {button.name}
                 </span>
             ))}
+            <AccountBtn/>
         </div>
     )
 }

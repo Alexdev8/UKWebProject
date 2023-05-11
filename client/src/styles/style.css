@@ -185,6 +185,69 @@ header {
     transform: rotate(45deg)
 }
 
+.account-btn {
+    position: relative;
+    margin-left: 1em;
+}
+
+#account-btn-popup {
+    transition: all 0.3s;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    right: -0.7em;
+    top: 2.7em;
+    width: 10em;
+    height: fit-content;
+    transform-origin: bottom center;
+    background-color: #a29afc;
+    border-radius: 1em;
+    padding: 1em 0;
+    margin-top: 0.5em;
+    opacity: 1;
+    -webkit-filter: drop-shadow(2px 2px 4px rgb(26,26,25));
+    filter : drop-shadow(2px 2px 4px rgb(26,26,25));
+}
+
+#account-btn-popup.hidden {
+    transition: all 0.3s;
+    visibility: hidden;
+    opacity: 0;
+}
+
+#account-btn-popup div {
+    width: 100%;
+}
+
+#account-btn-popup div::before {
+    content: '';
+    position: absolute;
+    right: 1.1em;
+    top: -0.9em;
+    opacity: 1;
+    border-top: none;
+    border-right: 15px solid transparent;
+    border-left: 15px solid transparent;
+    border-bottom: 15px solid #a29afc;
+}
+
+#account-btn-popup .button {
+    cursor: pointer;
+    width: 100%;
+    padding: 1em;
+    background-color: white;
+    border-top: 1px solid lightgrey;
+    border-bottom: none;
+    border-right: none;
+    border-left: none;
+}
+
+#account-btn-popup .button:hover {
+    background-color: lightgrey;
+}
+
 /*------------------------------------- MENU -------------------------------------------------*/
 nav{
     background-color: #fff;
@@ -226,10 +289,6 @@ nav ul li a {
 nav ul li a:hover{
     transform: scale(1.2);
 }
-
-
-
-
 
 .shadowsOfBritannia{
     grid-area: shadows;
@@ -454,6 +513,7 @@ form[name="order-form"] .form-step.hidden {
     margin: 0;
     padding: 0;
     transform: translateX(600%);
+    visibility: hidden;
 }
 
 form[name="order-form"] .form-step::before {
