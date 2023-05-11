@@ -6,10 +6,12 @@ const emailData = [
     {
         id: "email",
         title: "Email Address",
+        type: "email",
         example: "baker.justin@gmail.com"
     },
     {
         id: "email2",
+        type: "email",
         title: "Email Address Confirmation",
         example: "baker.justin@gmail.com"
     },
@@ -186,7 +188,7 @@ function AccountInformation({months, name, email}){
                             <div key={email.id} className="email-container-input">
                                 <label htmlFor={email.id}>{email.title}</label>
                                 <br/>
-                                <input type="email" id={email.id} className="data-selector email-input" placeholder={email.example} name={email.id} />
+                                <input type={email.type} id={email.id} className="data-selector email-input" placeholder={email.example} name={email.id} />
                             </div>
                         ))}
                         <div className="email-error"></div>
@@ -209,8 +211,34 @@ function AccountInformation({months, name, email}){
                 <label htmlFor="checkbox-input">Subscribe to our newsletter</label>
             </div>
             <hr/>
-            <button className="button-create-account">Create account</button>
+            <button className="button create-account">Create account</button>
         </form>
+    )
+}
+
+function LogIn(){
+    return(
+        <div className="content-section log-in">
+            <h1 className="log-in-account">Log In</h1>
+            <div className="log-in-container">
+                <div className="log-in-item">
+                    <label htmlFor="email">Email</label>
+                    <br/>
+                    <input type="email"  id="email" placeholder="Enter your email..." className="data-selector log-in-selector"/>
+                </div>
+                <div className="log-in-item">
+                    <label htmlFor="password">Password</label>
+                    <br/>
+                    <input type="password" id="password" placeholder="Enter your password..." className="data-selector log-in-selector"/>
+                </div>
+            </div>
+            <div className="log-in-button-container">
+                <button className="button log-in-button">Log In</button>
+                <br/>
+                <Link to="/account/sign-in">I forgot my password</Link>
+            </div>
+            <button className="button create-account-login-button">Create Account</button>
+        </div>
     )
 }
 
@@ -223,5 +251,7 @@ function SignIn(){
     )
 }
 
-export default SignIn;
+
+
+export {SignIn, LogIn};
 

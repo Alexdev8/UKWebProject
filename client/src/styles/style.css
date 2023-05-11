@@ -1073,7 +1073,7 @@ form[name="order-form"] .form-step.hidden h3 {
 /*====================================== WORKSHOP =========================================*/
 
 .work-shop{
-    margin: 5% 15%;
+    margin: 5% 10%;
 }
 
 .work-shop-text{
@@ -1335,7 +1335,7 @@ form[name="order-form"] .form-step.hidden h3 {
     margin: 2%;
 }
 
-.button-create-account {
+.button {
     padding: 1em;
     border: none;
     border-radius: 20px;
@@ -1343,16 +1343,44 @@ form[name="order-form"] .form-step.hidden h3 {
     transition: all ease-in-out .3s;
 }
 
-.button-create-account:hover{
+.button:hover{
     transition: all ease-in-out .2s;
     background-color: lightpink;
     transform: scale(1.05);
     cursor: pointer;
 }
 
+/*====================================== LOGIN ==================================*/
 
+.log-in{
+    margin: 5% 25%;
+}
 
+.log-in-container{
+    display: flex;
+    justify-content: center;
+}
 
+.log-in-item{
+    margin: 0 3%;
+}
+
+.log-in-selector{
+    width: 15em;
+}
+
+.log-in-button-container{
+    margin: 2% 0 4%;
+}
+
+.log-in-button{
+    width: 13em;
+    margin: 3% 3% 0;
+}
+
+.create-account-login-button{
+    width: 13em;
+}
 
 /* ======================================= Not Found ======================================= */
 .not-found-img {

@@ -19,10 +19,9 @@ import TicketBooking from "./TicketBooking";
 import Offers from "./Offers";
 import WorkShopCarousel from "./ParkWorkshop";
 import VintageVillage from "./VintageVillage";
-import SignIn from "./Signin";
+import {SignIn, LogIn} from "./Signin";
 import VintageRestaurants from "./VintageRestaurants";
 import Restaurant from "./Restaurant";
-import CreateAccount from "./Signin";
 import CrownHotel from "./CrownHotel";
 import PrivacyPolicy from "./PrivacyPolicy";
 import Account from "./Account";
@@ -68,8 +67,8 @@ function App() {
                     <Route path="restaurants" element={<Restaurant/> }/>
                     <Route path="the-grand-crown-hotel" element={<CrownHotel/>} />
                     <Route path="account" element={<Account/>}/>
-                    <Route path="account/register" element={<CreateAccount/>}/>
-                    <Route path="account/login" element={<SignIn/>}/>
+                    <Route path="account/signin" element={<SignIn/>}/>
+                    <Route path="account/login" element={<LogIn />} />
                     <Route path="privacy-policy" element={<PrivacyPolicy/> }/>
                     <Route path="*" element={<NotFound/>}/>
                 </Route>
