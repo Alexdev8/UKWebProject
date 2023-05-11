@@ -14,8 +14,9 @@ const CenturyWar = () => {
             </section>
 
             <section id="centurywar-perso">
-                <div className="centurywar-viking">
+                <div className="perso-centurywar">
                     <img src={require("./resources/perso-centurywar.png")} alt="persocenturywar"></img>
+                    <p>Catherine (Henry IV Daughter) </p>
                 </div>
             </section>
 
@@ -32,6 +33,52 @@ const CenturyWar = () => {
                 <div className="centurywar-container">
                     <h2>Histoire</h2>
                     <p>L'Attraction Viking a été créée pour permettre aux visiteurs de découvrir la culture nordique de manière immersive et interactive. Le parc a travaillé avec des historiens pour recréer les navires, les bâtiments et les objets du quotidien avec</p>
+                </div>
+            </section>
+            <section>
+                <div className="comment-section" id="comment-section">
+                    <div className="comment">
+                        <p className="comment-text">
+                            "If you love history, art, and poetry, Shadows of Britannia is a must-see.";
+                        </p>
+                        "@ArtsAndPoetryFever";
+                    </div>
+                    <div className="comment">
+                        <p className="comment-text">
+                            "If you love history, art, and poetry, Shadows of Britannia is a must-see.";
+                        </p>
+                        "@ArtsAndPoetryFever";
+                    </div>
+                    <div className="comment">
+                        <p className="comment-text">
+                            "If you love history, art, and poetry, Shadows of Britannia is a must-see.";
+                        </p>
+                        "@ArtsAndPoetryFever";
+                    </div>
+                    <div className="comment">
+                        <p className="comment-text">
+                            "If you love history, art, and poetry, Shadows of Britannia is a must-see.";
+                        </p>
+                        "@ArtsAndPoetryFever";
+                    </div>
+                    <div className="comment">
+                        <p className="comment-text">
+                            "If you love history, art, and poetry, Shadows of Britannia is a must-see.";
+                        </p>
+                        "@ArtsAndPoetryFever";
+                    </div>
+                    <div className="comment">
+                        <p className="comment-text">
+                            "If you love history, art, and poetry, Shadows of Britannia is a must-see.";
+                        </p>
+                        "@ArtsAndPoetryFever";
+                    </div>
+                </div>
+                <div className="comment-input">
+                    <form action="submit">
+                        <input className="form-comments" type="text" placeholder="Your feedback"/>
+                        <button className="button-attraction">Submit</button>
+                    </form>
                 </div>
             </section>
         </div>

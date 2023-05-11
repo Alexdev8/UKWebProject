@@ -20,6 +20,8 @@ import Offers from "./Offers";
 import WorkShopCarousel from "./ParkWorkshop";
 import VintageVillage from "./VintageVillage";
 import SignIn from "./Signin";
+import VintageRestaurants from "./VintageRestaurants";
+import Restaurant from "./Restaurant";
 import CreateAccount from "./Signin";
 import CrownHotel from "./CrownHotel";
 import PrivacyPolicy from "./PrivacyPolicy";
@@ -61,6 +63,8 @@ function App() {
                     <Route path="attractions/trafalgar" element={<Trafalgar/>}/>
                     <Route path="attractions/robinhood" element={<Robinhood/>}/>
                     <Route path="vintage-village" element={<VintageVillage/> }/>
+                    <Route path="vintage-restaurants" element={<VintageRestaurants/> }/>
+                    <Route path="restaurants" element={<Restaurant/> }/>
                     <Route path="the-grand-crown-hotel" element={<CrownHotel/>} />
                     <Route path="create-account" element={<CreateAccount/> }/>
                     <Route path="privacy-policy" element={<PrivacyPolicy/> }/>
