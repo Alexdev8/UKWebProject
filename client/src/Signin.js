@@ -2,74 +2,216 @@ import './styles/style.css';
 import {Link} from "react-router-dom";
 import {useState} from "react";
 
-const CreateAccountInformation = [
+const emailData = [
+    {
+        id: "email",
+        title: "Email Address",
+        example: "baker.justin@gmail.com"
+    },
+    {
+        id: "email2",
+        title: "Email Address Confirmation",
+        example: "baker.justin@gmail.com"
+    },
+    {
+        id: "phone-number",
+        type: "phone",
+        title: "Phone number",
+        example: "+33 6 34 17 39 43"
+    }
+]
+
+const birthdateMonth = [
+
+    {
+        id: 0,
+        month: "January"
+    },
+    {
+        id: 1,
+        month: "February"
+    },
+    {
+        id: 2,
+        month: "March"
+    },
+    {
+        id: 3,
+        month: "April"
+    },
+    {
+        id: 4,
+        month: "May"
+    },
+    {
+        id: 5,
+        month: "June"
+    },
+    {
+        id: 6,
+        month: "July"
+    },
+    {
+        id: 7,
+        month: "August"
+    },
+    {
+        id: 8,
+        month: "September"
+    },
+    {
+        id: 9,
+        month: "October"
+    },
+    {
+        id: 10,
+        month: "November"
+    },
+    {
+        id: 11,
+        month: "December"
+    }
+]
+
+const nameData = [
     {
         id: "firstname",
         type: "text",
-        placeholder: "First Name"
+        title: "First Name",
+        example: "Justin"
     },
     {
         id: "lastname",
         type: "text",
-        placeholder: "Last Name"
+        title: "Last Name",
+        example: "Baker"
+    }
+]
+
+const password = [
+
+    {
+        id: "password",
+        type: "password",
+        title: "Password"
     },
     {
-        id: "email",
-        type: "email",
-        placeholder: "Email Address"
-    },
-    {
-        id: "email2",
-        type: "email",
-        placeholder: "Verify Email Address"
-    },
-    {
-        id: "birthdate",
-        type: "date",
-        placeholder: "Birthdate",
+        id: "password2",
+        type: "password",
+        title: "Verify Password"
     }
 ]
 
 
-function AccountInformation({infos}){
+function AccountInformation({months, name, email}){
 
-    const checkEmail = () => {
-        const email = document.getElementById("email").value;
-        const emailConfirmation = document.getElementById("email2").value;
+    const checkPassword = () => {
+        const password = document.getElementById("password").value;
+        const passwordConfirmation = document.getElementById("password2").value;
 
-        if (email != emailConfirmation){
-            alert("The email addresses do not match. Please check and try again.")
+        if (password != passwordConfirmation){
+            alert("The passwords do not match. Please check and try again.")
         }
     }
 
     return(
-        <div className="accountInformation">
-            <h1 className="createAccount">Create Account</h1>
-            {infos.map((info) => (
-                <div>
-                    {info.placeholder}
+        <form className="content-section create-account-container">
+            <h1 className="create-account">Create Account</h1>
+            <h4 className="title-section">Birthdate</h4>
+            <div className="container-birthdate">
+                <div className="day-container">
+                    <label id="birthdate-title" htmlFor="birthdate-day">Day</label>
                     <br/>
-                    <label htmlFor={info.id} key={info.id}>
-                        <input
-                            type={info.type}
-                            id={info.id}
-                            placeholder={info.placeholder}
-                        />
-                    </label>
+                    <select name="birthdate-day" className="data-selector">
+                        <option value="day">Select a day</option>
+                        {Array.from({length: 31}, (_,index) =>index + 1).map(day =>(
+                            <option className="birthdate-option" key={day} value={day}>{day}</option>
+                        )) }
+                    </select>
                 </div>
-            ))}
-            <button onClick={checkEmail}>Submit</button>
-        </div>
+                <div className="month-container">
+                    <label id="birthdate-title" htmlFor="birthdate-month">Month</label>
+                    <br/>
+                    <select name="birthdate-month" className="data-selector">
+                        <option value="month">Select a month</option>
+                        {months.map((month) => (
+                            <option key={month.id} value={month.month}>{month.month}</option>
+                        ))}
+                    </select>
+                </div>
+                <div className="year-container">
+                    <label id="birthdate-title" htmlFor="birthdate-year">Year</label>
+                    <br/>
+                    <select name="birthdate-year" className="data-selector">
+                        <option value="year">Select a year</option>
+                        {Array.from({length: new Date().getFullYear() - 1949}, (_,i) => i + 1950).map((year) => (
+                            <option key={year} value={year}>{year}</option>
+                        ))}
+                    </select>
+                </div>
+            </div>
+            <hr/>
+            <h4 className="title-section">Your details</h4>
+
+            <div className="container-personnel-data">
+                <div className="basic-personnel-data">
+                    <label htmlFor="title">Title</label>
+                    <br/>
+                    <select name="title" className="data-selector">
+                        <option value="title">Title</option>
+                        <option value="mr">Mr</option>
+                        <option value="mrs">Mrs</option>
+                        <option value="ms">Ms</option>
+                    </select>
+                    <div className="name-container">
+                        {name.map((name) => (
+                            <div key={name.id} className="name-container-input">
+                                <label htmlFor={name.id}>{name.title}</label>
+                                <br/>
+                                <input name={name.id} type="text" className="data-selector name-input" placeholder={"eg: " + name.example}/>
+                            </div>
+                            ))}
+                    </div>
+                    <div className="email-container">
+                        {email.map((email) => (
+                            <div key={email.id} className="email-container-input">
+                                <label htmlFor={email.id}>{email.title}</label>
+                                <br/>
+                                <input type="email" className="data-selector email-input" placeholder={email.example} name={email.id} />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className="password-data-container">
+                        {password.map((password) => (
+                            <div className="password-container-input">
+                                <label htmlFor={password.id}>{password.title}</label>
+                                <br/>
+                                <input type="password" className="data-selector password-input" placeholder={password.example} name={password.id}/>
+
+                            </div>
+                        ))}
+                </div>
+            </div>
+            <hr/>
+            <h4 className="title-section">Newsletter</h4>
+            <div className="newsletter-container">
+                <input type="checkbox" name="checkbox-input" className="checkbox-input"/>
+                <label htmlFor="checkbox-input">Subscribe to our newsletter</label>
+            </div>
+            <button className="button">Create account</button>
+        </form>
     )
 }
 
-function CreateAccount(){
+
+function SignIn(){
     return(
         <section>
-            <AccountInformation infos={CreateAccountInformation} />
+            <AccountInformation months={birthdateMonth} name={nameData} email={emailData}/>
         </section>
     )
 }
 
-export default CreateAccount;
+export default SignIn;
 

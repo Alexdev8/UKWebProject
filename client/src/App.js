@@ -19,7 +19,7 @@ import TicketBooking from "./TicketBooking";
 import Offers from "./Offers";
 import WorkShopCarousel from "./ParkWorkshop";
 import VintageVillage from "./VintageVillage";
-import {SignIn} from "./Shared_components";
+import SignIn from "./Signin";
 import CreateAccount from "./Signin";
 import CrownHotel from "./CrownHotel";
 import PrivacyPolicy from "./PrivacyPolicy";
