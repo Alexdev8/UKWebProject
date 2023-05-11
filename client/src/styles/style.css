@@ -233,7 +233,7 @@ header {
     border-bottom: 15px solid #a29afc;
 }
 
-#account-btn-popup .button {
+#account-btn-popup .popup-button {
     cursor: pointer;
     width: 100%;
     padding: 1em;
@@ -244,7 +244,7 @@ header {
     border-left: none;
 }
 
-#account-btn-popup .button:hover {
+#account-btn-popup .popup-button:hover {
     background-color: lightgrey;
 }
 

@@ -80,12 +80,12 @@ function AccountBtn() {
             </span>
             <div className={(hidden) ? "hidden" : ""} id="account-btn-popup">
                 <div>
-                    <button className="button" onClick={() => navigate("account/login")}>Log in</button>
-                    <button className="button" onClick={() => navigate("account/register")}>Create an account</button>
+                    <button className="popup-button" onClick={() => navigate("account/login")}>Log in</button>
+                    <button className="popup-button" onClick={() => navigate("account/register")}>Create an account</button>
                 </div>
                 {/*<div>*/}
-                {/*    <button className="button">Profile</button>*/}
-                {/*    <button className="button">Log out</button>*/}
+                {/*    <button className="popup-button">Profile</button>*/}
+                {/*    <button className="popup-button">Log out</button>*/}
                 {/*</div>*/}
             </div>
         </div>
