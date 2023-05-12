@@ -352,6 +352,7 @@ function AccordionBuildPrivacyPolicy({listItems}){
                         <div className="accordion-body">
                             <PrivacyPolicy privacy={item} />
                         </div>
+
                     </div>
 
                 </div>
@@ -359,17 +360,78 @@ function AccordionBuildPrivacyPolicy({listItems}){
         </div>
     )
 }
-function PrivacyPolicy({privacy}) {
-
+function PrivacyPolicy({ privacy }) {
     return (
         <div className="PrivaPolicyList">
-
+            {privacy.privacypolicytexte !== "" && (
                 <div className="PrivacyPolicyRule">
                     {privacy.privacypolicytexte}
                 </div>
+            )}
+
+            {privacy.privacypolicytexte2 !== "" && (
+                <div className="PrivacyPolicyRule1">
+                    {privacy.privacypolicytexte2}
+                </div>
+            )}
+
+            {privacy.privacypolicytexte3 !== "" && (
+                <div className="PrivacyPolicyRule2">
+                    {privacy.privacypolicytexte3}
+                </div>
+            )}
+
+            {privacy.privacypolicytexte4 !== "" && (
+                <div className="PrivacyPolicyRule3">
+                    {privacy.privacypolicytexte4}
+                </div>
+            )}
+
+            {privacy.privacypolicytexte5 !== "" && (
+                <div className="PrivacyPolicyRule4">
+                    {privacy.privacypolicytexte5}
+                </div>
+            )}
+
+            {privacy.privacypolicytexte6 !== "" && (
+                <div className="PrivacyPolicyRule5">
+                    {privacy.privacypolicytexte6}
+                </div>
+            )}
+
+            {privacy.privacypolicytexte7 !== "" && (
+                <div className="PrivacyPolicyRule6">
+                    {privacy.privacypolicytexte7}
+                </div>
+            )}
+
+            {privacy.privacypolicytexte8 !== "" && (
+                <div className="PrivacyPolicyRule7">
+                    {privacy.privacypolicytexte8}
+                </div>
+            )}
+
+            {privacy.privacypolicytexte9 !== "" && (
+                <div className="PrivacyPolicyRule8">
+                    {privacy.privacypolicytexte9}
+                </div>
+            )}
+
+            {privacy.privacypolicytexte10 !== "" && (
+                <div className="PrivacyPolicyRule9">
+                    {privacy.privacypolicytexte10}
+                </div>
+            )}
+
+            {privacy.privacypolicytexte11 !== "" && (
+                <div className="PrivacyPolicyRule10">
+                    {privacy.privacypolicytexte11}
+                </div>
+            )}
         </div>
-    )
+    );
 }
+
 /*-------------------------------- CALENDAR -------------------------------------*/
 
 const events = [

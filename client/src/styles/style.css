@@ -926,25 +926,64 @@ form[name="order-form"] .form-step.hidden h3 {
   }
 
   .accordion{
-      margin: 5% 20%;
+      margin: 5% 10%;
   }
 
 
   /*----------------------------- Attraction page ----------------------------------------*/
+.accordion{
+    background-color: white;
 
-.attractionIMG,.attractionRestriction,.attractionDescription{
+}
+.titreattractionpage{
+    color: black;
+    text-decoration: underline black;
+
+}
+.textedescriptionparc{
+    grid-areas: texteattractionparc;
+    text-align: justify;
+
+}
+.imgparcentier{
+    grid-areas: imgparcentier;
+    padding-left: 20px;
+
+}
+.attractionIMG{
     display: inline-block;
-    width: 33%;
+    width: 50%;
     vertical-align: top;
     height: auto;
 
 }
+.attractionRestriction,.attractionDescription{
+    display: inline-block;
+    width: 20%;
+    vertical-align: top;
+    height: auto;
+    text-align: justify ;
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
 .content-section-attraction {
     background-color: #ffffff;
-    padding: 2% 5% 5% 5%;
+    padding: 2% ;
     border-radius: 3em;
-    box-shadow: 2px 2px 6px rgb(26,26,25);
-    margin:2% 15%;
+    box-shadow: 2px 2px 6px ;
+    margin:2% 10%;
+
+}
+.container-texte-img-attraction{
+    display: grid;
+    grid-template-areas: "texteattractionparc imgparcentier";
+}
+.accordion-button{
+    border-width:   1px;
+    border-style:   solid;
+    border-color:   #000000;
+    color: #0a58ca;
 }
 
 #Monday,#Tuesday,#Wednesday,#Thursday,#Friday,#Satuday,#Sunday{
@@ -964,14 +1003,22 @@ form[name="order-form"] .form-step.hidden h3 {
 
 
 .content-section-privacy-policy,.privacy-policy-txt {
-    background-color: #ffffff;
-    padding: 2% 5% 5% 5%;
-    border-radius: 3em;
-    box-shadow: 2px 2px 6px rgb(26,26,25);
     margin:2% 15%;
     text-align: justify;
+    background-color: rgba(255, 255, 255, 0.96);
+    padding: 2% 5% 5% 5%;
+    margin-bottom: 1em;
+    margin-top: 4%;
+    border-radius: 3em;
+    box-shadow: 2px 2px 6px rgb(26,26,25);
+
 }
 .PrivacyPolicyRule{
+    padding-bottom: 10px;
+}
+.PrivacyPolicyRule1,.PrivacyPolicyRule2,.PrivacyPolicyRule3,.PrivacyPolicyRule4,.PrivacyPolicyRule5,.PrivacyPolicyRule6,.PrivacyPolicyRule7,.PrivacyPolicyRule8,.PrivacyPolicyRule9,.PrivacyPolicyRule10{
+    padding-left: 30px;
+    padding-bottom: 20px;
 
 }
   /*------------------------------------NightShow---------------------------------------*/
