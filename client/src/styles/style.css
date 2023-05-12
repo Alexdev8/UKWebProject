@@ -943,6 +943,8 @@ form[name="order-form"] .form-step.hidden h3 {
 .textedescriptionparc{
     grid-areas: texteattractionparc;
     text-align: justify;
+    font-size: 20px;
+
 
 }
 .imgparcentier{
