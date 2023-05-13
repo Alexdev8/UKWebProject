@@ -131,9 +131,9 @@ function VintageRestaurantsImg({img}){
 
 function VintageRestaurants(){
     return(
-        <div className="main-container mt-main parallax-layer1">
+        <>
             <VintageRestaurantsImg img={vintageRestaurantsIMG}/>
-        </div>
+        </>
     )
 }
 

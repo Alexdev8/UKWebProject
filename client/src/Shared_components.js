@@ -275,19 +275,22 @@ function Carousel({images}) {
 
 function Attraction({attraction}) {
     return (
-        <div className="attractionList">
-            <Link to={attraction.link} id={attraction.name}>
-                <img className="attractionIMG" src={attraction.picture} alt={attraction.alt}/>
-                <div className="attractionRestriction">
-                    {attraction.restriction}
-                    <br/>
-                    {attraction.restriction2}
+        <Link to={attraction.link} id={attraction.name}>
+            <div className="attraction-list">
+                <img className="attraction-img" src={attraction.picture} alt={attraction.alt}/>
+                <div className="attraction-container-text">
+                    <h3 className="attraction-title">
+                            {attraction.name}
+                    </h3>
+                    <div className="attraction-description">
+                        {attraction.description}
+                    </div>
                 </div>
-                <div className="attractionDescription">
-                    {attraction.description}
-                </div>
-            </Link>
-        </div>
+            </div>
+            <div className="attraction-restriction">
+                {attraction.restriction}
+            </div>
+        </Link>
     )
 }
 
@@ -434,87 +437,8 @@ function PrivacyPolicy({ privacy }) {
 
 /*-------------------------------- CALENDAR -------------------------------------*/
 
-const events = [
-    {
-        id: 0,
-        type: "attraction",
-        name: "100 Years War",
-        date: [
-            {day: "Monday", start: "11h", end: "13h"},
-            {day: "Friday", start: "14h", end: "16h"}
-        ]
-    },
-    {
-        id: 1,
-        type: "workshop",
-        name: "Bakery",
-        date: [
-            {day: "Tuesday", start: "11h", end: "12h"},
-            {date: "Friday", start: "15h", end: "16h"}
-        ]
-    }
-]
+function Calendar({events}){
 
-function Calendar(){
-
-    const events = [
-        {
-            id: 0,
-            type: "attraction",
-            name: "100 Years War",
-            date: [
-                {day: "Monday", start: 11, end: 13},
-                {day: "Friday", start: 14, end: 16}
-            ]
-        },
-        {
-            id: 1,
-            type: "workshop",
-            name: "Bakery",
-            date: [
-                {day: "Tuesday", start: 11, end: 12},
-                {day: "Friday", start: 15, end: 16}
-            ]
-        },
-        {
-            id: 2,
-            type: "nightShow",
-            name: "Shadows of Britannia",
-            date: [
-                {day: "Tuesday", start: 19, end: 23},
-
-            ]
-        },
-        {
-            id: 3,
-            type: "nightShow",
-            name: "Shadows of Britannia",
-            date: [
-                {day: "Thursday", start: 19, end: 23},
-
-
-            ]
-        },
-        {
-            id: 4,
-            type: "nightShow",
-            name: "Shadows of Britannia",
-            date: [
-                {day: "Saturday", start: 19, end: 23},
-
-            ]
-        }
-        ,
-        {
-            id: 5,
-            type: "nightShow",
-            name: "Shadows of Britannia",
-            date: [
-                {day: "Sunday", start: 19, end: 23},
-
-            ]
-        }
-    ]
 
     const WEEK_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
     const  tableRows = [];
@@ -529,15 +453,17 @@ function Calendar(){
         event.date.forEach((time) => {
             const dayIndex = WEEK_DAYS.findIndex((day) => day === time.day);
             const startHour = time.start - 9;
-            const endHour = time.end - 9;
+            const endHour = time.hasOwnProperty('end') ? time.end - 9 : startHour + 1;
             for(let i = startHour; i < endHour; i++){
-                tableRows[i].events.push(event);
+                if (!tableRows[i].events.some(e => e.id === event.id)) {
+                    tableRows[i].events.push(event);
+                }
             }
         });
     });
 
     return (
-        <table className="calendrier">
+        <table className="calendar">
             <thead>
             <tr>
                 <th></th>
@@ -547,34 +473,28 @@ function Calendar(){
             </tr>
             </thead>
             <tbody>
-            {tableRows.map((row) => (
+            {tableRows.slice(0, 15).map((row) => (
                 <tr key={row.hour} id={row.hour}>
                     <td>{row.hour}</td>
                     {WEEK_DAYS.map((day) => (
                         <td key={day}>
                             {row.events.filter((event) => (
-                                event.date.some((time) => time.day === day && time.start <= parseInt(row.hour.substr(0, 2)) && time.end > parseInt(row.hour.substr(0, 2)))
+                                event.date.some((time) => time.day === day && time.start <= parseInt(row.hour.substr(0, 2)) && (time.hasOwnProperty('end') ? time.end > parseInt(row.hour.substr(0, 2)) : time.start + 1 > parseInt(row.hour.substr(0, 2))))
                             )).map((event) => (
-                                <div key={event.id}>{event.name}</div>
+                                <div key={event.id} className={event.id}>{event.name}</div>
                             ))}
+
                         </td>
                     ))}
                 </tr>
             ))}
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
             </tbody>
+
         </table>
     );
 }
+
+
 
 /*----------------------------------- FOOTER ----------------------------------*/
 

@@ -107,9 +107,9 @@ function VintageVillageImg({img}){
 
 function VintageVillage(){
     return(
-        <div className="main-container mt-main parallax-layer1">
+        <>
             <VintageVillageImg img={vintageVillageIMG}/>
-        </div>
+        </>
     )
 }
 

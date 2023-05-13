@@ -1,4 +1,5 @@
-import {Carousel} from "./Shared_components";
+import {Calendar, Carousel} from "./Shared_components";
+import {Link} from "react-router-dom";
 
 const imgWorkshop = [
     {
@@ -39,16 +40,127 @@ const imgWorkshop = [
     }
 ]
 
-
+const workshopPlanning = [
+    {
+        id: "bakery",
+        type: "workshop",
+        name: "The Tudor Oven",
+        date: [
+            {day: "Monday", start: 11},
+            {day: "Monday", start: 15},
+            {day: "Wednesday", start: 11},
+            {day: "Wednesday", start: 16},
+            {day: "Friday", start: 10},
+            {day: "Friday", start: 17},
+            {day: "Saturday", start: 11},
+            {day: "Saturday", start: 14},
+            {day: "Sunday", start: 10},
+            {day: "Sunday", start: 15}
+        ]
+    },
+    {
+        id: "blacksmith",
+        type: "workshop",
+        name: "William Forge",
+        date: [
+            {day: "Tuesday", start: 10},
+            {day: "Tuesday", start: 17},
+            {day: "Thursday", start: 11},
+            {day: "Thursday", start: 15},
+            {day: "Friday", start: 10},
+            {day: "Friday", start: 16},
+            {day: "Saturday", start: 11},
+            {day: "Saturday", start: 18},
+            {day: "Sunday", start: 12},
+            {day: "Sunday", start: 17}
+        ]
+    },
+    {
+        id: "carpenter",
+        type: "workshop",
+        name: "Willow Carpenter",
+        date: [
+            {day: "Monday", start: 10},
+            {day: "Monday", start: 13},
+            {day: "Tuesday", start: 14},
+            {day: "Tuesday", start: 15},
+            {day: "Wednesday", start: 13},
+            {day: "Wednesday", start: 17},
+            {day: "Thursday", start: 13},
+            {day: "Thursday", start: 17},
+            {day: "Sunday", start: 11},
+            {day: "Sunday", start: 18}
+        ]
+    },
+    {
+        id: "pottery",
+        type: "workshop",
+        name: "St. George's Pottery",
+        date: [
+            {day: "Monday", start: 14},
+            {day: "Monday", start: 17},
+            {day: "Tuesday", start: 11},
+            {day: "Thursday", start: 10},
+            {day: "Thursday", start: 17},
+            {day: "Friday", start: 14},
+            {day: "Saturday", start: 13},
+            {day: "Saturday", start: 17},
+            {day: "Sunday", start: 14},
+            {day: "Sunday", start: 18}
+        ]
+    },
+    {
+        id: "printing",
+        type: "workshop",
+        name: "Canterbury Press",
+        date: [
+            {day: "Monday", start: 14},
+            {day: "Tuesday", start: 13},
+            {day: "Wednesday", start: 14},
+            {day: "Thursday", start: 17},
+            {day: "Friday", start: 11},
+            {day: "Saturday", start: 16},
+            {day: "Sunday", start: 13}
+        ]
+    },
+]
 
 function WorkShopCarousel(){
-    return(
-        <div className="content-section work-shop">
-            <h1>Park Workshop </h1>
-            <p className="work-shop-text">When visiting a historical park, there are a variety of workshops and demonstrations that offer visitors a hands-on experience with history. From pottery and weaving to baking and printing, these workshops provide a fascinating look into the skills and techniques of the past. Visitors can learn about the history and cultural significance of these crafts, as well as see the process in action and even try their hand at creating their own work of art. These workshops are a great way to learn about history and gain a deeper appreciation for the craftsmanship of the time.</p>
-            <Carousel images={imgWorkshop} />
-        </div>
 
+    return(
+        <>
+            <section className="content-section work-shop">
+                <h1>Park Workshop </h1>
+                <p className="work-shop-text">When visiting a historical park, there are a variety of workshops and demonstrations that offer visitors a hands-on experience with history. From pottery and weaving to baking and printing, these workshops provide a fascinating look into the skills and techniques of the past. Visitors can learn about the history and cultural significance of these crafts, as well as see the process in action and even try their hand at creating their own work of art. These workshops are a great way to learn about history and gain a deeper appreciation for the craftsmanship of the time.</p>
+                <Carousel images={imgWorkshop}/>
+            </section>
+            <section className="content-section">
+                <h1 className="calendar-presentation">Planing of the different workshop</h1>
+                <Calendar events={workshopPlanning}/>
+                <div className="lehends">
+                    <div className="indicator-container">
+                        <div className="color-lehend bakery-lehend"></div>
+                        <p className="text-lehends">The Tudor Oven</p>
+                    </div>
+                    <div className="indicator-container">
+                        <div className="color-lehend blacksmith-lehend"></div>
+                        <p className="text-lehends">William Forge</p>
+                    </div>
+                    <div className="indicator-container">
+                        <div className="color-lehend carpenter-lehend"></div>
+                        <p className="text-lehends">Willow Carpenter</p>
+                    </div>
+                    <div className="indicator-container">
+                        <div className="color-lehend pottery-lehend"></div>
+                        <p className="text-lehends">St. George's Pottery</p>
+                    </div>
+                    <div className="indicator-container">
+                        <div className="color-lehend printing-lehend"></div>
+                        <p className="text-lehends">Canterbury Press</p>
+                    </div>
+                </div>
+            </section>
+        </>
     )
 }
 

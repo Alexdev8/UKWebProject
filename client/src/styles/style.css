@@ -15,6 +15,11 @@ body {
     min-height: 100vh;
     display: grid;
     grid-template-rows: auto auto 1fr auto;
+    background-image: url("https://cdn.shopify.com/s/files/1/1987/4943/products/21310-02_480x480@2x.jpg?v=1599226402");
+}
+
+button{
+    cursor: pointer;
 }
 
 footer {
@@ -407,7 +412,7 @@ nav span{
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: red;
+    background-color: lightpink;
     transform-origin: bottom center;
     transition: transform 0.25s ease-out;
 }
@@ -471,8 +476,7 @@ nav span{
 .content-section {
     background-color: rgba(255, 255, 255, 0.96);
     padding: 2% 5% 5% 5%;
-    margin-bottom: 1em;
-    margin-top: 4%;
+    margin: 4% 10%;
     border-radius: 3em;
     box-shadow: 2px 2px 6px rgb(26,26,25);
 
@@ -931,72 +935,114 @@ form[name="order-form"] .form-step.hidden h3 {
 
 
   /*----------------------------- Attraction page ----------------------------------------*/
-.accordion{
-    background-color: white;
 
+.attraction-presentation-container{
+    height: 100em;
 }
-.titreattractionpage{
-    color: black;
-    text-decoration: underline black;
 
+.container-text-img-attraction{
+    display: flex;
+    margin: 4% 0;
 }
-.textedescriptionparc{
-    grid-areas: texteattractionparc;
+
+.img-park{
+    width: 45em;
+    height: auto;
+    border-bottom-left-radius: 100px;
+    border-top-right-radius: 100px;
+}
+
+
+.text-description-park{
+    margin: auto 5%;
+}
+
+.presentation-attraction{
     text-align: justify;
-
+    margin: 5%;
 }
-.imgparcentier{
-    grid-areas: imgparcentier;
-    padding-left: 20px;
 
+.attraction-list{
+    display: flex;
 }
-.attractionIMG{
-    display: inline-block;
-    width: 50%;
-    vertical-align: top;
+
+.attraction-img{
+    width: 25em;
     height: auto;
-
-}
-.attractionRestriction,.attractionDescription{
-    display: inline-block;
-    width: 20%;
-    vertical-align: top;
-    height: auto;
-    text-align: justify ;
-    padding-left: 20px;
-    padding-right: 20px;
-
-}
-.content-section-attraction {
-    background-color: #ffffff;
-    padding: 2% ;
-    border-radius: 3em;
-    box-shadow: 2px 2px 6px ;
-    margin:2% 10%;
-
-}
-.container-texte-img-attraction{
-    display: grid;
-    grid-template-areas: "texteattractionparc imgparcentier";
-}
-.accordion-button{
-    border-width:   1px;
-    border-style:   solid;
-    border-color:   #000000;
-    color: #0a58ca;
 }
 
-#Monday,#Tuesday,#Wednesday,#Thursday,#Friday,#Satuday,#Sunday{
-    padding: 20px;
-
-}
-.calendrier td,.calendrier tr {
-    border-collapse: collapse;
-    border:2px solid black ;
-}
-.calendrier{
+.attraction-container-text{
+    width: 100%;
     margin: auto;
 }
+
+.attraction-title{
+    text-align: center;
+}
+
+.attraction-description{
+    width: 15em;
+    text-align: justify;
+    margin: auto;
+}
+
+/*============== CALENDAR ===============*/
+
+.calendar{
+    margin: auto;
+}
+
+th{
+    width: 15em;
+}
+
+.calendar tbody tr:nth-child(2n), th{
+    background-color: lightpink;
+}
+
+.lehends{
+    display: flex;
+    margin: auto;
+}
+
+.indicator-container{
+    margin: 2%;
+    display: flex;
+}
+
+.years-war{
+    background-color: red;
+}
+
+.year-war-lehend{
+    background-color: red;
+}
+
+.color-lehend{
+    margin: auto;
+    width: 25px;
+    height: 25px;
+    border: none;
+    border-radius: 30px;
+}
+
+.viking-war, .viking-lehend{
+    background-color: blue;
+}
+
+.roman-lehend, .roman-war{
+    background-color: yellow;
+}
+
+.robinhood-war, .robinhood-lehend{
+    background-color: green;
+}
+
+.trafalgar-lehend, .trafalgar-war{
+    background-color: purple;
+}
+
+
 /*----------------------------- Privacy Policy page ----------------------------------------*/
 
 
@@ -1126,7 +1172,26 @@ form[name="order-form"] .form-step.hidden h3 {
 .work-shop-text{
     margin: 1% 4% 3%;
     text-align: justify;
+}
 
+.printing, .printing-lehend{
+    background-color: red;
+}
+
+.pottery, .pottery-lehend{
+    background-color: blue;
+}
+
+.carpenter, .carpenter-lehend{
+    background-color: yellow;
+}
+
+.bakery, .bakery-lehend{
+    background-color: green;
+}
+
+.blacksmith, .blacksmith-lehend{
+    background-color: purple;
 }
 
 /*===============================================================================*/
@@ -1277,6 +1342,7 @@ form[name="order-form"] .form-step.hidden h3 {
     justify-content: center;
 }
 
+
 .hotel-pictogram-container{
     margin: 2%;
 }
@@ -1306,12 +1372,7 @@ form[name="order-form"] .form-step.hidden h3 {
 
 /*=========================== Create Account =================================*/
 
-#root{
-    background-image: url("https://cdn.shopify.com/s/files/1/1987/4943/products/21310-02_480x480@2x.jpg?v=1599226402");
-    background-size: contain;
-    background-position: center;
 
-}
 
 .create-account-container{
     margin: 5% 25%;
