@@ -1,7 +1,7 @@
 import './styles/style.css';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Route, Routes, useLocation} from "react-router-dom";
 import {Header, Footer, Menu, Carousel} from './Shared_components';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Main from "./Main";
 import NotFound from "./NotFound";
 import Order from "./Order";
@@ -27,6 +27,8 @@ import PrivacyPolicy from "./PrivacyPolicy";
 import Account from "./Account";
 
 function App() {
+    const [prevLocation, setPrevLocation] = useState("/");
+    const [user, setUser] = useState(null);
     const [basket, setBasket] = useState({
         items: {
             tickets: [
@@ -50,7 +52,7 @@ function App() {
 
     return (
         <BrowserRouter>
-            <Header/>
+            <Header user={user} setUser={setUser} setPrevLocation={setPrevLocation}/>
             <Routes>
                 <Route path="/" element={<DefaultLayout/>}>
                     <Route index element={<Main/>}/>
@@ -68,7 +70,7 @@ function App() {
                     <Route path="the-grand-crown-hotel" element={<CrownHotel/>} />
                     <Route path="account" element={<Account/>}/>
                     <Route path="account/signin" element={<SignIn/>}/>
-                    <Route path="account/login" element={<LogIn />} />
+                    <Route path="account/login" element={<LogIn originPath={prevLocation} user={user} setUser={setUser}/>} />
                     <Route path="privacy-policy" element={<PrivacyPolicy/> }/>
                     <Route path="*" element={<NotFound/>}/>
                 </Route>

@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import './styles/bootstrap.css';
 
 
@@ -53,10 +53,12 @@ function SignIn(){
     )
 }
 
-function AccountBtn() {
+function AccountBtn({user, setUser}) {
     const [hidden, setHidden] = useState(true);
     const popup = useRef(null);
     const navigate = useNavigate();
+
+    console.log(user);
 
     function handleClickOutside(event) {
         if (popup.current && !popup.current.contains(event.target)) {
@@ -79,20 +81,30 @@ function AccountBtn() {
             person
             </span>
             <div className={(hidden) ? "hidden" : ""} id="account-btn-popup">
-                <div>
-                    <button className="popup-button" onClick={() => navigate("account/login")}>Log in</button>
-                    <button className="popup-button" onClick={() => navigate("account/register")}>Create an account</button>
-                </div>
-                {/*<div>*/}
-                {/*    <button className="popup-button">Profile</button>*/}
-                {/*    <button className="popup-button">Log out</button>*/}
-                {/*</div>*/}
+                {
+                    (user === null) ?
+                    <div>
+                        <button className="popup-button" onClick={() => {
+                            navigate("account/login");
+                            setHidden(true);
+                        }}>Log in</button>
+                        <button className="popup-button" onClick={() => {
+                            navigate("account/signin");
+                            setHidden(true);
+                        }}>Create an account</button>
+                    </div>
+                    :
+                    <div>
+                        <button className="popup-button">Profile</button>
+                        <button className="popup-button" onClick={() => setUser(null)}>Log out</button>
+                    </div>
+                }
             </div>
         </div>
     )
 }
 
-function Button(){
+function Button({user, setUser}){
     const buttons = [
         {key: 0, name: "dark_mode", id: "dark_mode-btn", action: "alert('Dark mode on')"},
         {key: 1, name: "settings", id: "settings-btn", action: "window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'"},
@@ -107,12 +119,21 @@ function Button(){
                     {button.name}
                 </span>
             ))}
-            <AccountBtn/>
+            <AccountBtn user={user} setUser={setUser}/>
         </div>
     )
 }
 
-function Header(){
+function Header({user, setUser, setPrevLocation}){
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location.pathname !== "/account/signin" && location.pathname !== "/account/login") {
+            setPrevLocation(location);
+        }
+    }, [location])
+
+
     return(
         <header>
             <div className="header-side"></div>
@@ -121,7 +142,7 @@ function Header(){
                     <div id="logo-site" role="link"></div>
                 </Link>
             </div>
-            <Button />
+            <Button user={user} setUser={setUser}/>
         </header>
     )
 }

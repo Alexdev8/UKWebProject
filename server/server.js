@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 let mysql = require('mysql');
 let moment = require('moment');
+let bcrypt = require('bcrypt');
 
 require('dotenv').config({path: path.dirname(__dirname) + "/.env"});
 const db_config = require('./config/db_config');
@@ -29,14 +30,18 @@ function refreshConnection() {
     }
 }
 
-function format(date) {
+function formatDate(date) {
     let tdate = moment(date);
     return tdate.format("YYYY-MM-DD");
 }
 
+function formatString(string) {
+    return string.trim().toLowerCase();
+}
+
 function generateRef() {
     const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    let refLength = 6; //62 characters used for a 6 chars long ref is enough and bring theoretically 56.8B possibilities
+    let refLength = 6; //62 characters used for 6 chars long ref is enough and bring theoretically 56.8B possibilities
     let result = '';
     for (let i = 0; i < refLength; i++) {
         result += chars.charAt(Math.floor(Math.random() * chars.length));
@@ -72,7 +77,6 @@ app.get('/api/tickets/:id', (req, res) => {
 
 app.post('/api/tickets', (req, res) => {
     //add a json type ticket object to the database
-
     let ticket = req.body;
     const sql="INSERT INTO Tickets (`ticketRef`, `ticketValidityStartDate`, `ticketValidityEndDate`, `ticketType`, `visitorFirstName`, `visitorLastName`, `accountID`, `email`) " +
         "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -109,23 +113,62 @@ app.get('/api/account', (req, res) => {
     });
 });
 
-app.post('/api/account', (req, res) => {
+app.post('/api/account/register', (req, res) => {
     //add a json type account object to the database
 
     let account = req.body;
+    let cypheredPassword = "";
+
     const sql="INSERT INTO `Accounts`(`firstName`, `lastName`, `birthDate`, `email`, `password`, `phoneNumber`, `newsLetterSubscription`) " +
         "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-    console.log(account);
     refreshConnection();
-    connection.query(sql, [account.firstName, account.lastName, account.birthDate, account.email, account.password, account.phoneNumber, account.newsLetter],(err, results, fields) => {
+    bcrypt.hash(account.password, 10, function(err, hash) {
         if (!err) {
-            res.send(results);
-            console.log('Result sent');
+            cypheredPassword = hash;
         }
         else {
-            res.send('error during query: ' + err.message);
-            return console.error('error during query: ' + err.message);
+            cypheredPassword = account.password;
+        }
+        connection.query(sql, [formatString(account.firstName), formatString(account.lastName), account.birthDate, formatString(account.email), cypheredPassword, account.phoneNumber, account.newsLetter],(err, results, fields) => {
+            if (!err) {
+                res.statusCode = 201;
+                res.send(results);
+                console.log('Result sent');
+            }
+            else {
+                res.statusCode = 409;
+                res.send(err.code);
+                return console.error('error during query: ' + err.code);
+            }
+        });
+    });
+});
+
+app.post('/api/account/login', (req, res) => {
+    //check if credentials match account object
+
+    let creds = req.body;
+    const sql="SELECT `password` FROM `Accounts` WHERE `email`= ?";
+
+    refreshConnection();
+    connection.query(sql, [formatString(creds.email)],(err, results, fields) => {
+        if (!err) {
+            bcrypt.compare(creds.password, results[0].password, function(err, result) {
+                if (result) {
+                    res.statusCode = 200;
+                    res.send("OK");
+                }
+                else {
+                    res.statusCode = 401;
+                    res.send("Password invalid");
+                }
+            });
+        }
+        else {
+            res.statusCode = 404;
+            res.send("This account doesn't exist");
+            return console.error('No such account exist: ' + err.code);
         }
     });
 });

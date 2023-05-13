@@ -18,7 +18,7 @@ body {
     background-image: url("https://cdn.shopify.com/s/files/1/1987/4943/products/21310-02_480x480@2x.jpg?v=1599226402");
 }
 
-button{
+button:not(:disabled) {
     cursor: pointer;
 }
 
@@ -1402,10 +1402,19 @@ th{
     opacity: 96%;
     transition: border ease-in-out .3s;
     text-align: center;
-
 }
 
+.data-selector.invalid {
+    background-color: #8b0000;
+    color: white;
+}
 
+.data-selector.invalid::after {
+    position: absolute;
+    content: "✖";
+    padding-left: 5px;
+    color: #8b0000;
+}
 
 .name-container{
     display: flex;
@@ -1418,7 +1427,7 @@ th{
 }
 
 .email-container{
-    margin: 5%;
+    margin: 5% 5% 0 5%;
 }
 
 .email-input{
@@ -1439,7 +1448,9 @@ th{
     margin: 0 3% 1%;
 }
 
-.newsletter-container{
+.checkbox-container{
+    display: flex;
+    flex-direction: column;
     margin: 2%;
 }
 
@@ -1451,7 +1462,7 @@ th{
     transition: all ease-in-out .3s;
 }
 
-.button:hover{
+.button:not(:disabled):hover{
     transition: all ease-in-out .2s;
     background-color: lightpink;
     transform: scale(1.05);
@@ -1460,12 +1471,17 @@ th{
 
 /*====================================== LOGIN ==================================*/
 
+.error-message {
+    color: red;
+}
+
 .log-in{
     margin: 5% 25%;
 }
 
 .log-in-container{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
