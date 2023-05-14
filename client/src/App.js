@@ -25,6 +25,7 @@ import Restaurant from "./Restaurant";
 import CrownHotel from "./CrownHotel";
 import PrivacyPolicy from "./PrivacyPolicy";
 import Account from "./Account";
+import AboutUs from "./AboutUs";
 
 function App() {
     const [prevLocation, setPrevLocation] = useState("/");
@@ -72,6 +73,7 @@ function App() {
                     <Route path="account/signin" element={<SignIn/>}/>
                     <Route path="account/login" element={<LogIn originPath={prevLocation} user={user} setUser={setUser}/>} />
                     <Route path="privacy-policy" element={<PrivacyPolicy/> }/>
+                    <Route path="about-us" element={<AboutUs/> }/>
                     <Route path="*" element={<NotFound/>}/>
                 </Route>
                 <Route path="/" element={<NoNavbarLayout/>}>
