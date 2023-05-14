@@ -1126,7 +1126,35 @@ th{
     bottom: 0;
     right: 0;
 }
-  /*------------------------------------NightShow---------------------------------------*/
+/*------------------------------------Contact us---------------------------------------*/
+
+.container-texte-contact{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+
+}
+.phone{
+    grid-area: phone;
+    width: 33%;
+    margin: auto;
+}
+.publishing{
+    grid-area: publishing;
+    width: 33%;
+    margin: auto;
+}
+.press{
+    grid-area: press;
+    width: 33%;
+    margin: auto;
+
+}
+.liste-contactus{
+    list-style-type:none;
+}
+/*------------------------------------NightShow---------------------------------------*/
 
 .nightshow {
     margin: 5% 10%;

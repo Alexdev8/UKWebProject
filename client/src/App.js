@@ -28,6 +28,7 @@ import Account from "./Account";
 import AboutUs from "./AboutUs";
 import Cottage from "./Cottage";
 import EmailField from "./Account";
+import ContactUs from "./ContactUs";
 
 function App() {
     const [prevLocation, setPrevLocation] = useState("/");
@@ -79,6 +80,7 @@ function App() {
                     <Route path="account/login" element={<LogIn originPath={prevLocation} user={user} setUser={setUser}/>} />
                     <Route path="privacy-policy" element={<PrivacyPolicy/> }/>
                     <Route path="about" element={<AboutUs/> }/>
+                    <Route path="contact-us" element={<ContactUs/> }/>
                     <Route path="*" element={<NotFound/>}/>
                 </Route>
                 <Route path="/" element={<NoNavbarLayout/>}>
