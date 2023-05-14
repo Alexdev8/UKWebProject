@@ -96,7 +96,7 @@ function AccountBtn({user, setUser}) {
                     :
                     <div>
                         <button className="popup-button">Profile</button>
-                        <button className="popup-button" onClick={() => setUser(null)}>Log out</button>
+                        <button className="logout-btn popup-button" onClick={() => setUser(null)}>Log out</button>
                     </div>
                 }
             </div>

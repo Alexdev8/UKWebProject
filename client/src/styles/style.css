@@ -253,6 +253,10 @@ header {
     background-color: lightgrey;
 }
 
+#account-btn-popup .logout-btn {
+    background-color: #ff4444;
+}
+
 /*------------------------------------- MENU -------------------------------------------------*/
 nav{
     background-color: #fff;
