@@ -1573,6 +1573,17 @@ th{
     margin: 10% auto 0%;
 }
 
+/*--------------------------------------offers-----------------------------------*/
+.button-offers{
+    background-color: cadetblue;
+    color: white;
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    border: #222222;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
 /* ======================================= Not Found ======================================= */
 .not-found-img {
     height: 30vh;
