@@ -100,7 +100,7 @@ function VintageVillageImg({img}){
                     }
 
                 </div>
-                </div>
+            </div>
         </section>
         )
 }
