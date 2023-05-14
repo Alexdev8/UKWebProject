@@ -75,9 +75,8 @@ function App() {
                     <Route path="cottage" element={<Cottage/>} />
                     <Route path="account" element={<Account/>}/>
                     <Route path="account/signin" element={<SignIn/>}/>
-                    <Route path="account/login" element={<LogIn />} />
-                    <Route path="account/my-account" element={<EmailField />} />
                     <Route path="account/login" element={<LogIn originPath={prevLocation} user={user} setUser={setUser}/>} />
+                    <Route path="account/my-account" element={<EmailField />} />
                     <Route path="privacy-policy" element={<PrivacyPolicy/> }/>
                     <Route path="about" element={<AboutUs/> }/>
                     <Route path="contact-us" element={<ContactUs/> }/>
