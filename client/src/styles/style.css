@@ -788,6 +788,30 @@ form[name="order-form"] .form-step.hidden h3 {
     border: none;
     border-radius: 10px;
 }
+
+/*===================================== COTTAGE ======================================*/
+
+.cottage-description{
+    text-align: justify;
+}
+
+.cottage-container{
+    margin: auto;
+}
+
+.cottage-container1 div, .cottage-container2 div{
+    display: flex;
+}
+
+
+
+.cottage-img img{
+    width: 13em;
+    height: auto;
+}
+
+
+
 /*------------------------------------ROMAN------------------------------*/
 .roman-content{
     text-align: center;
@@ -1505,6 +1529,48 @@ th{
 
 .create-account-login-button{
     width: 13em;
+}
+
+/*======================================= ACCOUNT =========================================*/
+.data-account-container{
+    display: flex;
+}
+
+.account-data-container{
+    width: 30em;
+    margin: 4% 0;
+}
+
+.account-data{
+    height: 3em;
+}
+
+.personnel-data-title{
+    text-align: left;
+}
+
+.personnel-data-information{
+    text-align: right;
+}
+
+.edit-data-button{
+    width: 20em;
+}
+
+.reservation-in-coming h3{
+    text-align: left;
+}
+
+.order-form{
+    margin: auto;
+}
+
+.account-reservation{
+    width: 20em;
+}
+
+.unsubscription-newsletter{
+    margin: 10% auto 0%;
 }
 
 /* ======================================= Not Found ======================================= */

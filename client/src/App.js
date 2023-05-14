@@ -26,6 +26,8 @@ import CrownHotel from "./CrownHotel";
 import PrivacyPolicy from "./PrivacyPolicy";
 import Account from "./Account";
 import AboutUs from "./AboutUs";
+import Cottage from "./Cottage";
+import EmailField from "./Account";
 
 function App() {
     const [prevLocation, setPrevLocation] = useState("/");
@@ -69,8 +71,11 @@ function App() {
                     <Route path="vintage-restaurants" element={<VintageRestaurants/> }/>
                     <Route path="restaurants" element={<Restaurant/> }/>
                     <Route path="the-grand-crown-hotel" element={<CrownHotel/>} />
+                    <Route path="cottage" element={<Cottage/>} />
                     <Route path="account" element={<Account/>}/>
                     <Route path="account/signin" element={<SignIn/>}/>
+                    <Route path="account/login" element={<LogIn />} />
+                    <Route path="account/my-account" element={<EmailField />} />
                     <Route path="account/login" element={<LogIn originPath={prevLocation} user={user} setUser={setUser}/>} />
                     <Route path="privacy-policy" element={<PrivacyPolicy/> }/>
                     <Route path="about-us" element={<AboutUs/> }/>
