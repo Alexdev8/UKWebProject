@@ -165,7 +165,7 @@ function CrownHotelIMG({img, pictograms}){
                         <h1> The Tudor Suite </h1>
                         <p className="grand-hotel-prices">
                             48£/night
-                            <button className="hotel-button-reservation-button">
+                            <button className="button hotel-button-reservation-button">
                                 <Link to="/order/hotel">
                                     Book a night
                                 </Link>
@@ -185,7 +185,7 @@ function CrownHotelIMG({img, pictograms}){
                         <h1> The Crown Jewel </h1>
                         <p className="grand-hotel-prices">
                             108£/night
-                            <button className="hotel-button-reservation-button">
+                            <button className="button hotel-button-reservation-button">
                                 <Link to="/order/hotel">
                                     Book a night
                                 </Link>
@@ -204,7 +204,7 @@ function CrownHotelIMG({img, pictograms}){
                         <h1> The Windsor Rose </h1>
                         <p className="grand-hotel-prices">
                             78£/night
-                            <button className="hotel-button-reservation-button">
+                            <button className="button hotel-button-reservation-button">
                                 <Link to="/order/hotel">
                                     Book a night
                                 </Link>
@@ -223,7 +223,7 @@ function CrownHotelIMG({img, pictograms}){
                             <h1> The Rose Garden View </h1>
                             <p className="grand-hotel-prices">
                                 68£/night
-                                <button className="hotel-button-reservation-button">
+                                <button className="button hotel-button-reservation-button">
                                     <Link to="/order/hotel">
                                         Book a night
                                     </Link>
@@ -247,9 +247,9 @@ function CrownHotelIMG({img, pictograms}){
 
 function CrownHotel(){
     return(
-        <div className="main-container mt-main parallax-layer1">
+        <>
             <CrownHotelIMG img={crownHotelImg} />
-        </div>
+        </>
     )
 }
 
