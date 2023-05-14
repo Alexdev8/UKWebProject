@@ -78,7 +78,7 @@ function App() {
                     <Route path="account/my-account" element={<EmailField />} />
                     <Route path="account/login" element={<LogIn originPath={prevLocation} user={user} setUser={setUser}/>} />
                     <Route path="privacy-policy" element={<PrivacyPolicy/> }/>
-                    <Route path="about-us" element={<AboutUs/> }/>
+                    <Route path="about" element={<AboutUs/> }/>
                     <Route path="*" element={<NotFound/>}/>
                 </Route>
                 <Route path="/" element={<NoNavbarLayout/>}>

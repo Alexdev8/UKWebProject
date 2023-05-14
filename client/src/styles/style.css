@@ -1087,9 +1087,44 @@ th{
     padding-bottom: 10px;
 }
 .PrivacyPolicyRule1,.PrivacyPolicyRule2,.PrivacyPolicyRule3,.PrivacyPolicyRule4,.PrivacyPolicyRule5,.PrivacyPolicyRule6,.PrivacyPolicyRule7,.PrivacyPolicyRule8,.PrivacyPolicyRule9,.PrivacyPolicyRule10{
-    padding-left: 30px;
+    padding-left: 3em;
     padding-bottom: 20px;
 
+}
+ /*------------------------------------About Us---------------------------------------*/
+.container-text-img-aboutus-droite{
+    display: flex;
+    margin: 4% 0;
+}
+.container-text-img-aboutus-gauche{
+    display: flex;
+    margin: 4% 0;
+}
+.img-aboutus{
+    width: 45em;
+    height: auto;
+    border-bottom-left-radius: 100px;
+    border-top-right-radius: 100px;
+}
+.text-description-aboutus{
+    margin: auto 5%;
+    text-align: justify;
+    font-size: 1.25em;
+    padding-left: 8em;
+    padding-right: 8em;
+}
+.title-aboutus{
+    font-size: 3em;
+}
+.image-gauche {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.image-droite {
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
   /*------------------------------------NightShow---------------------------------------*/
 
