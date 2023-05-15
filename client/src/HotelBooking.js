@@ -182,11 +182,11 @@ function HotelRoomAmountInput(props) {
     return (
         <FormStepHotel {...props} title={"Select your number of adventurers (" + MAX + " max.)"} content={
             <>
-                <label>{shopData.hotels[props.formState.hotelRoom]?.name} ({shopData.hotels[props.formState.hotelRoom]?.price + "£"})
+                <label>{shopData.hotel[props.formState.hotelRoom]?.name} ({shopData.hotel[props.formState.hotelRoom]?.price + "£"})
                     <input type="number" defaultValue={props.formState.roomNb} min="0" max={MAX - props.formState.roomChildNb} onChange={(e) => props.setFormInput("roomNb", e.target.valueAsNumber)}/>
                 </label>
                 <div>
-                    <label>Child tickets ({shopData.hotels[props.formState.hotelRoom]?.child_price + "£"})
+                    <label>Child tickets ({shopData.hotel[props.formState.hotelRoom]?.child_price + "£"})
                         <input type="number" defaultValue={props.formState.roomChildNb} min="0" max={MAX - props.formState.roomNb} onChange={(e) => props.setFormInput("roomChildNb", e.target.valueAsNumber)}/>
                     </label>
                 </div>
