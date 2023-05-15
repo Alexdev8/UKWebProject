@@ -800,14 +800,19 @@ form[name="order-form"] .form-step.hidden h3 {
 }
 
 .cottage-container{
-    margin: auto;
+    ;
 }
 
 .cottage-container1 div, .cottage-container2 div{
     display: flex;
 }
+.cottage-img{
+    margin: 1%;
+}
 
-
+.card-container-cottage{
+    margin: auto;
+}
 
 .cottage-img img{
     width: 13em;
@@ -1595,6 +1600,7 @@ th{
 
 .personnel-data-information{
     text-align: right;
+    cursor: pointer;
 }
 
 .edit-data-button{
