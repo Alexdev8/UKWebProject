@@ -1,30 +1,86 @@
-import React, { useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
+import shopData from "./shop-data.json";
+
+function normalizeInput(input) {
+    return input.trim()
+}
 
 function EditableField({ fieldName, fieldValue, onSave}) {
     const [isEditing, setIsEditing] = useState(false);
-    const [value, setValue] = useState(fieldValue);
+    const field = useRef(null);
 
     const handleSave = () => {
+        let invalid = false;
+        switch (fieldName) {
+            case "name": {
+                if (!/^([A-Za-z]+(\s+[A-Za-z]+)+)$/.test(normalizeInput(field.current.value))) {
+                    console.log("error: invalid name");
+                    alert("Invalid name");
+                    invalid = true;
+                    return;
+                }
+                break;
+            }
+            case "birthDate": {
+                if (!/^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/.test(normalizeInput(field.current.value))) {
+                    console.log("error: invalid date");
+                    alert("Invalid date");
+                    invalid = true;
+                    return;
+                }
+                break;
+            }
+            case "phoneNumber": {
+                if (normalizeInput(field.current.value) !== "" && !/^((\+\d{2,3}\s?\d)|(0\d))(\s?\d{2}){4}$/.test(normalizeInput(field.current.value))) {
+                    console.log("error: invalid phone number");
+                    alert("Invalid phone number");
+                    invalid = true;
+                    return;
+                }
+                break;
+            }
+            default:
+                if (normalizeInput(field.current.value) === "") {
+                    console.log("error: invalid field");
+                    alert("Invalid field");
+                    invalid = true;
+                    return;
+                }
+        }
+        if (!invalid && field.current.value !== fieldValue) {
+            console.log(invalid);
+            onSave(normalizeInput(field.current.value));
+        }
         setIsEditing(false);
-        onSave(value);
     };
 
+    useEffect(() => {
+        if (isEditing) {
+            field.current.value=fieldValue;
+        }
+    }, [isEditing]);
+
     return (
-        <div>
+        <>
             {isEditing ? (
                 <div>
+                    <button className="button" onClick={() => {
+                        field.current.value = fieldValue;
+                        setIsEditing(false);
+                    }}>Cancel</button>
+                    <button className="button" onClick={handleSave}>Save</button>
                     <input
                         className="data-selector edit-data-button"
                         type="text"
-                        value={value}
-                        onChange={(e) => setValue(e.target.value)}
+                        ref={field}
                     />
-                    <button className="button" onClick={handleSave}>Save</button>
                 </div>
             ) : (
-                <div onClick={() => setIsEditing(true)}>{value}</div>
+                <div onClick={() => setIsEditing(true)}>{fieldValue}</div>
             )}
-        </div>
+        </>
     );
 }
 
@@ -45,24 +101,94 @@ const rows = [
     }
 ]
 
-function AccountBuild({rows}){
+function AccountBuild({user}){
+    const navigate = useNavigate();
+    const [accountData, setAccountData] = useState({});
+    const [ticketsData, setTicketsData] = useState([]);
+    const [hotelData, setHotelData] = useState([]);
 
-    const [name, setName] = useState('Justin Baker');
-    const [email, setEmail] = useState('justin.baker@gmail.com');
-    const [birthdate, setBirthdate] = useState('11/02/2002');
-    const [number, setNumber] = useState('07 38 29 47 57');
-    const handleEmailSave = (newEmail) => setEmail(newEmail);
-    const handleNameSave = (newName) => setName(newName);
-    const handleBirthdateSave = (newBirthdate) => setBirthdate(newBirthdate);
-    const handleNumberSave = (newNumber) => setNumber(newNumber);
+    function getAccountData() {
+        axios({
+            method: 'get',
+            url: '/api/account',
+            params: {email: user.email},
+            timeout: 4000 // 4 seconds timeout
+        })
+            .then(response => {
+                if (response.status === 200 && response.statusText === "OK") {
+                    setAccountData(response.data);
+                    getAccountTickets(response.data.accountID);
+                }
+            })
+            .catch(error => {
+                if (error.response.status === 404) {
+                    navigate("login");
+                }
+                else {
+                    console.error('error: ', error);
+                }
+            });
+    }
 
+    function getAccountTickets(accountID) {
+        axios({
+            method: 'get',
+            url: '/api/tickets',
+            params: {accountID: accountID},
+            timeout: 4000 // 4 seconds timeout
+        })
+            .then(response => {
+                if (response.status === 200 && response.statusText === "OK") {
+                    setTicketsData(response.data);
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                if (error.response.status === 404) {
+                }
+                else {
+                    console.error('error: ', error);
+                }
+            });
+    }
 
-    const [data, setData] = useState(rows);
+    function patchAccountData(key, value) {
+        axios({
+            method: 'patch',
+            url: '/api/account/update',
+            params: {email: user.email},
+            data: {
+                key: key,
+                value: normalizeInput(value)
+            },
+            timeout: 4000 // 4 seconds timeout
+        })
+            .then(response => {
+                if (response.status === 200 && response.statusText === "OK") {
+                    location.reload();
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                if (error.response.status === 404) {
+                    console.error(error.response.data);
+                    alert("The update has failed");
+                }
+                else {
+                    alert("The update has failed");
+                    console.error('error: ', error);
+                }
+            });
+    }
 
-    const addRow = () => {
-        const newRow = { id: data.length + 1, name: "New Row" };
-        setData([...data, newRow]);
-    };
+    useEffect(() => {
+        if (user !== null) {
+            getAccountData();
+        }
+        else {
+            navigate("login");
+        }
+    }, []);
 
     return(
         <section className="content-section data-account">
@@ -76,7 +202,13 @@ function AccountBuild({rows}){
                             Name:
                         </td>
                         <td className="personnel-data-information">
-                            <EditableField fieldName="Name" fieldValue={name} onSave={handleNameSave} />
+                            <EditableField fieldName="name" fieldValue={accountData.firstName + " " + accountData.lastName} onSave={(name) => {
+                                let split = name.split(" ");
+                                let firstName = split[0];
+                                let lastName = split[split.length - 1];
+                                patchAccountData("firstName", firstName);
+                                patchAccountData("lastName", lastName);
+                            }} />
                         </td>
                     </tr>
                     <tr className="account-data">
@@ -84,7 +216,7 @@ function AccountBuild({rows}){
                             Email:
                         </td>
                         <td className="personnel-data-information">
-                            <EditableField fieldName="Email" fieldValue={email} onSave={handleEmailSave} />
+                            <div>{accountData.email}</div>
                         </td>
                     </tr>
                     <tr className="account-data">
@@ -92,7 +224,7 @@ function AccountBuild({rows}){
                             Birthdate:
                         </td>
                         <td className="personnel-data-information">
-                            <EditableField fieldName="Birthdate" fieldValue={birthdate} onSave={handleBirthdateSave} />
+                            <EditableField fieldName="birthDate" fieldValue={accountData.birthDate} onSave={(birthdate) => patchAccountData("birthDate", birthdate)} />
                         </td>
                     </tr>
                     <tr className="account-data">
@@ -100,23 +232,27 @@ function AccountBuild({rows}){
                             Phone Number:
                         </td>
                         <td className="personnel-data-information">
-                            <EditableField fieldName="Phone Number" fieldValue={number} onSave={handleNumberSave} />
+                            <EditableField fieldName="phoneNumber" fieldValue={accountData.phoneNumber} onSave={(phoneNumber) => patchAccountData("phoneNumber", phoneNumber)} />
                         </td>
                     </tr>
                 </table>
                 <hr/>
             </div>
-            <hr/>
-            <div className="reservation-in-coming">
-                <h3>Purchase Order</h3>
-                <table className="order-form">
-                    <thead>
+            <div className="reservation-in-coming reservation-container">
+                <h2>Your tickets</h2>
+                <hr/>
+                {(ticketsData.length !== 0) ?
+                    <table className="reservation-table">
+                        <thead>
                         <tr>
                             <td className="account-reservation">
-                                <h4>Number Reservation</h4>
+                                <h4>Ticket reference</h4>
                             </td>
                             <td className="account-reservation">
-                                <h4>Reservation Information</h4>
+                                <h4>Ticket detail</h4>
+                            </td>
+                            <td className="account-reservation">
+                                <h4>Name</h4>
                             </td>
                             <td className="account-reservation">
                                 <h4>Date</h4>
@@ -125,35 +261,77 @@ function AccountBuild({rows}){
                                 <h4>Total</h4>
                             </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                    {data.map((row) => (
-                        <tr key={row.id}>
-                            <td>{row.number}</td>
-                            <td>{row.description}</td>
-                            <td>{row.date}</td>
-                            <td>{row.price}</td>
+                        </thead>
+                        <tbody>
+                        {ticketsData.map((ticket) => (
+                            <tr key={ticket.ticketID}>
+                                <td>{ticket.ticketRef}</td>
+                                <td>{shopData.tickets[ticket.ticketType]?.description}</td>
+                                <td>{ticket.visitorFirstName + " " + ticket.visitorLastName}</td>
+                                <td>{ticket.ticketValidityStartDate + " - " + ticket.ticketValidityEndDate}</td>
+                                <td>{ticket.price + '£'}</td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                    :
+                    <p>You have no tickets linked to this account</p>
+                }
+            </div>
+            <div className="reservation-in-coming reservation-container">
+                <h2>Hotel reservation</h2>
+                <hr/>
+                {(hotelData.length !== 0) ?
+                    <table className="reservation-table">
+                        <thead>
+                        <tr>
+                            <td className="account-reservation">
+                                <h4>Reservation reference</h4>
+                            </td>
+                            <td className="account-reservation">
+                                <h4>Reservation detail</h4>
+                            </td>
+                            <td className="account-reservation">
+                                <h4>Name</h4>
+                            </td>
+                            <td className="account-reservation">
+                                <h4>Date</h4>
+                            </td>
+                            <td className="account-reservation">
+                                <h4>Price</h4>
+                            </td>
                         </tr>
-                    ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        {accountData.map((row) => (
+                            <tr key={row.id}>
+                                <td>{row.number}</td>
+                                <td>{row.description}</td>
+                                <td>Yes</td>
+                                <td>{row.date}</td>
+                                <td>{row.price}</td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                    :
+                    <p>You have no hotel reservation</p>
+                }
             </div>
-            <div className="unsubscription-newsletter">
-                <label>
-                    Unsubscribe from the newsletter
-                    <input
-                        type="checkbox"
-                    />
-                </label>
-            </div>
+            {(accountData.newsLetterSubscription === 1) ?
+                <div className="unsubscription-newsletter">
+                    <button className="button" onClick={() => patchAccountData("newsLetterSubscription", "0")}>Unsubscribe from the newsletter</button>
+                </div>
+                : <></>
+            }
         </section>
     )
 }
 
-function Account(){
+function Account({user}){
     return(
         <>
-        <AccountBuild rows={rows} />
+        <AccountBuild rows={rows} user={user}/>
         </>
     )
 }

@@ -1575,7 +1575,12 @@ th{
     display: flex;
 }
 
+.data-account-container hr{
+    margin: 3em;
+}
+
 .account-data-container{
+    flex: 1;
     width: 30em;
     margin: 4% 0;
 }
@@ -1596,11 +1601,27 @@ th{
     width: 20em;
 }
 
-.reservation-in-coming h3{
-    text-align: left;
+.reservation-container {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fae4e4;
+    padding: 2%;
+    margin: 3em 0;
+    border-radius: 2em;
 }
 
-.order-form{
+.reservation-in-coming h2{
+    text-align: left;
+    margin-left: 1em;
+    padding-bottom: 0;
+}
+
+.reservation-container p {
+    margin: auto;
+    padding: 2em;
+}
+
+.reservation-table{
     margin: auto;
 }
 
@@ -1609,7 +1630,7 @@ th{
 }
 
 .unsubscription-newsletter{
-    margin: 10% auto 0%;
+    margin: 10% auto 0;
 }
 
 /*--------------------------------------offers-----------------------------------*/
