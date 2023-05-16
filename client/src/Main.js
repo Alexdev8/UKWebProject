@@ -11,6 +11,7 @@ const attractionsData = [
         title: "The viking's attack",
         caption: "Dive into the epic story of the ruthless vikings"
     },
+
     {
         key: 1,
         active: false,
