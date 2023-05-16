@@ -1,6 +1,6 @@
 import './styles/style.css';
-import {BrowserRouter, Route, Routes, useLocation} from "react-router-dom";
-import {Header, Footer, Menu, Carousel} from './Shared_components';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {Header, Footer} from './Shared_components';
 import {useEffect, useState} from "react";
 import Main from "./Main";
 import NotFound from "./NotFound";
@@ -30,9 +30,32 @@ import Cottage from "./Cottage";
 import EmailField from "./Account";
 import ContactUs from "./ContactUs";
 
+function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) === 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
 function App() {
     const [prevLocation, setPrevLocation] = useState("/");
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState((!!getCookie("user")) ? {email: getCookie("user")} : null);
     const [basket, setBasket] = useState({
         items: {
             tickets: [
@@ -44,19 +67,16 @@ function App() {
             options: [
             ]
         }
-    })
+    });
 
-    function addTickets(ticket) {
-        console.log(ticket);
-        const newBasket = basket;
-        newBasket.items.tickets = [...newBasket.items.tickets, ticket]
-        console.log(newBasket);
-        setBasket(newBasket);
-    }
+    useEffect(() => {
+        console.log("basket updated", basket);
+        localStorage.setItem("userBasket", JSON.stringify(basket));
+    }, [basket]);
 
     return (
         <BrowserRouter>
-            <Header user={user} setUser={setUser} setPrevLocation={setPrevLocation}/>
+            <Header user={user} setUser={setUser} setPrevLocation={setPrevLocation} setCookie={setCookie}/>
             <Routes>
                 <Route path="/" element={<DefaultLayout/>}>
                     <Route index element={<Main/>}/>
@@ -73,9 +93,9 @@ function App() {
                     <Route path="restaurants" element={<Restaurant/> }/>
                     <Route path="the-grand-crown-hotel" element={<CrownHotel/>} />
                     <Route path="cottage" element={<Cottage/>} />
-                    <Route path="account" element={<Account/>}/>
+                    <Route path="account" element={<Account user={user}/>}/>
                     <Route path="account/signin" element={<SignIn/>}/>
-                    <Route path="account/login" element={<LogIn originPath={prevLocation} user={user} setUser={setUser}/>} />
+                    <Route path="account/login" element={<LogIn originPath={prevLocation} user={user} setUser={setUser} setCookie={setCookie}/>} />
                     <Route path="account/my-account" element={<EmailField />} />
                     <Route path="privacy-policy" element={<PrivacyPolicy/> }/>
                     <Route path="about" element={<AboutUs/> }/>
@@ -84,10 +104,8 @@ function App() {
                 </Route>
                 <Route path="/" element={<NoNavbarLayout/>}>
                     <Route path="offers" element={<Offers/>}/>
-                    <Route path="order" element={<Order basket={basket} setBasket={setBasket} addTickets={addTickets}/>}>
-                        <Route path="tickets" element={<TicketBooking/>}></Route>
-                        <Route path="hotel" element={<></>}></Route>
-                        <Route path="restaurant" element={<></>}></Route>
+                    <Route path="order" element={<Order basket={basket} setBasket={setBasket} user={user}/>}>
+                        <Route path="tickets" element={<TicketBooking/>} />
                         <Route path="summary" element={<OrderSummary/>}></Route>
                     </Route>
                 </Route>

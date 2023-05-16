@@ -134,7 +134,6 @@ function AccountInformation({months, name, email}){
             })
                 .then(response => {
                     if (response.status === 201 && response.statusText === "Created") {
-                        alert("Account created");
                         navigate("../account/login", {replace: true});
                     }
                 })
@@ -327,7 +326,7 @@ function AccountInformation({months, name, email}){
     )
 }
 
-function LogIn({originPath, user, setUser}){
+function LogIn({originPath, user, setUser, setCookie}){
     const navigate = useNavigate();
     const [submitActivated, setSubmitActivated] = useState(false);
     const [submitting, setSubmitting] = useState(false);
@@ -358,8 +357,8 @@ function LogIn({originPath, user, setUser}){
             })
                 .then(response => {
                     if (response.status === 200 && response.statusText === "OK") {
-                        alert("Access granted");
-                        setUser("connected");
+                        setUser({email: response.data});
+                        setCookie("user", response.data, 2);
                         if (originPath.pathname !== "/account/login") {
                             navigate(originPath, {replace: true});
                         }

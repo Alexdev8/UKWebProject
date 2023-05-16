@@ -20,15 +20,47 @@
         },
         "options": {
             "fast-track": {
-                "price_percentage": 18,
+                "price": 50,
                 "name": "fast track option",
                 "description": "don't waste time in lines and make the most of your visit skipping the queues"
+            },
+            "VIP-access": {
+                "price": 70,
+                "name": "VIP access",
+                "description": "A VIP pass allows for better seating in attractions at the amusement park, and early access/later leave in the park."
+            },
+            "nightshow": {
+                "price": 30,
+                "name": "shadows of britannia",
+                "description": "Shadows of Britannia is a one-of-a-kind nocturnal spectacle that immerses audiences in the rich history and culture of England."
             }
+
         }
     },
     "hotels": {
-        "grand-crown": {
-            "price": 249
+        "the-tudor-suite": {
+            "price": 48,
+            "child_price": 38,
+            "description": "The Tudor Suite is a stunning accommodation option that transports guests back in time to the golden age of the Tudor dynasty.",
+            "name": "The Tudor Suite"
+        },
+        "the-crown-jewel": {
+            "price": 108,
+            "child_price": 98,
+            "description": "The Crown Jewel Suite is the epitome of luxury and grandeur.",
+            "name": "The Crown Jewel"
+        },
+        "the-windsor-room": {
+            "price": 78,
+            "child_price": 68,
+            "name": "The Windsor Room",
+            "description": "The Windsor Rose Suite is a luxurious and elegant accommodation fit for royalty."
+        },
+        "the-rose-garden-view": {
+            "price": 68,
+            "child_price": 58,
+            "name": "The Rose Garden View",
+            "description": "In partnership with Lego®, this suite features a unique Lego-themed decor that will delight children and adults alike."
         }
     }
 }

@@ -53,12 +53,11 @@ function SignIn(){
     )
 }
 
-function AccountBtn({user, setUser}) {
+function AccountBtn({user, setUser, setCookie}) {
     const [hidden, setHidden] = useState(true);
     const popup = useRef(null);
     const navigate = useNavigate();
-
-    console.log(user);
+    const location = useLocation();
 
     function handleClickOutside(event) {
         if (popup.current && !popup.current.contains(event.target)) {
@@ -85,18 +84,29 @@ function AccountBtn({user, setUser}) {
                     (user === null) ?
                     <div>
                         <button className="popup-button" onClick={() => {
-                            navigate("account/login");
+                            navigate("./account/login");
                             setHidden(true);
                         }}>Log in</button>
                         <button className="popup-button" onClick={() => {
-                            navigate("account/signin");
+                            navigate("./account/signin");
                             setHidden(true);
                         }}>Create an account</button>
                     </div>
                     :
                     <div>
-                        <button className="popup-button">Profile</button>
-                        <button className="logout-btn popup-button" onClick={() => setUser(null)}>Log out</button>
+                        <button className="popup-button" onClick={() => {
+                            navigate("./account");
+                            setHidden(true);
+                        }}>Profile</button>
+                        <button className="logout-btn popup-button" onClick={() => {
+                            setUser(null);
+                            setCookie("user", "", -1);
+                            setHidden(true);
+                            console.log(location.pathname);
+                            if (location.pathname === "/account" || location.pathname === "/account/") {
+                                navigate("/");
+                            }
+                        }}>Log out</button>
                     </div>
                 }
             </div>
@@ -104,7 +114,7 @@ function AccountBtn({user, setUser}) {
     )
 }
 
-function Button({user, setUser}){
+function Button({user, setUser, setCookie}){
     const buttons = [
         {key: 0, name: "dark_mode", id: "dark_mode-btn", action: "alert('Dark mode on')"},
         {key: 1, name: "settings", id: "settings-btn", action: "window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'"},
@@ -119,12 +129,12 @@ function Button({user, setUser}){
                     {button.name}
                 </span>
             ))}
-            <AccountBtn user={user} setUser={setUser}/>
+            <AccountBtn user={user} setUser={setUser} setCookie={setCookie}/>
         </div>
     )
 }
 
-function Header({user, setUser, setPrevLocation}){
+function Header({user, setUser, setPrevLocation, setCookie}){
     const location = useLocation();
 
     useEffect(() => {
@@ -142,7 +152,7 @@ function Header({user, setUser, setPrevLocation}){
                     <div id="logo-site" role="link"></div>
                 </Link>
             </div>
-            <Button user={user} setUser={setUser}/>
+            <Button user={user} setUser={setUser} setCookie={setCookie}/>
         </header>
     )
 }

@@ -30,19 +30,28 @@ function refreshConnection() {
     }
 }
 
-function formatDate(date) {
+function formatDateUser(date) {
     let tdate = moment(date);
-    return tdate.format("YYYY-MM-DD");
+    return tdate.format("DD/MM/YYYY");
+}
+
+function formatDateServer(date) {
+    const [day, month, year] = date.split("/");
+    return year + "-" + month + "-" + day;
 }
 
 function formatString(string) {
     return string.trim().toLowerCase();
 }
 
-function generateRef() {
+function generateRef(use) {
     const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     let refLength = 6; //62 characters used for 6 chars long ref is enough and bring theoretically 56.8B possibilities
-    let result = '';
+    let result = 'RF';
+    if (use === "hotel") {
+        refLength = 8;
+        result = 'BK';
+    }
     for (let i = 0; i < refLength; i++) {
         result += chars.charAt(Math.floor(Math.random() * chars.length));
     }
@@ -75,15 +84,44 @@ app.get('/api/tickets/:id', (req, res) => {
     });
 });
 
+app.get('/api/tickets', (req, res) => {
+    //get all tickets with account ID
+
+    const sql="SELECT * FROM Tickets WHERE accountID= ?";
+
+    refreshConnection();
+    connection.query(sql, [req.query.accountID],(err, results, fields) => {
+        if (!err) {
+            if (results.length !== 0) {
+                for(let result of results) {
+                    result.ticketValidityStartDate = formatDateUser(result.ticketValidityStartDate);
+                    result.ticketValidityEndDate = formatDateUser(result.ticketValidityEndDate);
+                }
+                res.send(results);
+                console.log('Result sent');
+            }
+            else {
+                res.statusCode = 404;
+                res.send("No tickets related to this account ID");
+            }
+        }
+        else {
+            res.statusCode = 404;
+            res.send("No tickets related to this account ID");
+            return console.error('error during query: ' + err.message);
+        }
+    });
+});
+
 app.post('/api/tickets', (req, res) => {
     //add a json type ticket object to the database
     let ticket = req.body;
-    const sql="INSERT INTO Tickets (`ticketRef`, `ticketValidityStartDate`, `ticketValidityEndDate`, `ticketType`, `visitorFirstName`, `visitorLastName`, `accountID`, `email`) " +
-        "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    const sql="INSERT INTO Tickets (`ticketRef`, `ticketValidityStartDate`, `ticketValidityEndDate`, `ticketType`, `visitorFirstName`, `visitorLastName`, `accountID`, `email`, `price`) " +
+        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     console.log(ticket);
     refreshConnection();
-    connection.query(sql, [generateRef(), ticket.ticketStartDate, ticket.ticketEndDate, ticket.ticketType, "test", "testNom", null, ticket.email],(err, results, fields) => {
+    connection.query(sql, [generateRef(), formatDateServer(ticket.ticketStartDate), formatDateServer(ticket.ticketEndDate), ticket.ticketType, ticket.visitorFirstName, ticket.visitorLastName, ticket.accountID, ticket.email, ticket.price],(err, results, fields) => {
         if (!err) {
             res.send(results);
             console.log('Result sent');
@@ -98,16 +136,24 @@ app.post('/api/tickets', (req, res) => {
 app.get('/api/account', (req, res) => {
     //get account information by email
 
-    const sql="SELECT * FROM Accounts WHERE email= ?";
+    const sql="SELECT `accountID`, `firstName`, `lastName`, `email`, `birthDate`, `phoneNumber`, `newsLetterSubscription` FROM `Accounts` WHERE email= ?";
 
     refreshConnection();
     connection.query(sql, [req.query.email],(err, results, fields) => {
         if (!err) {
-            res.send(results[0]);
-            console.log('Result sent');
+            if (results.length !== 0) {
+                results[0].birthDate = formatDateUser(results[0].birthDate);
+                res.send(results[0]);
+                console.log('Result sent');
+            }
+            else {
+                res.statusCode = 404;
+                res.send("This account doesn't exist");
+            }
         }
         else {
-            res.send('error during query: ' + err.message);
+            res.statusCode = 404;
+            res.send("This account doesn't exist");
             return console.error('error during query: ' + err.message);
         }
     });
@@ -130,7 +176,7 @@ app.post('/api/account/register', (req, res) => {
         else {
             cypheredPassword = account.password;
         }
-        connection.query(sql, [formatString(account.firstName), formatString(account.lastName), account.birthDate, formatString(account.email), cypheredPassword, account.phoneNumber, account.newsLetter],(err, results, fields) => {
+        connection.query(sql, [formatString(account.firstName), formatString(account.lastName), formatDateServer(account.birthDate), formatString(account.email), cypheredPassword, account.phoneNumber, account.newsLetter],(err, results, fields) => {
             if (!err) {
                 res.statusCode = 201;
                 res.send(results);
@@ -142,6 +188,40 @@ app.post('/api/account/register', (req, res) => {
                 return console.error('error during query: ' + err.code);
             }
         });
+    });
+});
+
+app.patch('/api/account/update', (req, res) => {
+    //update a json type account object in the database
+
+    let updateData = req.body;
+    console.log(updateData);
+    console.log(req.query.email);
+
+    const sql="UPDATE `Accounts` SET " + formatString(updateData.key) + "= ? WHERE `email`= ?";
+
+    refreshConnection();
+    switch (updateData.key) {
+        case "birthDate":
+            updateData.value = formatDateServer(updateData.value);
+            console.log(updateData.value);
+            break;
+        default:
+            updateData.value = formatString(updateData.value);
+    }
+    connection.query(sql, [updateData.value, req.query.email], (err, results, fields) => {
+        if (!err) {
+            res.statusCode = 200;
+            res.send(results);
+            console.log('Result sent');
+        }
+        else {
+            if (err.code !== "ER_PARSE_ERROR") {
+                res.statusCode = 404;
+                res.send("This account doesn't exist");
+                return console.error('No such account exist: ' + err.code);
+            }
+        }
     });
 });
 
@@ -157,7 +237,7 @@ app.post('/api/account/login', (req, res) => {
             bcrypt.compare(creds.password, results[0].password, function(err, result) {
                 if (result) {
                     res.statusCode = 200;
-                    res.send("OK");
+                    res.send(creds.email);
                 }
                 else {
                     res.statusCode = 401;
