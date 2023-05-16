@@ -28,7 +28,6 @@ import Account from "./Account";
 import AboutUs from "./AboutUs";
 import Cottage from "./Cottage";
 import EmailField from "./Account";
-import HotelBooking from "./HotelBooking";
 
 function setCookie(cname, cvalue, exdays) {
     const d = new Date();
@@ -108,7 +107,6 @@ function App() {
                     <Route path="offers" element={<Offers/>}/>
                     <Route path="order" element={<Order basket={basket} setBasket={setBasket} addTickets={addTickets}/>}>
                         <Route path="tickets" element={<TicketBooking/>} />
-                        <Route path="hotels" element={<HotelBooking/>} />
                         <Route path="summary" element={<OrderSummary/>}></Route>
                     </Route>
                 </Route>
