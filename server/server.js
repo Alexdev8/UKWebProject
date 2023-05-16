@@ -37,11 +37,14 @@ function formatDateUser(date) {
 }
 
 function formatDateServer(date) {
-    if (/^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/.test(date)) {
-        const [day, month, year] = date.split("/");
-        return year + "-" + month + "-" + day;
+    if (date !== null) {
+        if (/^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/.test(date)) {
+            const [day, month, year] = date.split("/");
+            return year + "-" + month + "-" + day;
+        }
+        return date.substring(0, 10);
     }
-    return date.substring(0, 10);
+    return null;
 }
 
 function formatString(string) {
@@ -124,6 +127,7 @@ app.post('/api/tickets', (req, res) => {
     const sql="INSERT INTO Tickets (`ticketRef`, `ticketValidityStartDate`, `ticketValidityEndDate`, `ticketType`, `visitorAge`, `visitorFirstName`, `visitorLastName`, `accountID`, `email`, `price`)" +
         "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
+    console.log(ticket);
     refreshConnection();
     if (ticket.connected) {
         connection.query("SELECT `accountID` FROM `Accounts` WHERE email= ?", [ticket.email],(err, results, fields) => {

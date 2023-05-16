@@ -718,11 +718,25 @@ form[name="order-form"] .form-step.hidden h3 {
 /*============================= BASKET =============================*/
 
 .basket {
+    position: relative;
     width: fit-content;
     background-color: #dedede;
     padding: 2em;
     margin-bottom: 1em;
     border-radius: 2em;
+}
+
+.basket .material-symbols-outlined {
+    transition: all 0.2s;
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+}
+
+.basket .material-symbols-outlined:hover {
+    cursor: pointer;
+    transition: all 0.2s;
+    transform: scale(1.1);
 }
 
 .basket .basket-items {
@@ -754,7 +768,7 @@ form[name="order-form"] .form-step.hidden h3 {
     max-height: 35em;
     opacity: 1;
     margin: 1em 1em 0 1em;
-    padding: 0 1em 1em 1em;
+    padding: 1em 1em 1em 1em;
 }
 
 .order-summary > .content-section div, .order-summary > .content-section h1 {

@@ -1,8 +1,8 @@
 import Basket from "./Basket";
-import {total, subTotal} from "./Basket";
+import {subTotal} from "./Basket";
 import {useNavigate, useOutletContext} from "react-router-dom";
 import {useEffect, useRef, useState} from "react";
-import axios, {get} from "axios";
+import axios from "axios";
 
 function Package(props) {
     return (
@@ -116,6 +116,10 @@ function UserDetails(props) {
                         console.log(response);
                         if (response.status === 200 && response.statusText === "OK") {
                             refs.push(response.data);
+                            if (refs.length === ticketList.length) {
+                                props.setTicketsRefs(refs);
+                                props.setState(2);
+                            }
                         }
                     })
                     .catch(error => {
@@ -130,8 +134,6 @@ function UserDetails(props) {
                         }
                     });
             }
-            props.setTicketsRefs(refs);
-            props.setState(2);
         }
     }
 
@@ -169,7 +171,7 @@ function UserDetails(props) {
                     </div>
                 </form>
                 <div>
-                    <Basket items={props.basket}/>
+                    <Basket items={props.basket} setBasket={props.setBasket} setCookie={props.setCookie}/>
                     <button className="button" onClick={(e) => buyBasket(e)}>Buy</button>
                 </div>
             </div>
@@ -181,12 +183,12 @@ function OrderConfirmation(props) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (props.shown === 2) {
-            console.log("reset");
+        if (props.ticketRefs.length !== 0) {
+            console.log("change");
             props.setBasket({items: {tickets: {adult: [],child: []},hotel: [],restaurant: [],options: []}});
             props.setCookie("basket", "", -1);
         }
-    }, [props.shown]);
+    }, [props.ticketRefs]);
 
     return (
         <div className={((!props.shown) ? "hidden " : "") + "content-section"}>
@@ -217,7 +219,8 @@ function OrderSummary() {
 
     if (userSummaryState === 0 && props.basket.items.tickets.adult.length === 0 && props.basket.items.tickets.child.length === 0) {
         if (props.getCookie("basket") !== "") {
-            props = {...props, basket: JSON.parse(props.getCookie("basket"))}
+            props.setBasket(JSON.parse(props.getCookie("basket")));
+            // props = {...props, basket: JSON.parse(props.getCookie("basket"))}
         }
         else {
             navigate("../tickets");
@@ -233,7 +236,7 @@ function OrderSummary() {
                         <PackagesList {...props}/>
                     </div>
                     <div>
-                        <Basket items={props.basket.items}/>
+                        <Basket items={props.basket.items} setBasket={props.setBasket} setCookie={props.setCookie}/>
                         <button className="button" onClick={(e) => {
                             e.preventDefault();
                             setUserSummaryState(1);
@@ -242,7 +245,7 @@ function OrderSummary() {
                 </div>
             </div>
             {console.log(props.basket)}
-            <UserDetails shown={userSummaryState === 1} ticketForm={props.formState} basket={props.basket.items} user={props.user} setTicketsRefs={setTicketsRefs} setState={setUserSummaryState}/>
+            <UserDetails shown={userSummaryState === 1} ticketForm={props.formState} basket={props.basket.items} setBasket={props.setBasket} setCookie={props.setCookie} user={props.user} setTicketsRefs={setTicketsRefs} setState={setUserSummaryState}/>
             <OrderConfirmation shown={userSummaryState === 2} ticketRefs={ticketsRefs} user={props.user} setBasket={props.setBasket} setCookie={props.setCookie}/>
         </div>
     );
