@@ -30,7 +30,7 @@ import Cottage from "./Cottage";
 import EmailField from "./Account";
 import ContactUs from "./ContactUs";
 import Events from "./Events";
-import Offers from "./Offers";
+
 
 function setCookie(cname, cvalue, exdays) {
     const d = new Date();

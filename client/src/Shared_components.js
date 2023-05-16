@@ -175,8 +175,7 @@ function Menu(){
 
     const Accommodations = [
         {key: 0, name: "The Grand Crown Hotel", href: "the-grand-crown-hotel", id: "crownHotel"},
-        {key: 1, name: "Hotel restaurant", href: "hotel-restaurant", id: "hotelRestaurant"},
-        {key: 2, name: "Cottages/Bed and breakfasts", href: "cottage", id: "cottage"}
+        {key: 1, name: "Cottages/Bed and breakfasts", href: "cottage", id: "cottage"}
     ];
 
     const Restaurants = [
