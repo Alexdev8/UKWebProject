@@ -1,8 +1,8 @@
 import Basket from "./Basket";
-import {total, subTotal} from "./Basket";
+import {subTotal} from "./Basket";
 import {useNavigate, useOutletContext} from "react-router-dom";
 import {useEffect, useRef, useState} from "react";
-import axios, {get} from "axios";
+import axios from "axios";
 
 function Package(props) {
     return (
