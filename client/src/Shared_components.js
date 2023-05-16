@@ -175,8 +175,7 @@ function Menu(){
 
     const Accommodations = [
         {key: 0, name: "The Grand Crown Hotel", href: "the-grand-crown-hotel", id: "crownHotel"},
-        {key: 1, name: "Hotel restaurant", href: "hotel-restaurant", id: "hotelRestaurant"},
-        {key: 2, name: "Cottages/Bed and breakfasts", href: "cottage", id: "cottage"}
+        {key: 1, name: "Cottages/Bed and breakfasts", href: "cottage", id: "cottage"}
     ];
 
     const Restaurants = [
@@ -186,9 +185,8 @@ function Menu(){
 
 
     const Information = [
-        {key: 0, name: "Prices", href: "prices", id: "prices"},
+        {key: 0, name: "Offers", href: "offers", id: "offers"},
         {key: 1, name: "Events", href: "events", id: "events"},
-        {key: 2, name: "Reservation", href:"reservation", id:"reservation"},
 
     ];
 

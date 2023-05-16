@@ -31,6 +31,7 @@ import EmailField from "./Account";
 import ContactUs from "./ContactUs";
 import Events from "./Events";
 
+
 function setCookie(cname, cvalue, exdays) {
     const d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -99,6 +100,7 @@ function App() {
                     <Route path="about" element={<AboutUs/> }/>
                     <Route path="contact-us" element={<ContactUs/> }/>
                     <Route path="events" element={<Events/> }/>
+                    <Route path="offers" element={<Offers/> }/>
                     <Route path="*" element={<NotFound/>}/>
                 </Route>
                 <Route path="/" element={<NoNavbarLayout/>}>

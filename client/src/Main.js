@@ -6,7 +6,7 @@ const attractionsData = [
     {
         key: 0,
         active: true,
-        src: "https://focus.courrierinternational.com/2022/02/04/0/0/5568/3712/1280/0/60/0/a82f9b4_1644008435467-000-9ba2ne.jpg",
+        src: "https://c4.wallpaperflare.com/wallpaper/922/648/1005/ships-the-series-vikings-the-vikings-wallpaper-preview.jpg",
         href: "attractions/viking",
         title: "The viking's attack",
         caption: "Dive into the epic story of the ruthless vikings"
@@ -14,7 +14,7 @@ const attractionsData = [
     {
         key: 1,
         active: false,
-        src: "https://www.parcbagatelle.com/fileadmin/user_upload/bagatelle/Baggy_Pass/Banniere-BaggyPass-Bagatelle.jpg",
+        src: "https://p0.storage.canalblog.com/00/42/498088/122328190_o.jpg",
         href: "attractions/roman",
         title: "The roman empire",
         caption: "Get back to the roman period and discover the england of that time"
@@ -22,25 +22,25 @@ const attractionsData = [
     {
         key: 2,
         active: false,
-        src: "https://www.lepal.com/assets/images/background/pages/attractions.jpg?v=1680775020",
+        src: "https://images.lindependant.fr/api/v1/images/view/5d54055fd286c202264fd612/large/image.jpg?v=1",
         href: "attractions",
-        title: "Attraction 3",
-        caption: "A funny one"
+        title: "100 year war",
+        caption: "immerse yourself in the dramatic tale of the Hundred Years War"
     },
     {
         key: 3,
         active: false,
-        src: "https://www.evenement.com/wp-content/uploads/2020/01/an-amusement-park-at-night-2884693.jpg",
+        src: "https://images.immediate.co.uk/production/volatile/sites/22/2018/09/GettyImages-530157788-4b7d005.jpg",
         href: "attractions",
-        title: "Attraction 4",
-        caption: "An exiting one"
+        title: "Robinhood",
+        caption: "Meet a charismatic and skilled archer named Robin Hood"
     },
     {
         key: 4,
         active: false,
-        src: "https://www.technord.com/wp-content/uploads/2020/03/Parc-attractions.jpg",
+        src: "https://www.thetrafalgarway.org/mint-project/uploads/709103332.png",
         href: "attractions",
-        title: "Attraction 5",
+        title: "Trafalgar",
         caption: "A breathtaking one"
     }
 ]
@@ -60,11 +60,15 @@ function Main() {
             <div className="main-container parallax-layer1">
                 <section className="content-section">
                     <h1><Link to="/offers">Our plans</Link></h1>
-                    <button onClick={() => navigate("/order/tickets")}>Get a ticket now</button>
+                    <button className="button-roman" onClick={() => navigate("/order/tickets")}>Get a ticket now</button>
                 </section>
                 <section className="content-section">
                     <h1><Link to="/attractions">Our great attractions</Link></h1>
                     <Carousel images={attractionsData}/>
+                </section>
+                <section className="content-section " >
+                    <h1>How to access the park</h1>
+                    <img className="map" src={require("./resources/rosecrown_map.png")} alt="rosecrown map"></img>
                 </section>
             </div>
         </>
