@@ -20,7 +20,7 @@ function Order({basket, setBasket, user, getCookie, setCookie}) {
         setFormState(emptyForm);
     }
 
-    const sendForm = async (e) => {
+    const sendForm = (e) => {
         e.preventDefault();
         const newBasket = basket;
         newBasket.items.tickets.adult = [...basket.items.tickets.adult, {
