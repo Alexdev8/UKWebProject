@@ -154,7 +154,6 @@ function TicketAmountInput(props) {
     useEffect(() => {
         if (props.formState.ticketNb + props.formState.ticketChildNb !== 0) {
             if (props.state === props.index) {
-                console.log("skip");
                 props.skip();
             }
         } else {
@@ -166,7 +165,6 @@ function TicketAmountInput(props) {
 
     useEffect(() => {
         if (props.state === props.index) {
-            console.log("skip");
             props.skip();
         }
     }, [props.formState.state])

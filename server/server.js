@@ -7,6 +7,7 @@ let bcrypt = require('bcrypt');
 
 require('dotenv').config({path: path.dirname(__dirname) + "/.env"});
 const db_config = require('./config/db_config');
+const {add} = require("nodemon/lib/rules");
 const app = express();
 
 let connection = mysql.createConnection(db_config);
@@ -36,8 +37,11 @@ function formatDateUser(date) {
 }
 
 function formatDateServer(date) {
-    const [day, month, year] = date.split("/");
-    return year + "-" + month + "-" + day;
+    if (/^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/.test(date)) {
+        const [day, month, year] = date.split("/");
+        return year + "-" + month + "-" + day;
+    }
+    return date.substring(0, 10);
 }
 
 function formatString(string) {
@@ -116,21 +120,41 @@ app.get('/api/tickets', (req, res) => {
 app.post('/api/tickets', (req, res) => {
     //add a json type ticket object to the database
     let ticket = req.body;
-    const sql="INSERT INTO Tickets (`ticketRef`, `ticketValidityStartDate`, `ticketValidityEndDate`, `ticketType`, `visitorFirstName`, `visitorLastName`, `accountID`, `email`, `price`) " +
-        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    let accountID = null;
+    const sql="INSERT INTO Tickets (`ticketRef`, `ticketValidityStartDate`, `ticketValidityEndDate`, `ticketType`, `visitorAge`, `visitorFirstName`, `visitorLastName`, `accountID`, `email`, `price`)" +
+        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    console.log(ticket);
     refreshConnection();
-    connection.query(sql, [generateRef(), formatDateServer(ticket.ticketStartDate), formatDateServer(ticket.ticketEndDate), ticket.ticketType, ticket.visitorFirstName, ticket.visitorLastName, ticket.accountID, ticket.email, ticket.price],(err, results, fields) => {
-        if (!err) {
-            res.send(results);
-            console.log('Result sent');
-        }
-        else {
-            res.send('error during query: ' + err.message);
-            return console.error('error during query: ' + err.message);
-        }
-    });
+    if (ticket.connected) {
+        connection.query("SELECT `accountID` FROM `Accounts` WHERE email= ?", [ticket.email],(err, results, fields) => {
+            if (!err) {
+                if (results.length !== 0) {
+                    accountID = results[0].accountID;
+                }
+                addTickets();
+            }
+            else {
+                res.send('error during query: ' + err.message);
+                return console.error('error during query: ' + err.message);
+            }
+        });
+    } else {
+        addTickets();
+    }
+
+    function addTickets() {
+        const ref = generateRef();
+        connection.query(sql, [ref, formatDateServer(ticket.ticketStartDate), formatDateServer(ticket.ticketEndDate), ticket.ticketType, ticket.visitorAge, ticket.visitorFirstName, ticket.visitorLastName, accountID, ticket.email, ticket.price],(err, results, fields) => {
+            if (!err) {
+                res.send(ref);
+                console.log('Result sent');
+            }
+            else {
+                res.send('error during query: ' + err.message);
+                return console.error('error during query: ' + err.message);
+            }
+        });
+    }
 });
 
 app.get('/api/account', (req, res) => {

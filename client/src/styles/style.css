@@ -190,6 +190,10 @@ header {
     transform: rotate(45deg)
 }
 
+#cart-btn {
+
+}
+
 .account-btn {
     position: relative;
     margin-left: 1em;
@@ -716,7 +720,7 @@ form[name="order-form"] .form-step.hidden h3 {
 .basket {
     width: fit-content;
     background-color: #dedede;
-    padding: 2%;
+    padding: 2em;
     margin-bottom: 1em;
     border-radius: 2em;
 }
@@ -753,6 +757,12 @@ form[name="order-form"] .form-step.hidden h3 {
     padding: 0 1em 1em 1em;
 }
 
+.order-summary > .content-section div, .order-summary > .content-section h1 {
+    transition: max-height 0.6s, opacity 0.3s, margin-top 0.5s, transform 0s 0.6s;
+    max-height: 35em !important;
+    opacity: 1;
+}
+
 .order-summary > .content-section.hidden {
     transition: max-height 0.6s, opacity 0.3s, margin-top 0.5s, transform 0s 0.6s;
     max-height: 0 !important;
@@ -761,6 +771,27 @@ form[name="order-form"] .form-step.hidden h3 {
     padding: 0;
     transform: translateX(600%);
     visibility: hidden;
+}
+
+.order-summary > .content-section.hidden div, .order-summary > .content-section.hidden h1 {
+    transition: max-height 0.6s, opacity 0.3s, margin-top 0.5s, transform 0s 0.6s;
+    max-height: 0 !important;
+    opacity: 0 !important;
+    margin: 0;
+    padding: 0;
+    visibility: hidden;
+}
+
+.user-details {
+    display: flex;
+}
+
+.user-details .personnel-data-ticket {
+    flex: 2
+}
+
+.user-details .basket {
+    flex: 1
 }
 
 .summary-panel {

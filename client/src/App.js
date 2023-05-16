@@ -59,8 +59,10 @@ function App() {
     const [user, setUser] = useState((!!getCookie("user")) ? {email: getCookie("user")} : null);
     const [basket, setBasket] = useState({
         items: {
-            tickets: [
-            ],
+            tickets: {
+                adult: [],
+                child: []
+            },
             hotel: [
             ],
             restaurant: [
@@ -70,14 +72,9 @@ function App() {
         }
     });
 
-    useEffect(() => {
-        console.log("basket updated", basket);
-        localStorage.setItem("userBasket", JSON.stringify(basket));
-    }, [basket]);
-
     return (
         <BrowserRouter>
-            <Header user={user} setUser={setUser} setPrevLocation={setPrevLocation} setCookie={setCookie}/>
+            <Header user={user} setUser={setUser} setPrevLocation={setPrevLocation} setCookie={setCookie} getCookie={getCookie}/>
             <Routes>
                 <Route path="/" element={<DefaultLayout/>}>
                     <Route index element={<Main/>}/>
@@ -106,7 +103,7 @@ function App() {
                 </Route>
                 <Route path="/" element={<NoNavbarLayout/>}>
                     <Route path="offers" element={<Offers/>}/>
-                    <Route path="order" element={<Order basket={basket} setBasket={setBasket} user={user}/>}>
+                    <Route path="order" element={<Order basket={basket} setBasket={setBasket} user={user} getCookie={getCookie} setCookie={setCookie}/>}>
                         <Route path="tickets" element={<TicketBooking/>} />
                         <Route path="summary" element={<OrderSummary/>}></Route>
                     </Route>

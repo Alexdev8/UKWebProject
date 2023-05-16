@@ -1,37 +1,37 @@
 import shopData from "./shop-data.json";
+export function subTotal(item, count, child) {
+    if (child) {
+        return shopData.tickets[item.ticketType]["child_price"] * count;
+    }
+    return shopData.tickets[item.ticketType].price * count;
+}
 
 function Basket({items}) {
-    console.log()
     function total() {
         let total = 0;
-        for (let item of items.tickets) {
-            total += shopData.tickets[item.ticketType].price * item.ticketNb;
-            total += shopData.tickets[item.ticketType]["child_price"] * item.ticketChildNb;
+        for (let item of items.tickets.adult) {
+            total += shopData.tickets[item.ticketType].price * item.count;
+        }
+        for (let item of items.tickets.child) {
+            total += shopData.tickets[item.ticketType]["child_price"] * item.count;
         }
         return total;
-    }
-
-    function subTotal(item, child) {
-        if (child) {
-            return shopData.tickets[item.ticketType]["child_price"] * item.ticketChildNb;
-        }
-        return shopData.tickets[item.ticketType].price * item.ticketNb;
     }
 
     return(
         <div className="basket">
             <h2>Basket</h2>
             <table className="basket-items">
-                {items.tickets.map((item) => (
-                    <tr key={item.id}>
-                        <td>{item.ticketType} x{item.ticketNb}</td>
-                        <td>{subTotal(item, false).toFixed(2)}£</td>
+                {items.tickets.adult.map((item) => (
+                    <tr>
+                        <td>{item.ticketType} x{item.count}</td>
+                        <td>{subTotal(item, item.count, false).toFixed(2)}£</td>
                     </tr>
                 ))}
-                {items.tickets.map((item) => (
-                    <tr key={item.id}>
-                        <td>{item.ticketType + " child"} x{item.ticketChildNb}</td>
-                        <td>{subTotal(item, true).toFixed(2)}£</td>
+                {items.tickets.child.map((item) => (
+                    <tr>
+                        <td>{item.ticketType + " child"} x{item.count}</td>
+                        <td>{subTotal(item, item.count,true).toFixed(2)}£</td>
                     </tr>
                 ))}
                 <tr id="basket-total-row">

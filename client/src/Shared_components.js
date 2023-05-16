@@ -114,15 +114,21 @@ function AccountBtn({user, setUser, setCookie}) {
     )
 }
 
-function Button({user, setUser, setCookie}){
+function Button({user, setUser, setCookie, getCookie}){
+    const navigate = useNavigate();
     const buttons = [
-        {key: 0, name: "dark_mode", id: "dark_mode-btn", action: "alert('Dark mode on')"},
-        {key: 1, name: "settings", id: "settings-btn", action: "window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'"},
+        {key: 0, name: "settings", id: "settings-btn", action: "window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'"},
     ]
 
     return(
         <div className="header-side" id="right-side">
             <SearchBar/>
+            {(getCookie("basket") !== "") ?
+                <span className="icon-btn material-symbols-outlined" id="cart-btn"
+                      onClick={() => navigate("./order/summary")} tabIndex="0">shopping_cart</span>
+                :
+                <></>
+            }
             {buttons.map((button) => (
                 <span key={button.key} className="icon-btn material-symbols-outlined" id={button.id}
                       onClick={new Function("return " + button.action)} tabIndex="0">
@@ -134,7 +140,7 @@ function Button({user, setUser, setCookie}){
     )
 }
 
-function Header({user, setUser, setPrevLocation, setCookie}){
+function Header({user, setUser, setPrevLocation, setCookie, getCookie}){
     const location = useLocation();
 
     useEffect(() => {
@@ -152,7 +158,7 @@ function Header({user, setUser, setPrevLocation, setCookie}){
                     <div id="logo-site" role="link"></div>
                 </Link>
             </div>
-            <Button user={user} setUser={setUser} setCookie={setCookie}/>
+            <Button user={user} setUser={setUser} setCookie={setCookie} getCookie={getCookie}/>
         </header>
     )
 }

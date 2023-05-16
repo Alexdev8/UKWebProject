@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {Navigate, Outlet, useNavigate, useOutlet} from "react-router-dom";
 
-function Order({basket, setBasket, user}) {
+function Order({basket, setBasket, user, getCookie, setCookie}) {
     const outlet = useOutlet();
     const navigate = useNavigate();
     const emptyForm = {
@@ -22,29 +22,23 @@ function Order({basket, setBasket, user}) {
 
     const sendForm = async (e) => {
         e.preventDefault();
-        for (let i = 0; i < formState.ticketNb; i++) {
-            const newBasket = basket;
-            newBasket.items.tickets = [...basket.items.tickets, {
-                ticketType: formState.ticketType,
-                visitor: "adult",
-                ticketStartDate: formState.ticketStartDate,
-                ticketEndDate: formState.ticketEndDate,
-                ticketOptions: formState.ticketOptions
-            }]
-            setBasket(newBasket);
-        }
-        for (let i = 0; i < formState.ticketChildNb; i++) {
-            const newBasket = basket;
-            newBasket.items.tickets = [...basket.items.tickets, {
-                ticketType: formState.ticketType,
-                visitor: "child",
-                ticketStartDate: formState.ticketStartDate,
-                ticketEndDate: formState.ticketEndDate,
-                ticketOptions: formState.ticketOptions
-            }]
-            setBasket(newBasket);
-        }
-        console.log(basket);
+        const newBasket = basket;
+        newBasket.items.tickets.adult = [...basket.items.tickets.adult, {
+            ticketType: formState.ticketType,
+            count: formState.ticketNb,
+            ticketStartDate: formState.ticketStartDate,
+            ticketEndDate: formState.ticketEndDate,
+            ticketOptions: formState.ticketOptions
+        }]
+        newBasket.items.tickets.child = [...basket.items.tickets.child, {
+            ticketType: formState.ticketType,
+            count: formState.ticketChildNb,
+            ticketStartDate: formState.ticketStartDate,
+            ticketEndDate: formState.ticketEndDate,
+            ticketOptions: formState.ticketOptions
+        }]
+        setBasket(newBasket);
+        setCookie("basket", JSON.stringify(basket), 7);
         navigate("/order/summary", {state: basket});
     }
 
@@ -77,7 +71,7 @@ function Order({basket, setBasket, user}) {
             <form name="order-form" onSubmit={(e) => sendForm(e)}>
                 {
                     (outlet !== null) ?
-                        <Outlet context={{formState, basket, setFormInput, setBasket, initForm, user}}/>
+                        <Outlet context={{formState, basket, setFormInput, setBasket, initForm, user, getCookie, setCookie}}/>
                         : <Navigate to={"./tickets"}/>
                 }
             </form>
