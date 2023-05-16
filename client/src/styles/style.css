@@ -1183,6 +1183,14 @@ th{
 .liste-contactus{
     list-style-type:none;
 }
+/*------------------------------------Events---------------------------------------*/
+.presentation-events{
+    column-count: 2;
+    margin: auto;
+}
+.title-events{
+    text-align: center;
+}
 /*------------------------------------NightShow---------------------------------------*/
 
 .nightshow {
