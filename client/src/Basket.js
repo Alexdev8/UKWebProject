@@ -1,6 +1,7 @@
 import shopData from "./shop-data.json";
 
 function Basket({items}) {
+    console.log()
     function total() {
         let total = 0;
         for (let item of items.tickets) {

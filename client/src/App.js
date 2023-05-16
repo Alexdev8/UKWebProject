@@ -1,7 +1,7 @@
 import './styles/style.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Header, Footer} from './Shared_components';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Main from "./Main";
 import NotFound from "./NotFound";
 import Order from "./Order";
@@ -68,13 +68,10 @@ function App() {
         }
     });
 
-    function addTickets(ticket) {
-        console.log(ticket);
-        const newBasket = basket;
-        newBasket.items.tickets = [...newBasket.items.tickets, ticket]
-        console.log(newBasket);
-        setBasket(newBasket);
-    }
+    useEffect(() => {
+        console.log("basket updated", basket);
+        localStorage.setItem("userBasket", JSON.stringify(basket));
+    }, [basket]);
 
     return (
         <BrowserRouter>
@@ -105,7 +102,7 @@ function App() {
                 </Route>
                 <Route path="/" element={<NoNavbarLayout/>}>
                     <Route path="offers" element={<Offers/>}/>
-                    <Route path="order" element={<Order basket={basket} setBasket={setBasket} addTickets={addTickets}/>}>
+                    <Route path="order" element={<Order basket={basket} setBasket={setBasket} user={user}/>}>
                         <Route path="tickets" element={<TicketBooking/>} />
                         <Route path="summary" element={<OrderSummary/>}></Route>
                     </Route>

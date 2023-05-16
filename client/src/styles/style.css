@@ -743,6 +743,26 @@ form[name="order-form"] .form-step.hidden h3 {
 }
 
 /*============================= ORDER SUMMARY =============================*/
+.order-summary > .content-section {
+    position: relative;
+    transition: max-height 1.5s, opacity 1s 0.1s, margin-top 1s;
+    height: fit-content;
+    max-height: 35em;
+    opacity: 1;
+    margin: 1em 1em 0 1em;
+    padding: 0 1em 1em 1em;
+}
+
+.order-summary > .content-section.hidden {
+    transition: max-height 0.6s, opacity 0.3s, margin-top 0.5s, transform 0s 0.6s;
+    max-height: 0 !important;
+    opacity: 0 !important;
+    margin: 0;
+    padding: 0;
+    transform: translateX(600%);
+    visibility: hidden;
+}
+
 .summary-panel {
     display: flex;
     flex-direction: row;
