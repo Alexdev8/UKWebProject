@@ -7,7 +7,6 @@ let bcrypt = require('bcrypt');
 
 require('dotenv').config({path: path.dirname(__dirname) + "/.env"});
 const db_config = require('./config/db_config');
-const {add} = require("nodemon/lib/rules");
 const app = express();
 
 let connection = mysql.createConnection(db_config);
