@@ -321,9 +321,7 @@ function Attraction({attraction}) {
                     </div>
                 </div>
             </div>
-            <div className="attraction-restriction">
-                {attraction.restriction}
-            </div>
+
         </Link>
     )
 }

@@ -29,7 +29,7 @@ const listItems = [
         name: "Construction of Hadrian's Wall",
         restriction : "Minimum size : 1m20",
         restriction2 : "Minimum age : 12 years old",
-        description: "",
+        description: "Embark on an epic journey at 'Wall of Legends,' a captivating attraction in the theme park that brings the construction of Hadrian's Wall to life. Witness the sheer scale of this ancient feat through dynamic displays, interactive reconstructions, and engaging narratives. Immerse yourself in history and experience the legacy of the mighty wall.",
         picture: "https://p0.storage.canalblog.com/00/42/498088/122328190_o.jpg",
         link: "roman",
         alt: "..."
@@ -49,8 +49,8 @@ const listItems = [
         id: "Five",
         ariaExpanded: false,
         name: "Trafalgar",
-        restriction : "",
-        description: ".",
+        restriction : "Attraction for all, have your swimsuit",
+        description:"Dive into a world of adventure at 'Trafalgar Splash,' an exhilarating water attraction designed for children. Set sail on interactive pirate ships, dodge sprouting water cannons, and navigate through a playful water maze inspired by the Battle of Trafalgar. Let imaginations run wild as young captains conquer the high seas in a splashing good time!",
         picture: "https://www.thetrafalgarway.org/mint-project/uploads/709103332.png",
         link: "trafalgar",
         alt: "..."
@@ -59,10 +59,10 @@ const listItems = [
         id: "Six",
         ariaExpanded: false,
         name: "Shadows of Britannia",
-        restriction : "",
+        restriction : "To see in family",
         description: "Shadows of Britannia is a mesmerizing nocturnal spectacle that takes audiences on a poetic journey through the history of England. Set against the backdrop of the night sky, the show features stunning visual projections, choreographed performances, and a captivating narrative that brings England's storied past to life.",
         picture: "https://sonovision.com/wp-content/uploads/sites/2/2017/10/photo1_OK-1024x576.jpg",
-        link: "shadows-of-britannia",
+        link: "/shadows-of-britannia",
         alt: "..."
     }
 ]
