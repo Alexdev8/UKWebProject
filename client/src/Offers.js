@@ -33,7 +33,7 @@ function Offers() {
                     <p>
                         By clicking on this button, you gain access to our hotel reservation service.
                         Experience utmost comfort and convenience during your stay with our wide range of accommodation options.
-                        From luxurious suites to cozy rooms, we offer the perfect choice for every traveler.
+                        From luxurious suites to cozy rooms, we offer the perfect choice for every travelers.
                         Book now and secure your dream hotel for a memorable experience.
                     </p>
                     <button className="button-roman">
