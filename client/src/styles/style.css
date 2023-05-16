@@ -1727,14 +1727,20 @@ th{
 }
 
 /*--------------------------------------offers-----------------------------------*/
-.button-offers{
-    background-color: cadetblue;
-    color: white;
-    font-size: 1.5rem;
-    padding: 10px 20px;
-    border: #222222;
-    border-radius: 20px;
-    cursor: pointer;
+.offer {
+    margin-bottom: 2%;
+}
+
+.offer-image {
+    width: 70%;
+    height: 70%;
+    border-radius: 10%;
+    margin-right: 20px;
+}
+
+/*---------------------------------------------*/
+.map{
+    width: 100%;
 }
 
 /* ======================================= Not Found ======================================= */

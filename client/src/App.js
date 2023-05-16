@@ -30,6 +30,7 @@ import Cottage from "./Cottage";
 import EmailField from "./Account";
 import ContactUs from "./ContactUs";
 import Events from "./Events";
+import Offers from "./Offers";
 
 function setCookie(cname, cvalue, exdays) {
     const d = new Date();
@@ -99,6 +100,7 @@ function App() {
                     <Route path="about" element={<AboutUs/> }/>
                     <Route path="contact-us" element={<ContactUs/> }/>
                     <Route path="events" element={<Events/> }/>
+                    <Route path="offers" element={<Offers/> }/>
                     <Route path="*" element={<NotFound/>}/>
                 </Route>
                 <Route path="/" element={<NoNavbarLayout/>}>

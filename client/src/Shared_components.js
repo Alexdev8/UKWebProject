@@ -186,9 +186,8 @@ function Menu(){
 
 
     const Information = [
-        {key: 0, name: "Prices", href: "prices", id: "prices"},
+        {key: 0, name: "Offers", href: "offers", id: "offers"},
         {key: 1, name: "Events", href: "events", id: "events"},
-        {key: 2, name: "Reservation", href:"reservation", id:"reservation"},
 
     ];
 

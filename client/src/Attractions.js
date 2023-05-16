@@ -8,7 +8,7 @@ const listItems = [
         ariaExpanded: true,
         name: "Century War",
         restriction : "Minimum size : none",
-        description: "",
+        description: "Step back in time and immerse yourself in the dramatic tale of the Hundred Years War with our captivating short spectacle, \"Echoes of the Hundred Years War.\" Prepare to be enthralled as we bring this historic conflict to life through a mesmerizing blend of storytelling, music, and breathtaking performances.",
         picture: "https://images.lindependant.fr/api/v1/images/view/5d54055fd286c202264fd612/large/image.jpg?v=1",
         link: "centurywar",
         alt: "..."
@@ -19,7 +19,7 @@ const listItems = [
         name: "Vikings Invasion",
         restriction : "",
         description: "Join the fearless Vikings on a thrilling journey through history as they battle fierce enemies, brave treacherous waters, and explore new lands. Experience the excitement of a Viking raid and witness the strength and skill of these legendary warriors as they conquer all who stand in their way",
-        picture: "https://leisureopportunities.co.uk/images/971601_409024.jpg",
+        picture: "https://c4.wallpaperflare.com/wallpaper/922/648/1005/ships-the-series-vikings-the-vikings-wallpaper-preview.jpg",
         link: "/attractions/viking",
         alt: "..."
     },
@@ -31,7 +31,7 @@ const listItems = [
         restriction2 : "Minimum age : 12 years old",
         description: "",
         picture: "https://p0.storage.canalblog.com/00/42/498088/122328190_o.jpg",
-        link: "https://static.nationalgeographic.fr/files/styles/image_3200/public/gettyimages-486453968.jpg?w=1900&h=1267",
+        link: "roman",
         alt: "..."
     },
     {
@@ -50,7 +50,7 @@ const listItems = [
         name: "Trafalgar",
         restriction : "",
         description: ".",
-        picture: "",
+        picture: "https://www.thetrafalgarway.org/mint-project/uploads/709103332.png",
         link: "trafalgar",
         alt: "..."
     },
@@ -144,7 +144,7 @@ const eventsShow = [
     {
         id: "trafalgar-war",
         type: "attraction",
-        name: "Trafalagar Law",
+        name: "Trafalagar",
         date: [
             {day: "Monday", start: 17},
             {day: "Monday", start: 18},
@@ -214,7 +214,7 @@ function Attractions(){
                     </div>
                     <div className="indicator-container">
                         <div className="color-lehend trafalgar-lehend"></div>
-                        <p className="text-lehends">Triffouilli</p>
+                        <p className="text-lehends">Trafalgar</p>
                     </div>
                 </div>
                 <p className="workshop-link">
