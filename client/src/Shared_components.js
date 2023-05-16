@@ -480,7 +480,7 @@ function Calendar({events}){
     const WEEK_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
     const  tableRows = [];
 
-    for(let i = 0; i < 15; i++){
+    for(let i = 0; i < 12; i++){
         const hour = i + 9;
         const hourString = hour.toString().padStart(2, '0') + ':00';
         tableRows.push({hour: hourString, events: []});

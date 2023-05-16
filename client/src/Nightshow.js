@@ -186,7 +186,7 @@ function Comments({comments}){
             <div className="comment-input">
                 <form action="submit">
                     <input className="form-comments" type="text" placeholder="Your feedback"/>
-                    <button className="button-nightShow">Submit</button>
+                    <button className="button">Submit</button>
                 </form>
             </div>
         </>

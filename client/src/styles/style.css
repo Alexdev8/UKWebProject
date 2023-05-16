@@ -584,7 +584,7 @@ form[name="order-form"] .form-step.hidden h3 {
 .card.selected {
     cursor: auto;
     transform: scale(1.075);
-    color: lightpink;
+    color: black;
 }
 
 .ticket-type-selection .card:not(:first-child) {
@@ -1098,9 +1098,10 @@ th{
     background-color: lightpink;
 }
 
-.lehends{
+.content-section .lehends{
     display: flex;
     margin: auto;
+    flex-wrap: wrap;
 }
 
 .indicator-container{
@@ -1109,12 +1110,14 @@ th{
 }
 
 .years-war{
-    background-color: red;
+    background-color: #9a9afc;
+    padding: 2%;
 }
 
 .year-war-lehend{
-    background-color: red;
+    background-color: #9a9afc;
 }
+
 
 .color-lehend{
     margin: auto;
@@ -1124,20 +1127,40 @@ th{
     border-radius: 30px;
 }
 
-.viking-war, .viking-lehend{
-    background-color: blue;
+.viking-war{
+    background-color: #f5f57f;
+    padding: 2%;
 }
 
-.roman-lehend, .roman-war{
-    background-color: yellow;
+.viking-lehend{
+    background-color: #f5f57f;
 }
 
-.robinhood-war, .robinhood-lehend{
-    background-color: green;
+.roman-lehend{
+    background-color: #f597f5;
 }
 
-.trafalgar-lehend, .trafalgar-war{
-    background-color: purple;
+.roman-war{
+    background-color: #f597f5;
+    padding: 2%;
+}
+
+.robinhood-war{
+    background-color: #66e766;
+    padding: 2%;
+}
+
+.robinhood-lehend{
+    background-color: #66e766;
+}
+
+.trafalgar-lehend{
+    background-color: #fcc051;
+    padding: 2%;
+}
+
+.trafalgar-war{
+    background-color: #fcc051;
 }
 
 
@@ -1343,24 +1366,48 @@ th{
     text-align: justify;
 }
 
-.printing, .printing-lehend{
-    background-color: red;
+.printing{
+    background-color: #9a9afc;
+    padding: 2%;
 }
 
-.pottery, .pottery-lehend{
-    background-color: blue;
+.printing-lehend{
+    background-color: #9a9afc;
 }
 
-.carpenter, .carpenter-lehend{
-    background-color: yellow;
+.pottery{
+    background-color: #f5f57f;
+    padding: 2%;
 }
 
-.bakery, .bakery-lehend{
-    background-color: green;
+.pottery-lehend{
+    background-color: #f5f57f;
 }
 
-.blacksmith, .blacksmith-lehend{
-    background-color: purple;
+.carpenter{
+    background-color: #f597f5;
+    padding: 2%;
+}
+
+.carpenter-lehend {
+    background-color: #f597f5;
+}
+.bakery{
+    background-color: #66e766;
+    padding: 2%;
+}
+
+.bakery-lehend {
+    background-color: #66e766;
+}
+
+.blacksmith{
+    background-color: #fcc051;
+    padding: 2%;
+}
+
+.blacksmith-lehend{
+    background-color: #fcc051;
 }
 
 /*===============================================================================*/
