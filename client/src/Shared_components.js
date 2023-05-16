@@ -187,7 +187,6 @@ function Menu(){
     const Information = [
         {key: 0, name: "Offers", href: "offers", id: "offers"},
         {key: 1, name: "Events", href: "events", id: "events"},
-
     ];
 
     const menuData = [
