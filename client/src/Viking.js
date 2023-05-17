@@ -7,7 +7,7 @@ const Viking = () => {
             <div className="viking-content">
                 <section id="viking-introduction">
                     <div className="viking-container">
-                        <h1>Bienvenue à l'Attraction Viking !</h1>
+                        <h1>The Vikings !</h1>
                         <p>Découvrez une aventure passionnante dans l'univers des Vikings. Embarquez dans notre navire à la découverte de paysages époustouflants et de créatures légendaires.</p>
                         <button className={"button-viking"} onClick={() => navigate("/order/tickets")}>GET A TICKET NOW</button>
                     </div>
@@ -23,16 +23,16 @@ const Viking = () => {
                 <section id="viking-description">
                     <div className="viking-container">
                         <h2>Description</h2>
-                        <p>L'Attraction Viking est une expérience immersive dans la culture nordique. Le voyage commence dans le fjord de Bergen, où les visiteurs embarquent sur un navire viking authentique. Pendant le trajet, les passagers pourront profiter de la vue sur les montagnes et les fjords, ainsi que sur la faune et la flore locale.</p>
-                        <p>Après quelques minutes de navigation, le navire arrive sur une ile mystérieuse où les visiteurs peuvent explorer un village viking reconstitué. Ils pourront découvrir comment les Vikings vivaient, travaillaient et se battaient. Les visiteurs pourront également rencontrer des artisans qui recréent des objets du quotidien, des bijoux et des armes.</p>
-                        <p>Après avoir visité le village, les visiteurs retourneront sur le navire pour un retour au fjord de Bergen. Pendant le trajet de retour, les passagers pourront profiter de spectacles de combat de gladiateurs vikings, de chants traditionnels et de danses.</p>
+                        <p>The Viking Attraction is an immersive experience in Nordic culture. The journey begins in the Bergen Fjord, where visitors board an authentic Viking ship. During the journey, passengers will be able to enjoy views of mountains and fjords, as well as local flora and fauna.</p>
+                        <p>After a few minutes of navigation, the ship arrives on a mysterious island where visitors can explore a reconstructed Viking village. They will be able to discover how the Vikings lived, worked and fought. Visitors will also be able to meet artisans who recreate everyday objects, jewelry and weapons.</p>
+                        <p>After visiting the village, visitors will return to the ship for a return trip to Bergen Fjord. During the return trip, passengers can enjoy Viking gladiator combat shows, traditional songs and dances.</p>
                     </div>
                 </section>
 
                 <section id="viking-histoire">
                     <div className="viking-container">
-                        <h2>Histoire</h2>
-                        <p>L'Attraction Viking a été créée pour permettre aux visiteurs de découvrir la culture nordique de manière immersive et interactive. Le parc a travaillé avec des historiens pour recréer les navires, les bâtiments et les objets du quotidien avec</p>
+                        <h2>History</h2>
+                        <p>Our knowledgeable guides, dressed in period attire, will share fascinating tales and insights about the Vikings. From the brilliant naval strategies employed to the personal stories of heroism and tragedy, their captivating narratives will transport you back in time and immerse you in the triumphs and tribulations of this historic event.</p>
                     </div>
                 </section>
                 <section>

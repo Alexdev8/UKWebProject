@@ -7,7 +7,7 @@ const Trafalgar = () => {
         <div className="trafalgar-content">
             <section id="trafalgar-introduction">
                 <div className="trafalgar-container">
-                    <h1>Bienvenue à l'Attraction Trafalgar !</h1>
+                    <h1>Victory at Trafalgar: A Naval Odyssey</h1>
                     <p>Découvrez une aventure passionnante dans l'univers des Vikings. Embarquez dans notre navire à la découverte de paysages époustouflants et de créatures légendaires.</p>
                     <button className={"button-trafalgar"} onClick={() => navigate("/order/tickets")}>GET A TICKET NOW</button>
                 </div>
@@ -23,16 +23,20 @@ const Trafalgar = () => {
             <section id="trafalgar-description">
                 <div className="trafalgar-container">
                     <h2>Description</h2>
-                    <p>L'Attraction Viking est une expérience immersive dans la culture nordique. Le voyage commence dans le fjord de Bergen, où les visiteurs embarquent sur un navire viking authentique. Pendant le trajet, les passagers pourront profiter de la vue sur les montagnes et les fjords, ainsi que sur la faune et la flore locale.</p>
-                    <p>Après quelques minutes de navigation, le navire arrive sur une ile mystérieuse où les visiteurs peuvent explorer un village viking reconstitué. Ils pourront découvrir comment les Vikings vivaient, travaillaient et se battaient. Les visiteurs pourront également rencontrer des artisans qui recréent des objets du quotidien, des bijoux et des armes.</p>
-                    <p>Après avoir visité le village, les visiteurs retourneront sur le navire pour un retour au fjord de Bergen. Pendant le trajet de retour, les passagers pourront profiter de spectacles de combat de gladiateurs vikings, de chants traditionnels et de danses.</p>
+                    <p>Prepare to set sail on an immersive adventure that will take you back to one of the most pivotal moments in naval history - the Battle of Trafalgar. Our captivating attraction allows you to relive the epic clash of mighty warships, the strategic brilliance of Admiral Lord Nelson, and the heroic sacrifice of those who fought for their nations.</p>
+                    <p>Step into our meticulously recreated naval dockyard, where you'll be transported to the early 19th century. Immerse yourself in the sights, sounds, and atmosphere of the era as you embark on a journey through the lead-up to the battle and its gripping aftermath.</p>
+                    <p>Experience the thrill of standing on the deck of a majestic warship as you navigate through interactive exhibits. Learn about the different types of vessels that participated in the battle, from the massive ships of the line to the nimble frigates. Discover the intricacies of naval warfare as you explore the ship's cannons, the intricately rigged sails, and the commanding officer's quarters.</p>
                 </div>
             </section>
 
             <section id="trafalgar-histoire">
                 <div className="trafalgar-container">
-                    <h2>Histoire</h2>
-                    <p>L'Attraction Viking a été créée pour permettre aux visiteurs de découvrir la culture nordique de manière immersive et interactive. Le parc a travaillé avec des historiens pour recréer les navires, les bâtiments et les objets du quotidien avec</p>
+                    <h2>History</h2>
+                    <p>Through state-of-the-art audiovisual presentations, witness the intensity and chaos of the Battle of Trafalgar unfold before your eyes. Feel the rumble of cannons as the mighty fleets clash, and marvel at the skill and bravery of the sailors who fought with unwavering resolve. Gain a deeper understanding of the battle's significance and its impact on the course of history.
+
+                        Engage in interactive activities that highlight the tactics employed by both the British and French fleets. Test your skills in ship-to-ship combat simulations, strategize to outmaneuver your opponents, and experience the challenges faced by sailors in a battle of such magnitude.
+
+                    </p>
                 </div>
             </section>
             <section>

@@ -7,8 +7,10 @@ const CenturyWar = () => {
         <div className="centurywar-content">
             <section id="centurywar-introduction">
                 <div className="centurywar-container">
-                    <h1>Bienvenue à l'Attraction CenturyWar !</h1>
-                    <p>Découvrez une aventure passionnante dans l'univers des Vikings. Embarquez dans notre navire à la découverte de paysages époustouflants et de créatures légendaires.</p>
+                    <h1>A Journey through the Hundred Years War</h1>
+                    <p>A Journey through the Hundred Years War offers a captivating blend of education and entertainment, making it an ideal attraction for school groups, families, and history buffs. Experience the thrill of the battlefield, the intrigue of political alliances, and the resilience of those who fought for their beliefs in this pivotal period of European history.
+
+                        Step into the past and let "The War of the Roses: A Journey through the Hundred Years War" transport you to a time of knights, kings, and everlasting conflict. Brace yourself for an adventure that will leave you inspired and enlightened about one of history's most enduring and influential wars.</p>
                     <button className={"button-centurywar"} onClick={() => navigate("/order/tickets")}>GET A TICKET NOW</button>
                 </div>
             </section>
@@ -23,16 +25,19 @@ const CenturyWar = () => {
             <section id="centurywar-description">
                 <div className="centurywar-container">
                     <h2>Description</h2>
-                    <p>L'Attraction Viking est une expérience immersive dans la culture nordique. Le voyage commence dans le fjord de Bergen, où les visiteurs embarquent sur un navire viking authentique. Pendant le trajet, les passagers pourront profiter de la vue sur les montagnes et les fjords, ainsi que sur la faune et la flore locale.</p>
-                    <p>Après quelques minutes de navigation, le navire arrive sur une ile mystérieuse où les visiteurs peuvent explorer un village viking reconstitué. Ils pourront découvrir comment les Vikings vivaient, travaillaient et se battaient. Les visiteurs pourront également rencontrer des artisans qui recréent des objets du quotidien, des bijoux et des armes.</p>
-                    <p>Après avoir visité le village, les visiteurs retourneront sur le navire pour un retour au fjord de Bergen. Pendant le trajet de retour, les passagers pourront profiter de spectacles de combat de gladiateurs vikings, de chants traditionnels et de danses.</p>
+                    <p>Step back in time and immerse yourself in the epic conflict that shaped medieval Europe - the Hundred Years War. Our immersive attraction takes you on a thrilling and educational adventure through this historic era, bringing to life the fierce battles, political intrigue, and heroic tales of valor.</p>
+                    <p>As you enter, you'll be transported to the 14th and 15th centuries, a time when England and France clashed in a bitter struggle for supremacy. The attraction is meticulously designed to recreate the sights, sounds, and atmosphere of the era, ensuring an unforgettable experience for history enthusiasts of all ages.</p>
+                    <p>Prepare to witness iconic battles such as Crécy, Poitiers, and Agincourt, where armies clashed in thunderous combat. Through state-of-the-art audiovisual presentations, you'll stand on the front lines, hearing the war cries, the clash of swords, and the thunderous hooves of charging knights.</p>
+                    <p>Explore interactive exhibits that offer insights into the strategies and weaponry employed by both sides. Get a firsthand look at the armor and weapons used by knights and archers, and learn about the advancements in military technology that shaped the outcome of the war.</p>
                 </div>
             </section>
 
             <section id="centurywar-histoire">
                 <div className="centurywar-container">
-                    <h2>Histoire</h2>
-                    <p>L'Attraction Viking a été créée pour permettre aux visiteurs de découvrir la culture nordique de manière immersive et interactive. Le parc a travaillé avec des historiens pour recréer les navires, les bâtiments et les objets du quotidien avec</p>
+                    <h2>History</h2>
+                    <p>"The War of the Roses: A Journey through the Hundred Years War" offers a captivating blend of education and entertainment, making it an ideal attraction for school groups, families, and history buffs. Experience the thrill of the battlefield, the intrigue of political alliances, and the resilience of those who fought for their beliefs in this pivotal period of European history.
+
+                        Step into the past and let "The War of the Roses: A Journey through the Hundred Years War" transport you to a time of knights, kings, and everlasting conflict. Brace yourself for an adventure that will leave you inspired and enlightened about one of history's most enduring and influential wars.</p>
                 </div>
             </section>
             <section>
