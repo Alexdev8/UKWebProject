@@ -356,7 +356,7 @@ function LogIn({originPath, user, setUser, setCookie}){
                 }
             })
                 .then(response => {
-                    if (response.status === 200 && response.statusText === "OK") {
+                    if (response.status === 200 || response.status === 304) {
                         setUser({email: response.data});
                         setCookie("user", response.data, 2);
                         if (originPath.pathname !== "/account/login") {

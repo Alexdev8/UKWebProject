@@ -114,7 +114,7 @@ function UserDetails(props) {
                 })
                     .then(response => {
                         console.log(response);
-                        if (response.status === 200 && response.statusText === "OK") {
+                        if (response.status === 200 || response.status === 304) {
                             refs.push(response.data);
                             if (refs.length === ticketList.length) {
                                 props.setTicketsRefs(refs);

@@ -115,7 +115,7 @@ function AccountBuild({user}){
             timeout: 4000 // 4 seconds timeout
         })
             .then(response => {
-                if (response.status === 200 && response.statusText === "OK") {
+                if (response.status === 200 || response.status === 304) {
                     setAccountData(response.data);
                     getAccountTickets(response.data.accountID);
                 }
@@ -138,7 +138,7 @@ function AccountBuild({user}){
             timeout: 4000 // 4 seconds timeout
         })
             .then(response => {
-                if (response.status === 200 && response.statusText === "OK") {
+                if (response.status === 200 || response.status === 304) {
                     setTicketsData(response.data);
                 }
             })
@@ -164,7 +164,7 @@ function AccountBuild({user}){
             timeout: 4000 // 4 seconds timeout
         })
             .then(response => {
-                if (response.status === 200 && response.statusText === "OK") {
+                if (response.status === 200 || response.status === 304) {
                     location.reload();
                 }
             })

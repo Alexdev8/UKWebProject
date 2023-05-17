@@ -15,7 +15,7 @@ body {
     min-height: 100vh;
     display: grid;
     grid-template-rows: auto auto 1fr auto;
-    background-image: url("https://cdn.shopify.com/s/files/1/1987/4943/products/21310-02_480x480@2x.jpg?v=1599226402");
+    background-image: url("../resources/background.webp");
 }
 
 button:not(:disabled) {
@@ -32,7 +32,7 @@ footer {
 footer a {
     color: white;
     text-decoration: none;
-
+    padding: 0.2em;
 }
 
 a {
@@ -74,7 +74,7 @@ header {
 }
 
 .header-logo #logo-site {
-    background-image: url("https://media.istockphoto.com/id/978727178/fr/vectoriel/vignette-horizontale-avec-une-rose-illustration-vectorielle.jpg?s=612x612&w=0&k=20&c=vNpMALxH97dXOnA9CqEkAstrQJTaeP4ZCycECtgfzvo=");
+    background-image: url("../resources/logo.jpg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
