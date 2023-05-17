@@ -50,7 +50,7 @@ const listItems = [
         ariaExpanded: false,
         name: "Trafalgar",
         restriction : "Attraction for all, have your swimsuit",
-        description:"Dive into a world of adventure at 'Trafalgar Splash,' an exhilarating water attraction designed for children. Set sail on interactive pirate ships, dodge sprouting water cannons, and navigate through a playful water maze inspired by the Battle of Trafalgar. Let imaginations run wild as young captains conquer the high seas in a splashing good time!",
+        description:"Dive into a world of adventure at 'Trafalgar Splash, an exhilarating water attraction designed for children. Set sail on interactive pirate ships, dodge sprouting water cannons, and navigate through a playful water maze inspired by the Battle of Trafalgar. Let imaginations run wild as young captains conquer the high seas in a splashing good time!",
         picture: "https://www.thetrafalgarway.org/mint-project/uploads/709103332.png",
         link: "trafalgar",
         alt: "..."
